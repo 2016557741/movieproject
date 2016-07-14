@@ -1,0 +1,49 @@
+抽象享元角色：
+package Flyweight;
+public abstract class Flyweight{  
+　public abstract void  operation();
+  } 
+
+
+实现一个具体享元(ConcreteFlyweight）：
+
+package Flyweight;
+
+public class ConcreteFlyweight extends  Flyweight {
+
+ private String string; 
+  public ConcreteFlyweight(String str) { 
+  string = str;
+｝
+public void operation  ( )  {
+
+System.out.println("Concrete---Flyweight : " + string);     
+}
+ }
+
+实现一个工厂方法(FlyweightFactory)类：
+package Flyweight;
+
+import java.util.Hashtable;
+ 
+ public class FlyweightFactory{
+  
+　private Hashtable flyweights = new Hashtable();//----------------------------1//定义了一个Hashtable用来存储各个对象  
+　public FlyweightFactory(){} 
+
+ 　public Flyweight getFlyWeight(Object obj){ 
+ 　　Flyweight flyweight = (Flyweight) flyweights.get(obj);//选出要实例化的对象----------------2
+
+  　if(flyweight == null){//---------------------------------------------------3  　　　//产生新的ConcreteFlyweight   
+
+//产生新的ConcreteFlyweight  　
+　
+　flyweight = new ConcreteFlyweight((String)obj);
+
+  flyweights.put(obj, flyweight);//--------------------------------------5  　　} 
+
+ return flyweight;//将该对象返回---------------------------------------------------------6  　
+  　public int getFlyweightSize(){  
+　　return flyweights.size();  
+　} 
+ }           
