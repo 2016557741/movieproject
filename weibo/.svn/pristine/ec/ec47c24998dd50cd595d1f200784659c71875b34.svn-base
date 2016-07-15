@@ -1,0 +1,131 @@
+package www.csdn.project.action;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.SimpleFormatter;
+
+import www.csdn.project.domain.Userinfo;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.UserinfoService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.Pagination;
+
+public class UserinfoAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private UserinfoService userinfoService;
+	private Userinfo userinfo;
+	private Users users;
+    private String birthday;
+	
+    
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Userinfo getUserinfo() {
+		return userinfo;
+	}
+
+	public void setUserinfo(Userinfo userinfo) {
+		this.userinfo = userinfo;
+	}
+
+	public void setUserinfoService(UserinfoService userinfoService) {
+		this.userinfoService = userinfoService;
+	}
+
+	/*public String getObjectByEmail(){
+		userinfo = (Userinfo) baseService.getObjectByProperty(Userinfo.class,"email","");
+		return "getObjectByEmail";
+	}*/
+	
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Userinfo.class, sql));
+		pagination.setRows(baseService.getObjects(Userinfo.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " where 1=1 ";
+		if (userinfo != null) {
+			// 序号
+			String trueName = userinfo.getTrueName();
+			if (!"".equals(trueName) && (trueName != null)) {
+				whereSql += " and  trueName like '%" + trueName + "%'";
+			}
+			String sexUal = userinfo.getSexUal();
+			if (!"".equals(sexUal) && (sexUal != null)) {
+				whereSql += " and  sexUal = '" + sexUal + "'";
+			}
+			String sex = userinfo.getSex();
+			if (!"".equals(sex) && (sex != null)) {
+				whereSql += " and  sex = '" + sex + "'";
+			}
+			String bloodType = userinfo.getBloodType();
+			if (!"".equals(bloodType) && (bloodType != null)) {
+				whereSql += " and  bloodType = '" + bloodType + "'";
+			}
+		}
+		return whereSql;
+	}
+
+	public String update() {
+		/*Date date = null;
+		try {
+			 date = new SimpleDateFormat("yyyyMMdd").parse(birthday);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}*/
+		baseService.saveOrUpdateObject(users);
+		userinfo.setUsers(users);
+		userinfo.setBirthday(birthday);
+		this.flag = baseService.saveOrUpdateObject(userinfo);
+		return "saveorupdate";
+	}
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(userinfo);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Userinfo.class, ids);
+		return "delete";
+	}
+	
+	public String getAllUsers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+	
+	public String getUsersInfo(){
+		
+		return "userinfo";
+	}
+}

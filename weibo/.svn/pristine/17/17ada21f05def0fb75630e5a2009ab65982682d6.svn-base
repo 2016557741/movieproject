@@ -1,0 +1,12 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.CollectionsDao;
+import www.csdn.project.service.CollectionsService;
+
+public class CollectionsServiceImpl extends BaseServiceImpl implements  CollectionsService{
+	private CollectionsDao collectionsDao;
+
+	public void setCollectionsDao(CollectionsDao collectionsDao) {
+		this.collectionsDao = collectionsDao;
+	}
+}

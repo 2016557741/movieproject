@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="userinfo" namespace="/csdn" extends="json-default" >
+		<action name="UserinfoAction_*" class="userinfoAction" method="{1}">
+			<result name="query" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pagination\.total,pagination\.rows\[\d+\]\.id,pagination\.rows\[\d+\]\.address,pagination\.rows\[\d+\]\.birthday,pagination\.rows\[\d+\]\.blogUrl,pagination\.rows\[\d+\]\.bloodType,pagination\.rows\[\d+\]\.email,pagination\.rows\[\d+\]\.feeling,pagination\.rows\[\d+\]\.intro,pagination\.rows\[\d+\]\.label,pagination\.rows\[\d+\]\.messenger,pagination\.rows\[\d+\]\.profession,pagination\.rows\[\d+\]\.qqNumber,pagination\.rows\[\d+\]\.realName,pagination\.rows\[\d+\]\.sex,pagination\.rows\[\d+\]\.sexUal,pagination\.rows\[\d+\]\.trueName,pagination\.rows\[\d+\]\.users\.id</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="queryall" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="saveorupdate" type="json">
+				<param name="root">flag</param>
+			</result>
+			
+			<result name="userinfo">/frontstage/user_info.jsp</result>
+			<result name="userinfonull">/index.jsp</result>
+			<result name="updateUserInfo">/frontstage/user_info.jsp</result>
+		</action>
+	</package>
+</struts>

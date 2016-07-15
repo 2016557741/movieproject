@@ -1,0 +1,13 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.PrivateletterDao;
+import www.csdn.project.service.PrivateletterService;
+
+public class PrivateletterServiceImpl extends BaseServiceImpl implements PrivateletterService{
+	private PrivateletterDao privateletterDao;
+
+	public void setPrivateletterDao(PrivateletterDao privateletterDao) {
+		this.privateletterDao = privateletterDao;
+	}
+	
+}

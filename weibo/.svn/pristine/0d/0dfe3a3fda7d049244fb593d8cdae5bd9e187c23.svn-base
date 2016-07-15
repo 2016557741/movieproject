@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Messages" table="MESSAGES" schema="weibo">
+		<id name="id" column="MESSAGES_ID">
+			<generator class="sequence">
+				<param name="sequence">MESSAGES_SEQ</param>
+			</generator>
+		</id>
+		
+		<property name="type" type="string" column="MESSAGES_TYPE"/>
+		<property name="info" type="string" column="MESSAGES_INFO"/>
+		<property name="time" type="timestamp" column="MESSAGES_TIME"/>
+		<property name="collectNum" type="integer" column="MESSAGES_COLLECTNUM"/>
+		<property name="commentNum" type="integer" column="MESSAGES_COMMENTNUM"/>
+		<property name="transpondNum" type="integer" column="MESSAGES_TRANSPONDNUM"/>
+		<property name="agreeNum" type="integer" column="MESSAGES_AGREENUM"/>
+		<property name="readNum" type="integer" column="MESSAGES_READNUM"/>
+		<property name="label" type="string" column="MESSAGES_LABEL"/>
+		
+		<many-to-one name="users" class="Users" column="USERS_ID"/>
+		
+		<set name="atusers" inverse="true" cascade="delete">
+			<key column="MESSAGES_ID"/>
+			<one-to-many class="Atusers"/>
+		</set>
+		<set name="collections" inverse="true" cascade="delete">
+			<key column="MESSAGES_ID"/>
+			<one-to-many class="Collections"/>
+		</set>
+		<set name="comments" inverse="true" cascade="delete">
+			<key column="MESSAGES_ID"/>
+			<one-to-many class="Comments"/>
+		</set>
+		
+		<set name="pictures" inverse="true" cascade="delete">
+			<key column="MESSAGES_ID"/>
+			<one-to-many class="Pictures"/>
+		</set>
+	</class>
+</hibernate-mapping>

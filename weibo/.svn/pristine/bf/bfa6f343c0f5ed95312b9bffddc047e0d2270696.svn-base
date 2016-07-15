@@ -1,0 +1,521 @@
+package www.csdn.project.action;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.http.HttpRequest;
+
+import www.csdn.project.domain.Messages;
+import www.csdn.project.domain.Pictures;
+import www.csdn.project.domain.Relation;
+import www.csdn.project.domain.Userinfo;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.UsersService;
+import www.csdn.project.utils.Pagination;
+import www.csdn.project.utils.ShowUsers;
+import www.csdn.project.utils.ShowUsersInfo;
+
+import com.opensymphony.xwork2.ActionContext;
+
+public class UsersAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Users users;
+	private UsersService usersService;
+	private String code;
+	private String searchKey;
+	private ShowUsers showUsers;
+
+	private String byUsersId;
+	private String groupName;
+	private String relationNote;
+	
+	public void setByUsersId(String byUsersId) {
+		this.byUsersId = byUsersId;
+	}
+
+	public String getByUsersId() {
+		return byUsersId;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public String getRelationNote() {
+		return relationNote;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	public void setRelationNote(String relationNote) {
+		this.relationNote = relationNote;
+	}
+
+	public void setShowUsers(ShowUsers showUsers) {
+		this.showUsers = showUsers;
+	}
+
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public void setUsersService(UsersService usersService) {
+		this.usersService = usersService;
+	}
+
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Users.class, sql));
+		pagination.setRows(baseService.getObjects(Users.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " where 1=1 ";
+		if (users != null) {
+			// 序号
+			String email = users.getEmail();
+			if (!"".equals(email) && (email != null)) {
+				whereSql += " and  email like '%" + email + "%'";
+			}
+
+			String nikeName = users.getNikeName();
+			if (!"".equals(nikeName) && (nikeName != null)) {
+				whereSql += " and  nikeName like '%" + nikeName + "%'";
+			}
+
+			Integer status = users.getStatus();
+			if (!"".equals(status) && (status != null)) {
+				whereSql += " and  status = '" + status + "'";
+			}
+		}
+		return whereSql;
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(users);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		String[] arrids = ids.split(",");
+		Users delUser = null;
+		for (int i = 0; i < arrids.length; i++) {
+			delUser = (Users) baseService.getObjectById(Users.class,
+					Integer.valueOf(arrids[i]));
+			baseService.deleteObject(delUser);
+		}
+		this.flag = true;
+		return "delete";
+	}
+
+	public String checkEmail() {
+		this.flag = baseService.checkProperty(Users.class, "email",
+				users.getEmail(), users.getId());
+		return "check";
+	}
+
+	public String checkNikeName() {
+		this.flag = baseService.checkProperty(Users.class, "nikeName",
+				users.getNikeName(), users.getId());
+		return "check";
+	}
+
+	public String login() {
+		if (users != null) {
+			HttpServletRequest request = ServletActionContext.getRequest();
+			users = usersService.login(users.getEmail(), users.getPassWord());
+			if (users != null) {
+				List<Pictures> headPicList = baseService.getObjects(
+						Pictures.class, "where users.id=" + users.getId()
+								+ "and type='头像'");
+				if (headPicList.size() != 0) {
+					Pictures headPic = headPicList.get(0);
+					request.getSession().setAttribute("headPic", headPic);
+				} else {
+					request.getSession().setAttribute("headPic", null);
+				}
+				Set<Userinfo> sets = users.getUserinfos();
+				for (Userinfo userinfo : sets) {
+					request.getSession().setAttribute("userinfos", userinfo);
+					break;
+				}
+
+				/*
+				 * ActionContext.getContext().getSession().put("pictrues",
+				 * users.getPictures());
+				 * ActionContext.getContext().getSession().put("users", users);
+				 */
+				request.getSession().setAttribute("user", users);
+
+				return "login";
+			} else {
+				return "out";
+			}
+		} else {
+			return "out";
+		}
+	}
+
+	public String saveregister() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String email = request.getParameter("email");
+		String passWord = request.getParameter("pass");
+		String nikeName = request.getParameter("name");
+		String checkimg = request.getParameter("checkimg");
+		String randimg = (String) ActionContext.getContext().getSession()
+				.get("randimg");
+		Users entity = new Users();
+		entity.setEmail(email);
+		entity.setPassWord(passWord);
+		entity.setNikeName(nikeName);
+		entity.setStatus(0);
+		entity.setTime(new Date());
+		this.flag = baseService.saveOrUpdateObject(entity);
+		if (flag == false) {
+			return "faile";
+		}
+		return "out";
+	}
+
+	public String checkCode() {
+		String randimg = (String) ActionContext.getContext().getSession()
+				.get("randimg");
+		if (!randimg.equals(code) && randimg != code) {
+			this.flag = false;
+		} else {
+			this.flag = true;
+		}
+		return "check";
+	}
+
+	public String checkPass() {
+		this.flag = usersService.checkPass(Users.class, "passWord",
+				users.getPassWord(), users.getId());
+		return "check";
+	}
+
+	public String updatePassword() {
+		Users entity = (Users) baseService.getObjectById(Users.class,
+				users.getId());
+		entity.setPassWord(users.getPassWord());
+		this.flag = baseService.saveOrUpdateObject(entity);
+		return "check";
+	}
+
+	public String checkEmails() {
+		this.flag = usersService.checkPass(Users.class, "email",
+				users.getEmail(), users.getId());
+		return "check";
+	}
+
+	public String updateEmail() {
+		Users entity = (Users) baseService.getObjectById(Users.class,
+				users.getId());
+		entity.setEmail(users.getEmail());
+		this.flag = baseService.saveOrUpdateObject(entity);
+		return "check";
+	}
+
+	@SuppressWarnings("unchecked")
+	public String searchUsers() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		if (loginUsers != null) {
+			Integer loginUId = loginUsers.getId();
+			List<ShowUsersInfo> showUsersInfos = new ArrayList<ShowUsersInfo>();
+			List<Users> listUsers = baseService.getObjects(Users.class,
+					"where nikeName like '%" + searchKey + "%'");
+			if (listUsers.size() != 0) {
+				for (Users liuser : listUsers) {
+					Set<Userinfo> setUserinfos = liuser.getUserinfos();
+					List<Pictures> listPictures = baseService.getObjects(
+							Pictures.class, "where users.id=" + liuser.getId()
+									+ "and type='头像'");
+					Set<Messages> setMessages = liuser.getMessages();
+					//Set<Relation> setFance = liuser.getByRelations();
+					//Set<Relation> setAttention = liuser.gettRelations();
+					List<Relation> listF = baseService.getObjects(Relation.class, "where tusers.id=" + liuser.getId()+ " and byusers.id=" + loginUId);
+					List<Relation> listAtt = baseService.getObjects(Relation.class, "where tusers.id=" + loginUId+ " and byusers.id=" + liuser.getId());
+					List<Relation> listFans= baseService.getObjects(Relation.class, "where tusers.id=" + liuser.getId());
+					List<Relation> listAttention = baseService.getObjects(Relation.class, "where byusers.id=" + liuser.getId());
+					ShowUsersInfo showUsersInfo = new ShowUsersInfo();
+
+					if (listFans.size() != 0) {
+						for(Relation liFans:listFans){
+							if(liFans.getByusers().getId()==loginUId){
+								showUsersInfo.setsUsersRelationMark("粉丝");
+							}
+						}
+					}
+					if (listAttention.size() != 0) {
+						for(Relation liAtt:listAttention){
+							if(liAtt.getTusers().getId()==loginUId){
+								showUsersInfo.setsUsersRelationMark("已关注");
+								showUsersInfo.setsUsersGroupName(liAtt.getGroupName());
+								showUsersInfo.setsUsersNote(liAtt.getNote());
+							}
+						}
+						
+					}
+					if (listF.size() != 0 && listAtt.size() != 0) {
+						Relation listA = listAttention.get(0);
+						showUsersInfo.setsUsersRelationMark("相互关注");
+						showUsersInfo.setsUsersGroupName(listA.getGroupName());
+						showUsersInfo.setsUsersNote(listA.getNote());
+					}
+
+					if (setUserinfos.size() != 0) {
+						for (Userinfo setUserinfo : setUserinfos) {
+							showUsersInfo.setsUsersAddress(setUserinfo
+									.getAddress());
+						}
+					}
+					showUsersInfo.setsUsersFance(listAttention.size());
+					showUsersInfo.setsUsersAttention(listFans.size());
+					showUsersInfo.setsUsersMessages(setMessages.size());
+					showUsersInfo.setsUsersId(liuser.getId());
+					showUsersInfo.setsUsersNikeName(liuser.getNikeName());
+					if (setUserinfos.size() != 0) {
+						for (Userinfo sUI : setUserinfos) {
+							showUsersInfo.setsUsersIntro(sUI.getIntro());
+							showUsersInfo.setsUsersSex(sUI.getSex());
+						}
+
+					}
+					if (listPictures.size() != 0) {
+						Pictures showPictures = listPictures.get(0);
+						showUsersInfo
+								.setsUsersHeadPicUrl(showPictures.getUrl());
+					}
+					showUsersInfos.add(showUsersInfo);
+
+				}
+				showUsers = new ShowUsers();
+				showUsers.setShowUsersInfo(showUsersInfos);
+				request.setAttribute("showUsers", showUsers);
+			} else {
+				request.setAttribute("showUsers", null);
+			}
+		}
+		request.setAttribute("searchKey", searchKey);
+		return "searchUsers";
+	}
+
+	@SuppressWarnings("unchecked")
+	public String searchAttention() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.setAttribute("searchFlag", searchKey);
+		System.out.println(searchKey + "---------------------------------");
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		List<ShowUsersInfo> showUsersInfos = new ArrayList<ShowUsersInfo>();
+		if (loginUsers != null) {
+			Integer loginUId = loginUsers.getId();
+			if ("all".equals(searchKey)) {
+				List<Relation> logAttention = baseService.getObjects(
+						Relation.class, "where tusers.id=" + loginUId);
+				searchAttentionFor(showUsersInfos, logAttention, loginUId);
+			}
+			if (("special".equals(searchKey)) || ("star".equals(searchKey))
+					|| ("friend".equals(searchKey))
+					|| ("schoolmate".equals(searchKey))
+					|| ("colleague".equals(searchKey))
+					|| ("family".equals(searchKey))
+					|| ("secret".equals(searchKey))) {
+				String searchStr = null;
+				if("special".equals(searchKey)){
+					searchStr="特别关注";
+				}else if("star".equals(searchKey)){
+					searchStr="明星名人";
+				}else if("friend".equals(searchKey)){
+					searchStr="朋友";
+				}else if("schoolmate".equals(searchKey)){
+					searchStr="同学";
+				}else if("colleague".equals(searchKey)){
+					searchStr="同事";
+				}else if("family".equals(searchKey)){
+					searchStr="家人";
+				}else if("secret".equals(searchKey)){
+					searchStr="悄悄关注";
+				}
+				List<Relation> logAttention = baseService.getObjects(
+						Relation.class, "where tusers.id=" + loginUId
+								+ " and groupName='" + searchStr + "'");
+				searchAttentionFor(showUsersInfos, logAttention, loginUId);
+			}
+			if ("fans".equals(searchKey)) {
+				List<Relation> logAttention = baseService.getObjects(Relation.class, "where byusers.id=" + loginUId);
+				for (Relation logRelation : logAttention) {
+					ShowUsersInfo showUsersInfo = new ShowUsersInfo();
+					showUsersInfo.setsUsersId(logRelation.getTusers().getId());
+					showUsersInfo.setsUsersNikeName(logRelation.getTusers().getNikeName());
+					List<Userinfo> listUserinfos = baseService.getObjects(Userinfo.class, "where users.id="+ logRelation.getTusers().getId());
+					List<Pictures> listPictures = baseService.getObjects(Pictures.class, "where users.id="+ logRelation.getTusers().getId()+ " and type='头像'");
+
+					List<Relation> logTogether = baseService.getObjects(Relation.class, "where tusers.id=" + loginUId+" and byusers.id="+logRelation.getTusers().getId());
+					Set<Relation> settFans = logRelation.getTusers().getByRelations();
+					Set<Relation> setAttention = logRelation.getTusers().gettRelations();
+					
+					System.out.println(settFans.size()+"--"+setAttention.size()+"--------------------");
+					Set<Messages> setMessages = logRelation.getTusers().getMessages();
+					if (listUserinfos.size() != 0) {
+						showUsersInfo.setsUsersSex(listUserinfos.get(0).getSex());
+						showUsersInfo.setsUsersIntro(listUserinfos.get(0).getIntro());
+						showUsersInfo.setsUsersAddress(listUserinfos.get(0).getAddress());
+					}
+					if (listPictures.size() != 0) {
+						showUsersInfo.setsUsersHeadPicUrl(listPictures.get(0).getUrl());
+					}
+						if(logTogether.size()!=0){
+							showUsersInfo.setsUsersRelationMark("相互关注");
+						}else{
+							showUsersInfo.setsUsersRelationMark("粉丝");
+						}
+					
+					showUsersInfo.setsUsersFance(settFans.size());
+					showUsersInfo.setsUsersAttention(setAttention.size());
+					showUsersInfo.setsUsersMessages(setMessages.size());
+					showUsersInfos.add(showUsersInfo);
+				}
+			}
+
+			showUsers = new ShowUsers();
+			showUsers.setShowUsersInfo(showUsersInfos);
+			request.setAttribute("showUsers", showUsers);
+		}
+
+		return "searchAttention";
+	}
+
+	@SuppressWarnings("unchecked")
+	public void searchAttentionFor(List<ShowUsersInfo> showUsersInfos,
+			List<Relation> logAttention, Integer loginUId) {
+		for (Relation logRelation : logAttention) {
+			ShowUsersInfo showUsersInfo = new ShowUsersInfo();
+			showUsersInfo.setsUsersId(logRelation.getByusers().getId());
+			showUsersInfo.setsUsersNikeName(logRelation.getByusers()
+					.getNikeName());
+			showUsersInfo.setsUsersNote(logRelation.getNote());
+			List<Userinfo> listUserinfos = baseService.getObjects(
+					Userinfo.class, "where users.id="
+							+ logRelation.getByusers().getId());
+			List<Pictures> listPictures = baseService.getObjects(
+					Pictures.class, "where users.id="
+							+ logRelation.getByusers().getId()
+							+ " and type='头像'");
+			List<Relation> listRelations = baseService.getObjects(
+					Relation.class, "where tusers.id="
+							+ logRelation.getByusers().getId()
+							+ " and byusers.id=" + loginUId);
+			if (listUserinfos.size() != 0) {
+				showUsersInfo.setsUsersSex(listUserinfos.get(0).getSex());
+				showUsersInfo.setsUsersIntro(listUserinfos.get(0).getIntro());
+				showUsersInfo.setsUsersAddress(listUserinfos.get(0)
+						.getAddress());
+			}
+			if (listPictures.size() != 0) {
+				showUsersInfo.setsUsersHeadPicUrl(listPictures.get(0).getUrl());
+			}
+			showUsersInfo.setsUsersGroupName(logRelation.getGroupName());
+			if (listRelations.size() != 0) {
+				showUsersInfo.setsUsersRelationMark("相互关注");
+			} else {
+				showUsersInfo.setsUsersRelationMark("已关注");
+			}
+			showUsersInfos.add(showUsersInfo);
+		}
+	}
+	
+	public String addRelation(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		if (loginUsers != null) {
+			Relation newRelation=new Relation();
+			newRelation.setTusers(loginUsers);
+			Users byusers=new Users();
+			byusers.setId(Integer.valueOf(byUsersId));
+			newRelation.setByusers(byusers);
+			if(groupName!=null){
+				newRelation.setGroupName(groupName);
+			}else{
+				newRelation.setGroupName("未分组");
+			}
+			newRelation.setNote(relationNote);
+			newRelation.setTime(new Timestamp(new Date().getTime()));
+			baseService.saveOrUpdateObject(newRelation);
+		}
+		return "addRelation";
+	}
+	
+	public String cancelRelation(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		if (loginUsers != null) {
+			List<Relation> delRelations=baseService.getObjects(Relation.class, "where tusers.id=" + loginUsers.getId()+ " and byusers.id=" + byUsersId);
+			if(delRelations.size()!=0){
+				baseService.deleteObject(delRelations.get(0));
+			}
+		}
+		
+		return "cancelRelation";
+	}
+	
+	public String updateNote(){
+		//relationNote
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		if (loginUsers != null) {
+			List<Relation> updateRelations=baseService.getObjects(Relation.class, "where tusers.id=" + loginUsers.getId()+ " and byusers.id=" + byUsersId);
+			if(updateRelations.size()!=0){
+				Relation updateRelation=updateRelations.get(0);
+				updateRelation.setNote(relationNote);
+				baseService.saveOrUpdateObject(updateRelation);
+			}
+		}
+		return "updateNote";
+	}
+	
+	public String removeFans(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users loginUsers = (Users) request.getSession().getAttribute("user");
+		if (loginUsers != null) {
+			List<Relation> delRelations=baseService.getObjects(Relation.class, "where tusers.id=" + byUsersId+ " and byusers.id=" + loginUsers.getId());
+			if(delRelations.size()!=0){
+				Relation delRelation=delRelations.get(0);
+				baseService.deleteObject(delRelation);
+			}
+		}
+		
+		
+		return "removeFans";
+	}
+}

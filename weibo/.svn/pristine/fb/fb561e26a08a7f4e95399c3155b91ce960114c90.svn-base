@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Collections" table="COLLECTIONS" schema="weibo">
+		<id name="id" column="COLLECTIONS_ID">
+			<generator class="sequence">
+				<param name="sequence">COLLECTIONS_SEQ</param>
+			</generator>
+		</id>
+		<property name="time" type="timestamp" column="collections_time"/>
+		<property name="status" type="integer" column="collections_status"/>
+		
+		<many-to-one name="users" class="Users" column="users_id"/>
+		<many-to-one name="messages" column="MESSAGES_ID" class="Messages"/>
+	</class>
+</hibernate-mapping>

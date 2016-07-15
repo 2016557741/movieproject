@@ -1,0 +1,195 @@
+package www.csdn.project.action;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+import org.omg.CORBA.DATA_CONVERSION;
+
+import com.opensymphony.xwork2.ActionContext;
+
+import www.csdn.project.domain.Messages;
+import www.csdn.project.domain.Relation;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.MessagesService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.ShowMessages;
+import www.csdn.project.utils.Pagination;
+
+/**
+ * MessagesAction 2013-5-7 下午4:05:43
+ * 
+ * @author 乔晓松
+ * 
+ */
+public class MessagesAction extends BaseAction {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Messages messages;
+	private MessagesService messagesService;
+	private ShowMessages showMessages;
+	private Integer messagesNum;
+
+	public Integer getMessagesNum() {
+		return messagesNum;
+	}
+
+	public ShowMessages getShowMessages() {
+		return showMessages;
+	}
+
+	public void setShowMessages(ShowMessages showMessages) {
+		this.showMessages = showMessages;
+	}
+
+	public void setMessagesService(MessagesService messagesService) {
+		this.messagesService = messagesService;
+	}
+
+	public Messages getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Messages messages) {
+		this.messages = messages;
+	}
+
+	public String query() {
+		System.out.println(this.page + "------------------" + this.rows);
+		pagination = new Pagination(this.page, this.rows);
+		String whereSql = spliceSql();
+		pagination.setTotal(baseService.getCount(Messages.class, whereSql));
+		pagination.setRows(baseService.getObjects(Messages.class, whereSql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " as tt where 1=1 ";
+
+		if (messages != null) {
+			// 内容
+			String info = messages.getInfo();
+			if (!"".equals(info) && (info != null)) {
+				whereSql += " and  tt.info like '%" + info + "%'";
+			}
+
+			// 类型
+			String type = messages.getType();
+			if (!"".equals(type) && (type != null)) {
+				whereSql += " and  tt.type = '" + type + "'";
+			}
+
+			// 标签
+			String label = messages.getLabel();
+			if (!"".equals(label) && (label != null)) {
+				whereSql += " and  tt.label like '%" + label + "%'";
+			}
+
+			Users users = messages.getUsers();
+			if (users != null) {
+				// 邮箱
+				String email = users.getEmail();
+				if (!"".equals(email) && (email != null)) {
+					whereSql += " and  tt.users.email like '%" + email + "%'";
+				}
+			}
+		}
+		return whereSql;
+	}
+
+	public String getAllUsers() {
+		List<Users> lists = this.baseService.getAllObjects(Users.class);
+		for (Users user : lists) {
+			this.list
+					.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+
+	public String saveOrUpdateObject() {
+		if (messages.getId() == null) {
+			messages.setAgreeNum(0);
+			messages.setCollectNum(0);
+			messages.setCommentNum(0);
+			messages.setReadNum(0);
+			messages.setTranspondNum(0);
+			if (messages.getTime() == null) {
+				messages.setTime(Calendar.getInstance().getTime());
+			}
+			if (messages.getUsers() == null) {
+				messages.setUsers((Users) ActionContext.getContext()
+						.getSession().get("user"));
+			}
+		}
+
+		if (messages.getUsers() != null) {
+			this.flag = baseService.saveOrUpdateObject(messages);
+		}
+
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Messages.class, ids);
+		return "delete";
+	}
+
+	public String queryMessages() {
+		Users user = (Users) ActionContext.getContext().getSession()
+				.get("user");
+		if (user != null) {
+			List relationlist = baseService.getObjects(Relation.class,
+					" where tusers=" + user.getId());
+			String byusers = "";
+			for (Relation relation : (List<Relation>) relationlist) {
+				byusers += relation.getByusers().getId() + ",";
+			}
+			byusers = "(" + byusers + user.getId() + ")";
+			showMessages.setTotal(baseService.getCount(Messages.class,
+					(" where users in " + byusers)));
+			showMessages.setMessages(baseService.getObjects(Messages.class,
+					(" where users in " + byusers), showMessages.getFrom(),
+					showMessages.getSize(), "desc", "time"));
+		}
+		return "queryMessages";
+	}
+
+	public String queryNewMessages() {
+		Users user = (Users) ActionContext.getContext().getSession()
+				.get("user");
+		List relationlist = baseService.getObjects(Relation.class,
+				" where tusers=" + user.getId());
+		String byusers = "";
+		for (Relation relation : (List<Relation>) relationlist) {
+			byusers += relation.getByusers().getId() + ",";
+		}
+		byusers = "(" + byusers + user.getId() + ")";
+		messagesNum = baseService.getCount(Messages.class,
+				(" where users in " + byusers));
+
+		return "queryNewMessages";
+	}
+
+	public String queryMyselfMessages() {
+
+		return "myselfmessages";
+	}
+
+	/*
+	 * public String addObject() { System.out.println(messages.getInfo() + "--"
+	 * + messages.getLabel() + "--" + messages.getTime() + "--" +
+	 * messages.getUsers().getId()); this.baseService.saveObject(messages);
+	 * this.flag = true; return "add"; }
+	 */
+}

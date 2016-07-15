@@ -1,0 +1,13 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.RelationDao;
+import www.csdn.project.service.RelationService;
+
+public class RelationServiceImpl extends BaseServiceImpl implements RelationService{
+	private RelationDao relationDao;
+
+	public void setRelationDao(RelationDao relationDao) {
+		this.relationDao = relationDao;
+	}
+	
+}

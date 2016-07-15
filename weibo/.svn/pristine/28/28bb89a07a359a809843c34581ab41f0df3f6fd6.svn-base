@@ -1,0 +1,139 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:31:42
+ *
+ */
+public class Users implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String email;
+	private String passWord;
+	private String nikeName;
+	private Date time;
+	private Integer status;
+	
+	private Set<Atusers> atusers=new HashSet<Atusers>();
+	private Set<Messages> messages=new HashSet<Messages>();
+	private Set<Collections> collections=new HashSet<Collections>();
+	private Set<Comments> comments=new HashSet<Comments>();
+	private Set<Pictures> pictures=new HashSet<Pictures>();
+	private Set<Privateletter> sPrivateletters=new HashSet<Privateletter>();
+	private Set<Privateletter> rePrivateletters=new HashSet<Privateletter>();
+	private Set<Relation> tRelations=new HashSet<Relation>();
+	private Set<Relation> byRelations=new HashSet<Relation>();
+	private Set<Userinfo> userinfos=new HashSet<Userinfo>();
+	
+	
+	public Users() {
+		super();
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassWord() {
+		return passWord;
+	}
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	public String getNikeName() {
+		return nikeName;
+	}
+	public void setNikeName(String nikeName) {
+		this.nikeName = nikeName;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Set<Atusers> getAtusers() {
+		return atusers;
+	}
+	public void setAtusers(Set<Atusers> atusers) {
+		this.atusers = atusers;
+	}
+	public Set<Messages> getMessages() {
+		return messages;
+	}
+	public void setMessages(Set<Messages> messages) {
+		this.messages = messages;
+	}
+	public Set<Collections> getCollections() {
+		return collections;
+	}
+	public void setCollections(Set<Collections> collections) {
+		this.collections = collections;
+	}
+	public Set<Comments> getComments() {
+		return comments;
+	}
+	public void setComments(Set<Comments> comments) {
+		this.comments = comments;
+	}
+	public Set<Pictures> getPictures() {
+		return pictures;
+	}
+	public void setPictures(Set<Pictures> pictures) {
+		this.pictures = pictures;
+	}
+	public Set<Privateletter> getsPrivateletters() {
+		return sPrivateletters;
+	}
+	public void setsPrivateletters(Set<Privateletter> sPrivateletters) {
+		this.sPrivateletters = sPrivateletters;
+	}
+	public Set<Privateletter> getRePrivateletters() {
+		return rePrivateletters;
+	}
+	public void setRePrivateletters(Set<Privateletter> rePrivateletters) {
+		this.rePrivateletters = rePrivateletters;
+	}
+	public Set<Relation> gettRelations() {
+		return tRelations;
+	}
+	public void settRelations(Set<Relation> tRelations) {
+		this.tRelations = tRelations;
+	}
+	public Set<Relation> getByRelations() {
+		return byRelations;
+	}
+	public void setByRelations(Set<Relation> byRelations) {
+		this.byRelations = byRelations;
+	}
+	public Set<Userinfo> getUserinfos() {
+		return userinfos;
+	}
+	public void setUserinfos(Set<Userinfo> userinfos) {
+		this.userinfos = userinfos;
+	}
+	
+	
+	
+}

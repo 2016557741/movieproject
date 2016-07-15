@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- BaseAction -->       
+    <bean name="baseAction" class="www.csdn.project.action.BaseAction" scope="prototype" >
+    	<property name="baseService" ref="baseServiceImpl"/>
+    </bean>
+           
+    <!-- AdminsAction -->
+	<bean name="adminsAction" class="www.csdn.project.action.AdminsAction" scope="prototype" parent="baseAction">
+		<property name="adminsService" ref="adminsServiceImpl"/>
+	</bean>
+	
+	<!-- AtusersAction -->
+	<bean name="atusersAction" class="www.csdn.project.action.AtusersAction" scope="prototype" parent="baseAction">
+		<property name="atusersService" ref="atusersServiceImpl"/>
+	</bean>
+	
+	<!-- CollectionsAction -->
+	<bean name="collectionsAction" class="www.csdn.project.action.CollectionsAction" scope="prototype" parent="baseAction">
+		<property name="collectionsService" ref="collectionsServiceImpl"/>
+	</bean>
+	
+	<!-- CommentsAction -->
+	<bean name="commentsAction" class="www.csdn.project.action.CommentsAction" scope="prototype" parent="baseAction">
+		<property name="commentsService" ref="commentsServiceImpl"/>
+	</bean>
+	
+	<!-- PicturesAction -->
+	<bean name="picturesAction" class="www.csdn.project.action.PicturesAction" scope="prototype" parent="baseAction">
+		<property name="picturesService" ref="picturesServiceImpl"></property>
+	</bean>
+	
+	<!-- MessagesAction -->
+	<bean name="messagesAction" class="www.csdn.project.action.MessagesAction" scope="prototype" parent="baseAction">
+		<property name="messagesService" ref="messagesServiceImpl"></property>
+	</bean>
+	
+	<!-- PrivateletterAction -->
+	<bean name="privateletterAction" class="www.csdn.project.action.PrivateletterAction" scope="prototype" parent="baseAction">
+		<property name="privateletterService" ref="privateletterServiceImpl"/>
+	</bean>
+	
+	<!-- RelationAction -->
+	<bean name="relationAction" class="www.csdn.project.action.RelationAction" scope="prototype" parent="baseAction">
+		<property name="relationService" ref="relationServiceImpl"/>
+	</bean>
+	
+	<!-- UserinfoAction -->
+	<bean name="userinfoAction" class="www.csdn.project.action.UserinfoAction" scope="prototype" parent="baseAction">
+		<property name="userinfoService" ref="userinfoServiceImpl"/>
+	</bean>
+	
+	<!-- UsersAction -->
+	<bean name="usersAction" class="www.csdn.project.action.UsersAction" scope="prototype" parent="baseAction">
+		<property name="usersService" ref="usersServiceImpl"/>
+	</bean>
+</beans>

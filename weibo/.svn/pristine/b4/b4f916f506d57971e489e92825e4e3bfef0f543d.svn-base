@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Privateletter" table="PRIVATELETTER" schema="weibo">
+		<id name="id" column="PRIVATELETTER_ID">
+			<generator class="sequence">
+				<param name="sequence">PRIVATELETTER_SEQ</param>
+			</generator>
+		</id>
+		
+		<property name="info" type="string" column="PRIVATELETTER_INFO"/>
+		<property name="infostatus" type="integer" column="PRIVATELETTER_INFOSTATUS"/>
+		<property name="time" type="timestamp" column="PRIVATELETTER_TIME"/>
+		
+		<many-to-one name="susers" class="Users" column="USERS_SID"/>
+		<many-to-one name="reusers" class="Users" column="USERS_REID"/>
+	</class>
+</hibernate-mapping>

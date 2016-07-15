@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="users" namespace="/csdn" extends="json-default">
+		<action name="UsersAction_*" class="usersAction" method="{1}">
+			<result name="query" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pagination\.total,pagination\.rows\[\d+\]\.id,pagination\.rows\[\d+\]\.email,pagination\.rows\[\d+\]\.passWord,pagination\.rows\[\d+\]\.nikeName,pagination\.rows\[\d+\]\.time,pagination\.rows\[\d+\]\.status</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="check" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="saveorupdate" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="login">/frontstage/setter/setUser.jsp</result>
+			<result name="faile">/frontstage/register.jsp</result>
+			<result name="out">/frontstage/login.jsp</result>
+		</action>
+	</package>
+</struts>

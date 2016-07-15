@@ -1,0 +1,70 @@
+$(document).ready(function() {
+	$(".PY_input").each(function(i) {
+		$(this).bind("blur", function() {
+			$(".ts2").each(function(j) {
+				//$(this).hide();
+				if ($(this).val().trim() == "") {
+					if (i == j) {
+						$(this).show();
+					} else {
+						$(this).hide();
+
+					}
+				}
+			});
+		});
+	});
+	$(".PY_input").each(function(i) {
+		$(this).bind("focus", function() {
+			$(".ts1").each(function(j) {
+				//$(this).hide();
+				if (i == j) {
+					$(this).show();
+				} else {
+					$(this).hide();
+
+				}
+			});
+		});
+	});
+	$(".PY_input").bind("blur", function() {
+		if ($(this).val().trim() == "") {
+			$(this).css({
+				"border-color" : "#150A15",
+				"background-color" : "#FFCCCC"
+			});
+		}
+	});
+	$(".PY_input").bind("focus", function() {
+		$(this).css({
+			"border-color" : "#57CD59",
+			"background-color" : "white"
+		});
+	});
+	$(".ts1").each(function(i) {
+		$(this).hide();
+	});
+	$(".ts2").each(function(i) {
+		$(this).hide();
+	});
+
+	$("#new_password").bind("change", function() {
+		var value = $(this).val();
+		if (value.length < 5) {
+			$("#imgps").attr("src", "http://img.t.sinajs.cn/t36/style/images/setup/pwd_no.gif");
+		}
+		if (value.length > 5) {
+			$("#imgps").attr("id", "imgps");
+			$("#imgps").attr("src", "../../images/pwd_simple.gif");
+		}
+		if (value.length > 8) {
+			$("#imgps").attr("id", "imgps");
+			$("#imgps").attr("src", "../../images/pwd_middle.gif");
+		}
+		if (value.length > 10) {
+			$("#imgps").attr("id", "imgps");
+			$("#imgps").attr("src", "../../images/pwd_strong.gif");
+		}
+
+	});
+});

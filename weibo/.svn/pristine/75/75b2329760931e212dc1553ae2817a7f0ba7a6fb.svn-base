@@ -1,0 +1,467 @@
+$(function() {
+	$(".left_menu_span").mouseover(function() {
+		$(this).css({
+			"background-color" : "rgb(215,235,240)"
+		});
+	}).mouseout(function() {
+		$(this).css({
+			"background-color" : ""
+		});
+	});
+
+	$("#left_grouping .left_menu_span").mouseover(function() {
+		$(this).children(".grouping_setting").css("display", "block");
+	}).mouseout(function() {
+		$(this).children(".grouping_setting").css("display", "none");
+	});
+
+	$(".grouping_setting").mouseover(function() {
+		$(this).css({
+			'background-position' : '-100px -50px'
+		});
+	}).mouseout(function() {
+		$(this).css({
+			'background-position' : '-75px -50px'
+		});
+	}).click(function() {
+		return false;
+	});
+
+	$("#left_grouping").mouseover(function() {
+		$(".left_menu_hidebtn").css("display", "block");
+	}).mouseout(function() {
+		$(".left_menu_hidebtn").css("display", "none");
+	});
+
+	$(".left_menu_hidebtn").mouseover(
+			function() {
+				$(".left_menu_hidebtn").css("background-image",
+						"url('./images/left_manager_over.png')");
+			}).mouseout(
+			function() {
+				$(".left_menu_hidebtn").css("background-image",
+						"url('./images/left_manager_show.png')");
+			});
+
+	$("#right_template").mouseover(function() {
+		$(this).css("background-position", "-280px -25px");
+	}).mouseout(function() {
+		$(this).css("background-position", "-280px 0");
+	});
+
+	$("#center_weibo_content").focus(function() {
+		$("#center_weibo_corner").css("background-position", " 0 -101px");
+		$(this).css("border-color", "rgb(255,185,65)");
+		$("#center_hot").show();
+		$("#conter_weibo_wn").text(140 - $(this).val().length);
+		if ($(this).val() == "" || $(this).val().length > 140) {
+			$("#center_sendweibo").css("background-position", "-50px -131px");
+		} else {
+			$("#center_sendweibo").css("background-position", "-133px -131px");
+		}
+	}).blur(function() {
+		$("#center_weibo_corner").css("background-position", " 0 -120px");
+		$(this).css("border-color", "rgb(204, 204, 204)");
+		if ($(this).val() == "") {
+			$("#center_hot").hide();
+		}
+		if ($(this).val() == "" || $(this).val().length > 140) {
+			$("#center_sendweibo").css("background-position", "-50px -131px");
+		} else {
+			$("#center_sendweibo").css("background-position", "-133px -131px");
+		}
+		$("#conter_weibo_wn").text(140 - $(this).val().length);
+	}).keydown(function() {
+		$("#conter_weibo_wn").text(140 - $(this).val().length);
+		$("#center_hot").show();
+		if ($(this).val() == "" || $(this).val().length > 140) {
+			$("#center_sendweibo").css("background-position", "-50px -131px");
+		} else {
+			$("#center_sendweibo").css("background-position", "-133px -131px");
+		}
+	}).keyup(function() {
+		$("#conter_weibo_wn").text(140 - $(this).val().length);
+		$("#center_hot").show();
+		if ($(this).val() == "" || $(this).val().length > 140) {
+			$("#center_sendweibo").css("background-position", "-50px -131px");
+		} else {
+			$("#center_sendweibo").css("background-position", "-133px -131px");
+		}
+		if ($(this).val().length > 140) {
+			$("#center_replace").text("已经超过");
+		} else {
+			$("#center_replace").text("还可以输入");
+		}
+	}).keypress(function() {
+		$("#conter_weibo_wn").text(140 - $(this).val().length);
+		$("#center_weibo_corner").css("background-position", " 0 -101px");
+		$(this).css("border-color", "rgb(255,185,65)");
+	});
+	$("#center_sendweibo").click(
+			function() {
+				if ($("#center_weibo_content").val() == ""
+						|| $("#center_weibo_content").val().length > 140) {
+					var i = 0;
+					var nosend = "";
+					nosend = setInterval(function() {
+						if (i == 0 || i == 4 || i == 6 || i == 10) {
+							$("#center_weibo_content").css("background-color",
+									"rgb(255,210,210)");
+						}
+						if (i == 1 || i == 3 || i == 7 || i == 9) {
+							$("#center_weibo_content").css("background-color",
+									"rgb(255,200,200)");
+						}
+						if (i == 2 || i == 8) {
+							$("#center_weibo_content").css("background-color",
+									"rgb(255,190,190)");
+						}
+						if (i == 5 || i == 11) {
+							$("#center_weibo_content").css("background-color",
+									"");
+						}
+						i++;
+						if (i > 11) {
+							clearInterval(nosend);
+						}
+					}, 70);
+				} else {
+					$.post("./csdn/MessagesAction_saveOrUpdateObject.action", {
+						"messages.info" : $("#center_weibo_content").val(),
+						"messages.type" : "原创"
+					}, function(data) {
+						if (data) {
+							queryMessages("1");
+						}
+					}, "json");
+					$("#center_weibo_content").val("");
+					$("#center_hot").hide();
+					$(this).css("background-position", "-50px -131px");
+				}
+			});
+	$("#chose_weibo").click(function() {
+		$(this).css('font-weight', 'bold');
+		$("#chose_trends").css('font-weight', 'normal');
+		$("#chose_bg").css({
+			"left" : "0"
+		});
+		$("#weibo_classes").show();
+		$("#weibo_content").show();
+	});
+
+	$("#chose_trends").click(function() {
+		$(this).css('font-weight', 'bold');
+		$("#chose_weibo").css('font-weight', 'normal');
+		$("#chose_bg").css({
+			"left" : "50px"
+		});
+		$("#weibo_classes").hide();
+		$("#weibo_content").hide();
+	});
+	$("#weibo_classes a:first span").css({
+		"background-color" : "rgb(230,230,230)"
+	});
+	$("#weibo_classes span").click(function() {
+		$("#weibo_classes span").css({
+			"background-color" : ""
+		});
+		$(this).css({
+			"background-color" : "rgb(230,230,230)"
+		});
+	});
+
+	$("#right_user").mouseover(function() {
+		$(this).css("color", "rgb(75,170,220)");
+	}).mouseout(function() {
+		$(this).css("color", "black");
+	});
+
+	queryMessages("1");
+
+	setInterval(function() {
+		$.post("./csdn/MessagesAction_queryNewMessages.action?nowtime="
+				+ new Date().getTime(), {}, function(data) {
+			if (data - total != 0) {
+				$("#weibo_new_receive").css("display", "block");
+				$("#weibo_new_number").text(data - total);
+			}
+		}, 'json');
+		$(".weibo_receive_time").each(
+				function() {
+					if ($(this).text().indexOf("秒前") != -1) {
+						var ss = $(this).text().substring(0,
+								$(this).text().indexOf("秒前"));
+						if (eval(ss + "+" + 10) < 60) {
+							$(this).text(eval(ss + "+" + 10) + "秒前");
+						} else {
+							$(this).text("1分钟前");
+						}
+					}
+				});
+	}, 10000);
+
+	setInterval(function() {
+		$(".weibo_receive_time").each(
+				function() {
+					if ($(this).text().indexOf("分钟前") != -1) {
+						var mm = $(this).text().substring(0,
+								$(this).text().indexOf("分钟前"));
+						if (eval(mm + "+" + 1) < 60) {
+							$(this).text(eval(mm + "+" + 1) + "分钟前");
+						} else {
+							var nt = new Date();
+							var nd = nt.getHours()-1;							
+							var nm = nt.getMinutes();
+							nm = nm<10?"0"+nm:nm;
+							if(nd>0){
+								nd = nd<10?"0"+nd:nd;
+								$(this).text("今天 " + nd+":"+nm);
+							}else{
+								$(this).text("1小时前");
+							};
+						}
+					}
+				});
+	}, 60000);
+
+
+	$("#weibo_new_receive").click(function() {
+		queryMessages("1");
+		$(this).hide();
+	});
+
+});
+
+var total = 0;
+
+function queryMessages(nowpage) {
+	$(".weibo_receive").remove();
+	$("#weibo_page").remove();
+	$.post("./csdn/MessagesAction_queryMessages.action?nowtime="
+			+ new Date().getTime(), {
+		'showMessages.nowpage' : nowpage
+	}, function(data) {
+		data = data.showMessages;
+		for ( var i = 0; i < data.messages.length; i++) {
+			weibolist(data.messages[i]);
+		}
+		chosenowpage(data.nowpage, data.total);
+		total = data.total;
+	}, 'json');
+}
+
+function weibolist(data) {
+	var weibo = "";
+	weibo = $('<div class="weibo_receive"><div class="weibo_headphoto"><img src="'
+			+ "./images/1.gif"
+			+ '" width="50" height="50">'
+			+ '</div><div class="weibo_receive_content"><span class="weibo_user">'
+			+ data.users.nikeName
+			+ '</span><span class="weibo_user_v"></span>'
+			+ '<span class="weibo_text">'
+			+ data.info
+			+ '</span><span class="weibo_pic"></span><span class="weibo_bottom_left">'
+			+ '<a href="javascript:void(0);" class="weibo_b_l_a"><span class="weibo_receive_time">'
+			+ formatterTime(data.time)
+			+ '</span></a><span class="weibo_receive_from">来自</span>'
+			+ '<a href="javascript:void(0);" class="weibo_b_l_a"><span class="weibo_receive_where">新浪微博</span></a>'
+			+ '<a href="javascript:void(0);" class="weibo_b_r_a"><span class="weibo_report"></span></a></span><span class="weibo_bottom_right">'
+			+ '<a href="javascript:void(0);" class="weibo_b_r_a"><span class="weibo_delete"></span></a>'
+			+ '<a href="javascript:void(0);" class="weibo_b_r_a"><span>赞'
+			+ ''
+			+ '</span></a>|<a href="javascript:void(0);" class="weibo_b_r_a"><span>转发'
+			+ ''
+			+ '</span></a>|'
+			+ '<a href="javascript:void(0);" class="weibo_b_r_a"><span>收藏'
+			+ ''
+			+ '</span></a>|'
+			+ '<a href="javascript:void(0);" class="weibo_b_r_a"><span>评论'
+			+ ''
+			+ '</span></a>' + '</span></div></div>		');
+	$("#weibo_content").append(weibo);
+}
+
+function chosenowpage(nowpage, total) {
+	var page = "";
+	page = $('<div id="weibo_page"><div id="weibo_pageup"><a href="javascript:void(0);"><span>上一页</span></a></div><div id="weibo_nowpage">'
+			+ '<a href="javascript:void(0);">第<span>'
+			+ nowpage
+			+ '</span>页</a><div id="weibo_selectpage"><div id="weibo_selectpage_height">'
+			+ '</div></div></div><div id="weibo_pagedown"><a href="javascript:void(0);"><span>下一页</span></a></div></div>');
+	$("#weibo_content").append(page);
+	var allpage = Math.floor(total / 10) + 1;
+
+	if (total % 10 == 0) {
+		allpage = total / 10;
+	}
+
+	for ( var j = 1; j <= allpage; j++) {
+		var chosepage = "";
+		chosepage = $('<div id="page_' + j + '" class="page_how">第' + j
+				+ '页</div>');
+		chosepage.css("bottom", (j - 1) * 25 + "px");
+		if (j != nowpage) {
+			chosepage.mouseover(function() {
+				$(this).css({
+					'background-color' : 'rgb(231,231,231)'
+				});
+			}).mouseout(function() {
+				$(this).css('background-color', '');
+			}).click(function() {
+				queryMessages($(this).attr("id").substring(5));
+			});
+		} else {
+			$(chosepage).css({
+				"color" : "rgb(190,190,190)",
+				'cursor' : 'default'
+			}).focus();
+		}
+		$("#weibo_selectpage_height").append(chosepage);
+	}
+
+	$("#weibo_selectpage_height").css("height", allpage * 25 + "px");
+	if (allpage * 25 > 250) {
+		$("#weibo_selectpage").css("height", "250px");
+		$(".page_how").css("width", "65px");
+	} else {
+		$(".page_how").css("width", "75px");
+	}
+
+	if (nowpage == "1") {
+		$("#weibo_pageup").hide();
+	}
+
+	if (nowpage == total / 10) {
+		if (nowpage != "1") {
+			$("#weibo_pagedown").hide();
+		} else {
+			$("#weibo_pagedown a span").css({
+				"color" : "gray",
+				'cursor' : 'default'
+			});
+		}
+	}
+
+	if (nowpage == Math.floor(total / 10) + 1) {
+		if (nowpage != "1") {
+			$("#weibo_pagedown").hide();
+		} else {
+			$("#weibo_pagedown a span").css({
+				"color" : "gray",
+				'cursor' : 'default'
+			});
+		}
+	}
+
+	$("#weibo_pageup").click(function() {
+
+		queryMessages(nowpage - 1);
+	});
+
+	if (total / 10 != 1 && Math.floor(total / 10) + 1 != 1) {
+		$("#weibo_pagedown").click(function() {
+			queryMessages(nowpage + 1);
+		});
+	}
+	var hidetime = "";
+	$("#weibo_nowpage").mouseover(function() {
+		clearTimeout(hidetime);
+		$("#weibo_selectpage").show();
+	}).mouseout(function() {
+		hidetime = setTimeout(function() {
+			$("#weibo_selectpage").hide();
+		}, 500);
+	});
+}
+
+function formatterTime(time) {
+	var rd = new Date(time.substring(0, 4), time.substring(5, 7) - 1, time
+			.substring(8, 10), time.substring(11, 13), time.substring(14, 16),
+			time.substring(17, 19));
+	var nt = new Date();
+
+	var howlangms = nt.getTime() - rd.getTime();
+
+	if (howlangms / 1000 < 60) {
+		return Math.floor(howlangms / 1000) + "秒前";
+	}
+
+	if (howlangms / 1000 / 60 < 60) {
+		return Math.floor(howlangms / 1000 / 60) + "分钟前";
+	}
+
+	if (rd.getFullYear() == nt.getFullYear() && rd.getMonth() == nt.getMonth()
+			&& rd.getDate() == nt.getDate()) {
+		return "今天 " + time.substring(11, 16);
+	}
+
+	if (rd.getFullYear() != nt.getFullYear()) {
+		return rd.getFullYear() + "年" + eval(rd.getMonth() + "+" + 1) + "月"
+				+ rd.getDate() + "日  ";
+	}
+
+	return eval(rd.getMonth() + "+" + 1) + "月" + rd.getDate() + "日  "
+			+ time.substring(11, 16);
+
+}
+
+function setIntervaltodo(){
+	c_ss = setInterval(function() {
+		$.post("./csdn/MessagesAction_queryNewMessages.action?nowtime="
+				+ new Date().getTime(), {}, function(data) {
+			if (data - total != 0) {
+				$("#weibo_new_receive").css("display", "block");
+				$("#weibo_new_number").text(data - total);
+			}
+		}, 'json');
+		$(".weibo_receive_time").each(
+				function() {
+					if ($(this).text().indexOf("秒前") != -1) {
+						var ss = $(this).text().substring(0,
+								$(this).text().indexOf("秒前"));
+						if (eval(ss + "+" + 10) < 60) {
+							$(this).text(eval(ss + "+" + 10) + "秒前");
+						} else {
+							$(this).text("1分钟前");
+						}
+					}
+				});
+	}, 10000);
+
+	c_mm = setInterval(function() {
+		$(".weibo_receive_time").each(
+				function() {
+					if ($(this).text().indexOf("分钟前") != -1) {
+						var mm = $(this).text().substring(0,
+								$(this).text().indexOf("分钟前"));
+						if (eval(mm + "+" + 1) < 60) {
+							$(this).text(eval(mm + "+" + 1) + "分钟前");
+						} else {
+							var nt = new Date();
+							var nd = nt.getHours()-1;							
+							var nm = nt.getMinutes();
+							nm = nm<10?"0"+nm:nm;
+							if(nd>0){
+								nd = nd<10?"0"+nd:nd;
+								$(this).text("今天 " + nd+":"+nm);
+							}else{
+								$(this).text("1小时前");
+							};
+						}
+					}
+				});
+	}, 60000);
+}
+
+/*
+ * if ($(this).children(".left_icon").attr("id") == "left_icon_index") {
+ * $(this).children(".left_icon").css({ "background-position" : "-25px -20px"
+ * }); } if ($(this).children(".left_icon").attr("id") == "left_icon_message") {
+ * $(this).children(".left_icon").css({ "background-position" : "-25px -245px"
+ * }); } if ($(this).children(".left_icon").attr("id") ==
+ * "left_icon_collection") { $(this).children(".left_icon").css({
+ * "background-position" : "-25px -120px" }); } if
+ * ($(this).children(".left_icon").attr("id") == "left_icon_sendtome") {
+ * $(this).children(".left_icon").css({ "background-position" : "-25px -145px"
+ * }); }
+ */

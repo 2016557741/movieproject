@@ -1,0 +1,65 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:21:44
+ *
+ */
+public class Privateletter implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String info;
+	private Integer infostatus;
+	private Date time;
+	private Users susers;
+	private Users reusers;
+	
+	
+	
+	public Privateletter() {
+		super();
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public Integer getInfostatus() {
+		return infostatus;
+	}
+	public void setInfostatus(Integer infostatus) {
+		this.infostatus = infostatus;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public Users getSusers() {
+		return susers;
+	}
+	public void setSusers(Users susers) {
+		this.susers = susers;
+	}
+	public Users getReusers() {
+		return reusers;
+	}
+	public void setReusers(Users reusers) {
+		this.reusers = reusers;
+	}
+	
+	
+}

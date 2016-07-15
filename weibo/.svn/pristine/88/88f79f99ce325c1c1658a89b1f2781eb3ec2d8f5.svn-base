@@ -1,0 +1,14 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.PicturesDao;
+import www.csdn.project.service.PicturesService;
+
+public class PicturesServiceImpl extends BaseServiceImpl implements PicturesService{
+
+	private PicturesDao picturesDao;
+
+	public void setPicturesDao(PicturesDao picturesDao) {
+		this.picturesDao = picturesDao;
+	}
+	
+}

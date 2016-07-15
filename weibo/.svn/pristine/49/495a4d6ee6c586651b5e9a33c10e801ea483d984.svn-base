@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+<session-factory>
+	<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+	<property name="connection.url">
+		jdbc:oracle:thin:@127.0.0.1:1521:orcl
+	</property>
+	<property name="connection.username">weibo</property>
+	<property name="connection.password">tiger</property>
+	<property name="connection.driver_class">
+		oracle.jdbc.driver.OracleDriver
+	</property>
+	<property name="myeclipse.connection.profile">test</property>
+	<property name="show_sql">true</property>
+	<property name="hibernate.query.factory_class">
+		org.hibernate.hql.ast.ASTQueryTranslatorFactory
+	</property>
+	<mapping resource="www/csdn/project/domain/Admins.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Atusers.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Messages.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Collections.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Comments.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Users.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Pictures.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Privateletter.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Relation.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Userinfo.hbm.xml" />
+
+</session-factory>
+
+</hibernate-configuration>

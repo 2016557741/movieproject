@@ -1,0 +1,37 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Userinfo" table="USERINFO" schema="graduation">
+ 
+		<id name="id" type="java.lang.Integer">
+            <column name="USERINFO_ID" />
+            <generator class="native" />
+        </id>
+		<property name="trueName" type="string" column="USERINFO_TRUENAME"/>
+ 		<property name="sex" type="integer" column="USERINFO_SEX"/>
+ 		<property name="birthday" type="timestamp" column="USERINFO_BIRTHDAY"/>
+ 	    <property name="dieday" type="timestamp" column="USERINFO_DIEDAY"/>
+		<property name="work" type="string" column="USERINFO_WORK"/>
+		<property name="active" type="integer" column="USERINFO_ACTIVE"/>
+		<property name="comment" type="string" column="USERINFO_COMMENT"/>
+		<property name="usersId" type="integer" column="USERS_ID"/>
+		<property name="familyId" type="integer" column="FAMILY_ID"/>
+		<property name="parentId" type="integer" column="PARENT_ID"/>
+		<property name="spouseId" type="integer" column="SPOUSE_ID"/>
+		<property name="level" type="integer" column="LEVEL" />
+ 		
+		<many-to-one name="users"  class="Users" column="USERS_ID" unique="true" insert="false" update="false" lazy="proxy" />
+	    <many-to-one name="family" class="Family" column="FAMILY_ID" unique="true" insert="false" update="false" lazy="proxy" />
+	    <many-to-one name="parentInfo" class="Userinfo" column="PARENT_ID"  unique="true" insert="false" update="false" lazy="false" />
+		<many-to-one name="spouseInfo" class="Userinfo" column="SPOUSE_ID"  unique="true" insert="false" update="false" lazy="false" />
+        <set name="childrens" inverse="true"  lazy="false"  order-by="USERINFO_BIRTHDAY ASC" >  
+            <key column="PARENT_ID" />
+            <one-to-many class="Userinfo" />  
+        </set>     
+	 
+	    <property name="headPic"   formula="(SELECT p.pictures_url FROM pictures p WHERE p.pictures_type=0 AND p.userinfo_id=USERINFO_ID ORDER BY p.CREATE_DATE DESC  LIMIT 0 , 1 )"/>
+	
+	
+	</class>
+</hibernate-mapping>

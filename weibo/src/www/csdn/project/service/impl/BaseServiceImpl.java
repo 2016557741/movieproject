@@ -1,0 +1,120 @@
+package www.csdn.project.service.impl;
+
+import java.io.Serializable;
+import java.util.List;
+
+import www.csdn.project.dao.BaseDao;
+import www.csdn.project.service.BaseService;
+
+public class BaseServiceImpl implements BaseService {
+	private BaseDao baseDao;
+
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
+	}
+
+	@Override
+	public Object getObjectById(Class clazz, Serializable id) {
+
+		return baseDao.getObjectById(clazz, id);
+	}
+
+	@Override
+	public Object loadObjectById(Class clazz, Serializable id) {
+
+		return baseDao.loadObjectById(clazz, id);
+	}
+
+	@Override
+	public List getAllObjects(Class clazz) {
+
+		return baseDao.getAllObjects(clazz);
+	}
+
+	@Override
+	public Integer saveObject(Object entity) {
+		return	baseDao.saveObject(entity);
+
+	}
+
+	@Override
+	public boolean saveOrUpdateObject(Object entity) {
+		return baseDao.saveOrUpdateObject(entity);
+	}
+
+	@Override
+	public void mergeObject(Object entity) {
+		baseDao.mergeObject(entity);
+
+	}
+
+	@Override
+	public void deleteObject(Object entity) {
+		baseDao.deleteObject(entity);
+
+	}
+
+	@Override
+	public void deleteObjectById(Class clazz, Serializable id) {
+		baseDao.deleteObjectById(clazz, id);
+
+	}
+
+	@Override
+	public List getObjects(final Class clazz, final int from, final int size,
+			final String order, final String sort) {
+
+		return baseDao.getObjects(clazz, from, size, order, sort);
+	}
+
+	@Override
+	public List getObjects(final Class clazz, final String sql) {
+
+		return baseDao.getObjects(clazz, sql);
+	}
+
+	@Override
+	public List getObjects(final Class clazz, final String whereSql,
+			final int from, final int size, String order, String sort) {
+
+		return baseDao.getObjects(clazz, whereSql, from, size, order, sort);
+	}
+
+	@Override
+	public int getCount(final Class clazz, final String whereSql) {
+
+		return baseDao.getCount(clazz, whereSql);
+	}
+
+	@Override
+	public int getCount(final String sql) {
+
+		return baseDao.getCount(sql);
+	}
+
+	@Override
+	public int getAllCount(final Class clazz) {
+
+		return baseDao.getAllCount(clazz);
+	}
+
+	@Override
+	public boolean deleteObjects(final Class clazz, final String whereSql) {
+
+		return baseDao.deleteObjects(clazz, whereSql);
+	}
+
+	@Override
+	public boolean checkProperty(final Class clazz, final String property,
+			final String value, Integer id) {
+
+		return baseDao.checkProperty(clazz, property, value, id);
+	}
+
+	@Override
+	public Object getObjectByProperty(Class clazz, String property,
+			String whereSql) {
+		return baseDao.getObjectByProperty(clazz, property, whereSql);
+	}
+
+}

@@ -1,0 +1,98 @@
+package www.csdn.project.action;
+
+import java.util.List;
+
+import www.csdn.project.domain.Privateletter;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.PrivateletterService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.Pagination;
+
+public class PrivateletterAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PrivateletterService privateletterService;
+	private Privateletter privateletter;
+	public Privateletter getPrivateletter() {
+		return privateletter;
+	}
+	public void setPrivateletter(Privateletter privateletter) {
+		this.privateletter = privateletter;
+	}
+	public void setPrivateletterService(PrivateletterService privateletterService) {
+		this.privateletterService = privateletterService;
+	}
+	
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Privateletter.class, sql));
+		pagination.setRows(baseService.getObjects(Privateletter.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " as tt where 1=1 ";
+		if (privateletter != null) {
+			Integer infostatus = privateletter.getInfostatus();
+			if (infostatus != null) {
+				whereSql += " and tt.infostatus = " + infostatus + " ";
+			}
+
+			String info = privateletter.getInfo();
+			if (!"".equals(info) && (info != null)) {
+				whereSql += " and tt.info like '%" + info + "%'";
+			}
+			
+			
+			Users susers = privateletter.getSusers();
+			if (susers != null) {
+				String email = susers.getEmail();
+				if (!"".equals(email) && (email != null)) {
+					whereSql += " and tt.susers.email like '%" + email + "%'";
+				}
+			}
+			Users reusers = privateletter.getReusers();
+			if (reusers != null) {
+				String email = reusers.getEmail();
+				if (!"".equals(email) && (email != null)) {
+					whereSql += " and tt.reusers.email like '%" + email + "%'";
+				}
+			}
+		}
+		return whereSql;
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(privateletter);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Privateletter.class, ids);
+		return "delete";
+	}
+	
+	public String getAllSusers() {
+		List<Users> lists = this.baseService.getAllObjects(Users.class);
+		for (Users user : lists) {
+			this.list
+					.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+	public String getAllReusers() {
+		List<Users> lists = this.baseService.getAllObjects(Users.class);
+		for (Users user : lists) {
+			this.list
+			.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+}

@@ -1,0 +1,67 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/scripts/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/scripts/jquery/jquery.Jcrop.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/styles/frontstage/setter/realmUser.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/styles/jquery/jquery.Jcrop.css" type="text/css" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		//记得放在jQuery(window).load(...)内调用，否则Jcrop无法正确初始化
+		$("#target").Jcrop({
+			onChange : showPreview,
+			onSelect : showPreview,
+			aspectRatio : 1
+		});
+		//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+		function showPreview(coords) {
+			if (parseInt(coords.w) > 0) {
+				//计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+				var rx = $("#preview_box").width() / coords.w;
+				var ry = $("#preview_box").height() / coords.h;
+				//通过比例值控制图片的样式与显示
+				$("#crop_preview").css({
+					width : Math.round(rx * $("#target").width()) + "px", //预览图片宽度为计算比例值与原图片宽度的乘积
+					height : Math.round(rx * $("#target").height()) + "px", //预览图片高度为计算比例值与原图片高度的乘积
+					marginLeft : "-" + Math.round(rx * coords.x) + "px",
+					marginTop : "-" + Math.round(ry * coords.y) + "px"
+				});
+			}
+		}
+	});
+</script>
+
+
+
+<head>
+<title>index</title>
+
+</head>
+
+<body>
+
+<%-- <div class="rel mb20">
+	<img src="${pageContext.request.contextPath }/images/noname.jpg"id="target" />
+	<span id="preview_box" class="crop_preview"><img id="crop_preview" src="${pageContext.request.contextPath }/images/noname.jpg" /></span>
+</div> --%>
+<div id="maindiv">
+	<div id="titlediv">
+		<span>修改头像</span>
+	</div>
+	<div id="contentdiv">
+		<div id="contentdiv_left">
+		
+		</div>
+		
+		<div id="contentdiv_right">
+		
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

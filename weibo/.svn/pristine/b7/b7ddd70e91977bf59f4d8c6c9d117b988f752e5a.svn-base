@@ -1,0 +1,48 @@
+.setup_main{
+	background-color: yellow;
+}
+.setup_limail{
+	
+}
+.info{
+	width: 800px;
+	height: 150px;
+	background-color: white;
+	border: 1px;
+	border-top-style: solid;
+	border-top-color: #808080;
+	font-size: 13px;
+	color:#808080;
+}
+.left{
+	float: left;
+	width: 50px;
+	height: 50px;
+	background-color: red;
+	margin-left: 20px;
+}
+.left1{
+	float: left;
+	width: 500px;
+}
+.font1{
+	font-size: 15px;
+}
+.font2{
+	font-size: 13px;
+	color:#808080;
+}
+
+a{
+	text-decoration: none;
+}
+.reques{
+	font-size: 12px;
+	color: orange;
+}
+.hrbtop{
+	text-align: left;
+}
+.hrall{
+	text-align: left;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Album" table="ALBUM" schema="graduation">
+ 
+		<id name="id" type="java.lang.Integer">
+            <column name="ALBUM_ID" />
+            <generator class="native" />
+        </id>
+		<property name="name" type="string" column="ALBUM_NAME"/>
+ 		<property name="comment" type="string" column="ALBUM_COMMENT"/>
+		<property name="familyId" type="integer" column="FAMILY_ID"/>
+  		<property name="userinfoId" type="integer" column="USERINFO_ID"/>
+ 	  	<property name="createDate" type="timestamp" column="CREATE_DATE"/>
+ 	  	
+ 	    <many-to-one name="userinfo" class="Userinfo" column="USERINFO_ID" unique="true" insert="false" update="false" lazy="false" />
+ 	  	
+ 	
+	</class>
+</hibernate-mapping>

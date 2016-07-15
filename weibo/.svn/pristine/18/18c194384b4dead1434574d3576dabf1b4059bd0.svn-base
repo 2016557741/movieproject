@@ -1,0 +1,346 @@
+package www.csdn.project.action;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+
+import www.csdn.project.domain.Messages;
+import www.csdn.project.domain.Pictures;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.PicturesService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.OperateImage;
+import www.csdn.project.utils.Pagination;
+
+/**
+ * 
+ * @author 曹建波 2013-5-7 下午4:10:17
+ * 
+ */
+public class PicturesAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Pictures pictures;
+	private Messages messages;
+	private Users users;
+	private PicturesService picturesService;
+
+	private File upload; // 上传的文件
+	private String uploadContentType;// 文件类型
+	private String uploadFileName;// 文件的名称
+	private String finalPath;
+	private String delPicURL;
+
+	private String cutImgX;
+	private String cutImgY;
+	private String cutImgW;
+	private String cutImgH;
+	private String cutImgPath;
+
+	public String getCutImgX() {
+		return cutImgX;
+	}
+
+	public void setCutImgX(String cutImgX) {
+		this.cutImgX = cutImgX;
+	}
+
+	public String getCutImgY() {
+		return cutImgY;
+	}
+
+	public void setCutImgY(String cutImgY) {
+		this.cutImgY = cutImgY;
+	}
+
+	public String getCutImgW() {
+		return cutImgW;
+	}
+
+	public void setCutImgW(String cutImgW) {
+		this.cutImgW = cutImgW;
+	}
+
+	public String getCutImgH() {
+		return cutImgH;
+	}
+
+	public void setCutImgH(String cutImgH) {
+		this.cutImgH = cutImgH;
+	}
+
+	public String getCutImgPath() {
+		return cutImgPath;
+	}
+
+	public void setCutImgPath(String cutImgPath) {
+		this.cutImgPath = cutImgPath;
+	}
+
+	public String getDelPicURL() {
+		return delPicURL;
+	}
+
+	public void setDelPicURL(String delPicURL) {
+		this.delPicURL = delPicURL;
+	}
+
+	public String getFinalPath() {
+		return finalPath;
+	}
+
+	public File getUpload() {
+		return upload;
+	}
+
+	public void setFinalPath(String finalPath) {
+		this.finalPath = finalPath;
+	}
+
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public void setPicturesService(PicturesService picturesService) {
+		this.picturesService = picturesService;
+	}
+
+	public void setPictures(Pictures pictures) {
+		this.pictures = pictures;
+	}
+
+	public Messages getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Messages messages) {
+		this.messages = messages;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Pictures getPictures() {
+		return pictures;
+	}
+
+	public String query() {
+		pagination = new Pagination(this.page, this.rows);
+		String whereSql = spliceSql();
+		pagination.setTotal(baseService.getCount(Pictures.class, whereSql));
+		pagination.setRows(baseService.getObjects(Pictures.class, whereSql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+		String whereSql = " as tt where 1=1";
+		if (pictures != null) {
+			if (pictures.getMessages() != null) {
+				Integer mid = pictures.getMessages().getId();
+
+				if (!"".equals(mid) && (mid != null)) {
+					whereSql += " and tt.messages.id = '" + mid + "'";
+				}
+			}
+
+			if (pictures.getUsers() != null) {
+				String uEmail = pictures.getUsers().getEmail();
+				if (!"".equals(uEmail) && (uEmail != null)) {
+					whereSql += " and tt.users.email like '%" + uEmail + "%'";
+				}
+			}
+
+			if (pictures.getType() != null) {
+				String pType = pictures.getType();
+				if (!"".equals(pType) && (pType != null)) {
+					whereSql += " and tt.type = '" + pType + "'";
+				}
+			}
+		}
+		return whereSql;
+	}
+
+	public String getAllUsers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+
+	public String getAllMessages() {
+		List<Messages> messages = baseService.getAllObjects(Messages.class);
+		for (Messages message : messages) {
+			list.add(new ComboBoxBean(message.getId(), message.getId()
+					.toString(), false));
+		}
+		return "queryall";
+	}
+
+	public String getAllPictures() {
+		List<Pictures> pictures = baseService.getAllObjects(Pictures.class);
+		ComboBoxBean comboBoxBean = null;
+		for (Pictures picture : pictures) {
+			comboBoxBean = new ComboBoxBean(null, picture.getType(), false);
+			if (list.size() == 0) {
+				list.add(comboBoxBean);
+			} else {
+				boolean pic_flag = false;
+				for (ComboBoxBean bean : list) {
+					if ((bean.getText().equals(comboBoxBean.getText()))) {
+						pic_flag = true;
+						break;
+					}
+				}
+				if (!pic_flag) {
+					list.add(comboBoxBean);
+				}
+			}
+		}
+		return "queryall";
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(pictures);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		System.out.println(ids);
+		String whereSql = "where id in (" + ids + ")";
+		List<Pictures> pictures = baseService.getObjects(Pictures.class,
+				whereSql);
+		for (Pictures picture : pictures) {
+			String dirPath = ServletActionContext.getServletContext()
+					.getRealPath("/uploadImages") + picture.getUrl();
+			File dirFile = new File(dirPath);
+			dirFile.delete();
+		}
+		this.flag = baseService.deleteObjects(Pictures.class, ids);
+		return "delete";
+	}
+
+	public String upload() {
+		System.out.println("上传开始");
+		String uplPath = "";
+		SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");// 设置日期格式
+		uplPath = "/" + df.format(new Date());
+		// 设置上传的路径
+		String path = ServletActionContext.getServletContext().getRealPath(
+				"/uploadImages");
+		// 上传路径的文件
+		File pfile = new File(path);
+		// 文件的路径创建
+		if (!pfile.exists()) {
+			pfile.mkdirs();
+		}
+		try {
+			if (upload != null) {
+				String currentTime = System.currentTimeMillis() + "";
+				int spilIndex = uploadFileName.lastIndexOf(".");
+				String extName = uploadFileName.substring(spilIndex);
+				FileUtils.copyFile(upload, new File(pfile, uplPath + "_"
+						+ currentTime + extName));
+				finalPath = uplPath + "_" + currentTime + extName;
+				System.out.println("上传成功" + finalPath);
+				return "uploadsucceed";
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "uploadfail";
+	}
+
+	public String deletePictures() {
+		String dirPath = ServletActionContext.getServletContext().getRealPath(
+				"/uploadImages")
+				+ delPicURL;
+
+		System.out.println("删除临时图片-------" + dirPath);
+		File dirFile = new File(dirPath);
+		dirFile.delete();
+		flag = true;
+		return "deletePicturesSucceed";
+	}
+
+	public String cutImg() {
+		String webPath = ServletActionContext.getServletContext().getRealPath(
+				"/uploadImages");
+		String cutImgPathTrue = webPath
+				+ cutImgPath.substring(18, cutImgPath.length());
+		System.out.println("cutImgPathTrue---------------" + cutImgPathTrue);
+		try {
+			System.out.println("开始裁切--------");
+			OperateImage o = new OperateImage(Integer.valueOf(cutImgX),
+					Integer.valueOf(cutImgY), Integer.valueOf(cutImgW),
+					Integer.valueOf(cutImgH));
+			o.setSrcpath(cutImgPathTrue);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");// 设置日期格式
+			String currentTime = System.currentTimeMillis() + "";
+			String subpath = webPath + "/" + df.format(new Date()) + "_"
+					+ currentTime + ".jpg";
+			o.setSubpath(subpath);
+			o.cut();
+
+			HttpSession httpSession = ServletActionContext.getRequest()
+					.getSession();
+			Users users = (Users) httpSession.getAttribute("users");
+			String picUrl = "/" + df.format(new Date()) + "_" + currentTime
+					+ ".jpg";
+			List<Pictures> images = baseService.getObjects(Pictures.class,
+					"where users.id=" + users.getId() + "and type='头像'");
+			if (images.size() != 0) {
+				for (Pictures pic : images) {
+					pic.setUrl(picUrl);
+					pic.setTime(new Timestamp(System.currentTimeMillis()));
+					baseService.saveOrUpdateObject(pic);
+				}
+			} else {
+				Pictures pic = new Pictures(null, picUrl, "头像", new Timestamp(
+						System.currentTimeMillis()), users, null);
+				baseService.saveOrUpdateObject(pic);
+			}
+
+			// Pictures pic=new Pictures(null, picUrl, "头像", new
+			// Timestamp(System.currentTimeMillis()), users, null);
+
+			flag = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "cutsucceed";
+	}
+}

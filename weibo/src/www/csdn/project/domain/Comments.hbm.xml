@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Comments" table="COMMENTS" schema="graduation">
+	 
+		<id name="id" type="java.lang.Integer">
+            <column name="COMMENTS_ID" />
+            <generator class="native" />
+        </id>
+		<property name="info" type="string" column="COMMENTS_INFO"/>
+		<property name="createDate" type="timestamp" column="CREATE_DATE"/>
+		<property name="messagesId" type="integer" column="MESSAGES_ID"/>
+		<property name="userinfoId" type="integer" column="USERINFO_ID"/>
+	</class>
+</hibernate-mapping>

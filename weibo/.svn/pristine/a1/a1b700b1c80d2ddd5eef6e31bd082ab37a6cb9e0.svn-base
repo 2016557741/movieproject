@@ -1,0 +1,67 @@
+#maindiv{
+	width: 800px;
+	height: 600px;
+}
+#titlediv{
+	width: 740px;
+	height: 50px;
+	margin: 0 auto;
+	border-bottom:#E0E0E0 1px solid;
+}
+#titlediv span{
+	color: #444444;
+	float: left;
+	margin-top: 20px;
+	font-size: 14px;
+	font-weight: bold;
+}
+#contentdiv{
+	width: 740px;
+	height: 550px;
+	margin: 0 auto;
+}
+#contentdiv_title{
+	width: 740px;
+	height: 50px;
+	float: left;
+}
+#contentdiv_left{
+	width: 450px;
+	height: 450px;
+	float: left;
+	border-right:#E0E0E0 1px solid;
+}
+
+#left_div{
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: center;
+}
+
+
+
+
+#left_div_submit{
+	margin-top: 20px;
+	float: left;
+	text-align: center;
+}
+#left_div_submit input{
+	margin-left: 110px;
+}
+#contentdiv_left div img{
+	border:#B2B2B2 1px solid;
+}
+#contentdiv_right{
+	width: 280px;
+	height: 500px;
+	float: left;
+}
+#preview_box{
+	overflow:hidden;
+	width: 180px;
+	height: 180px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border:#B2B2B2 1px solid;
+}

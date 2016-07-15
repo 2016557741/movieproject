@@ -1,0 +1,13 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.UserinfoDao;
+import www.csdn.project.service.UserinfoService;
+
+public class UserinfoServiceImpl extends BaseServiceImpl implements UserinfoService{
+	private UserinfoDao userinfoDao;
+
+	public void setUserinfoDao(UserinfoDao userinfoDao) {
+		this.userinfoDao = userinfoDao;
+	}
+	
+}

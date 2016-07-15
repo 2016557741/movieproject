@@ -1,0 +1,40 @@
+package www.csdn.project.utils;
+
+import java.util.List;
+
+import www.csdn.project.domain.Messages;
+
+public class MyMessages {
+	private Integer nowpage;
+	private Integer total;
+	private List messages;
+	private final Integer size = 30;
+	private Integer from;
+	
+	public Integer getSize() {
+		return size;
+	}
+	
+	public Integer getFrom() {		
+		return total-(nowpage-1)*size;
+	}
+
+	public List getMessages() {
+		return messages;
+	}
+	public void setMessages(List messages) {
+		this.messages = messages;
+	}
+	public Integer getNowpage() {
+		return nowpage;
+	}
+	public void setNowpage(Integer nowpage) {
+		this.nowpage = nowpage;
+	}
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+}

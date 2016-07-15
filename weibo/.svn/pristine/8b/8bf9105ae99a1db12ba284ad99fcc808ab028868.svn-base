@@ -1,0 +1,149 @@
+package www.csdn.project.action;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import www.csdn.project.domain.Userinfo;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.UsersService;
+import www.csdn.project.utils.Pagination;
+
+import com.opensymphony.xwork2.ActionContext;
+
+public class UsersAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Users users;
+	private UsersService usersService;
+	private String code;
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public void setUsersService(UsersService usersService) {
+		this.usersService = usersService;
+	}
+
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Users.class, sql));
+		pagination.setRows(baseService.getObjects(Users.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " where 1=1 ";
+		if (users != null) {
+			// 序号
+			String email = users.getEmail();
+			if (!"".equals(email) && (email != null)) {
+				whereSql += " and  email like '%" + email + "%'";
+			}
+
+			String nikeName = users.getNikeName();
+			if (!"".equals(nikeName) && (nikeName != null)) {
+				whereSql += " and  nikeName like '%" + nikeName + "%'";
+			}
+
+			Integer status = users.getStatus();
+			if (!"".equals(status) && (status != null)) {
+				whereSql += " and  status = '" + status + "'";
+			}
+		}
+		return whereSql;
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(users);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		String[] arrids = ids.split(",");
+		Users delUser = null;
+		for (int i = 0; i < arrids.length; i++) {
+			delUser = (Users) baseService.getObjectById(Users.class,
+					Integer.valueOf(arrids[i]));
+			baseService.deleteObject(delUser);
+		}
+		this.flag = true;
+		return "delete";
+	}
+
+	public String checkEmail() {
+		this.flag = baseService.checkProperty(Users.class, "email",
+				users.getEmail(), users.getId());
+		return "check";
+	}
+
+	public String login() {
+		users = usersService.login(users.getEmail(), users.getPassWord());
+		if(users !=null ){			
+			Set<Userinfo> sets = users.getUserinfos();
+			for (Userinfo userinfo : sets) {
+				ActionContext.getContext().getSession().put("userinfo", userinfo);
+				break;
+			}
+			ActionContext.getContext().getSession().put("users", users);
+			return "login";
+		}else{
+			return "out";
+		}
+	}
+
+	public String saveregister() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String email = request.getParameter("email");
+		String passWord = request.getParameter("pass");
+		String nikeName = request.getParameter("name");
+		String checkimg = request.getParameter("checkimg");
+		String randimg = (String) ActionContext.getContext().getSession()
+				.get("randimg");
+		Users entity = new Users();
+		entity.setEmail(email);
+		entity.setPassWord(passWord);
+		entity.setNikeName(nikeName);
+		entity.setStatus(0);
+		entity.setTime(new Date());
+		System.out.println(email+"------------"+passWord+"---------------"+nikeName+"-------------"+checkimg+"-0--------------"+randimg);
+		this.flag = baseService.saveOrUpdateObject(entity);
+		System.out.println(this.flag);
+		if (flag == false) {
+			System.out.println(this.flag);
+			return "faile";
+		}	
+		System.out.println(this.flag);
+		return "out";
+	}
+
+	public String checkCode() {
+		String randimg = (String) ActionContext.getContext().getSession()
+				.get("randimg");
+		if (!randimg.equals(code) && randimg != code) {
+			this.flag = false;
+		} else {
+			this.flag = true;
+		}
+		return "check";
+	}
+}

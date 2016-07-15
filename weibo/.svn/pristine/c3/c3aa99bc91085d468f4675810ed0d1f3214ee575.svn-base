@@ -1,0 +1,108 @@
+package www.csdn.project.action;
+
+import java.util.List;
+
+import www.csdn.project.domain.Collections;
+import www.csdn.project.domain.Messages;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.CollectionsService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.Pagination;
+
+/**
+ * 微博收藏表
+ * 
+ * @author 杨凯
+ * 
+ */
+public class CollectionsAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private CollectionsService collectionsService;
+	private Collections collections;
+
+	public Collections getCollections() {
+		return collections;
+	}
+
+	public void setCollections(Collections collections) {
+		this.collections = collections;
+	}
+
+	public void setCollectionsService(CollectionsService collectionsService) {
+		this.collectionsService = collectionsService;
+	}
+
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Collections.class, sql));
+		pagination.setRows(baseService.getObjects(Collections.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " as tt where 1=1 ";
+		if (collections != null) {
+
+			Integer status = collections.getStatus();
+			System.out.println("===========" + status);
+			if (status != null) {
+				whereSql += "and tt.status = " + status + " ";
+				System.out.println(whereSql);
+			}
+
+			Users users = collections.getUsers();
+			if (users != null) {
+				String email = users.getEmail();
+				if (!"".equals(email) && (email != null)) {
+					whereSql += " and tt.users.email like '%" + email + "%'";
+				}
+			}
+
+			Messages messages = collections.getMessages();
+			if (messages != null) {
+				String info = messages.getInfo(); 
+				if (!"".equals(info) && (info != null)) {
+					whereSql += " and tt.messages.info like '%" + info + "%'";
+				}
+			}
+		}
+		return whereSql;
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(collections);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Collections.class, ids);
+		return "delete";
+	}
+
+	public String getAllUsers() {
+		List<Users> lists = this.baseService.getAllObjects(Users.class);
+		for (Users user : lists) {
+			this.list
+					.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+
+	public String getAllMessages() {
+		List<Messages> lists = this.baseService.getAllObjects(Messages.class);
+		for (Messages messages : lists) {
+			this.list.add(new ComboBoxBean(messages.getId(),
+					messages.getInfo(), false));
+		}
+		return "queryall";
+	}
+
+}

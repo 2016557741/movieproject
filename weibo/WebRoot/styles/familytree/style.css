@@ -1,0 +1,171 @@
+.familytree-node {
+	background-color: #9ED5EA;
+	border: 2px solid #8CCCE7;
+	border-radius: 5px;
+	cursor: auto;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.people_main {
+	display: table;
+	line-height: 0;
+	width: 100%;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.avabox {
+	margin-left: 0;
+	width: 41.0526%;
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	min-height: 32px;
+	padding: 8.5px 0 0 8.5px;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.avatar {
+	border-radius: 5px;
+	height: 48px;
+	width: 48px;
+	border: 0 none;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.tree-name {
+	margin-top: 4px;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.span14 {
+	width: 57.8947%;
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	margin-left: 1.05263%;
+	min-height: 32px;
+}
+
+.family-addbtn {
+	display: table;
+	line-height: 0;
+	clear: both;
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.family-addbtn-bg {
+	background-color: #FFFFFF;
+	border-radius: 15px 15px 0 0;
+	color: #BBBBBB;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 800;
+	height: 13px;
+	line-height: 15px;
+	margin-bottom: 1px;
+	width: 25px;
+	text-align: center;
+}
+
+/*弹出成样式*/
+.modal-backdrop {
+	opacity: 0.8;
+	background-color: #000000;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1040;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.personaddbtn {
+	display: block;
+	margin-left: -50%;
+	top: 0;
+	width: 100%;
+	background-clip: padding-box;
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 6px;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	left: 50%;
+	outline: medium none;
+	position: fixed;
+	z-index: 1050;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.abox {
+	height: 30px;
+	position: absolute;
+	width: 160px;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.abtn {
+	background-color: #9ED5EA;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 6px;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	line-height: 30px;
+	outline: medium none;
+	text-align: center;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+.peopleBox {
+	border: 2px solid #888888;
+	background-color: #9ED5EA;
+	border-radius: 5px;
+	cursor: auto;
+	height: 76px;
+	position: absolute;
+	width: 156px;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.row-fluid {
+	display: table;
+	line-height: 0;
+	clear: both;
+	width: 100%;
+	cursor: auto;
+	color: #333333;
+	font-family: Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}

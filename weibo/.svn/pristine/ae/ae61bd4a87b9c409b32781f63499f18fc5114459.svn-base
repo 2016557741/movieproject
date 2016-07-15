@@ -1,0 +1,169 @@
+package www.csdn.project.action;
+
+import java.util.Date;
+import java.util.List;
+
+import www.csdn.project.domain.Relation;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.RelationService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.Pagination;
+
+public class RelationAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private RelationService relationService;
+	private Relation relation;
+	private Users tusers;
+	private Users byusers;
+	private String bedate;
+	private String afdate;
+
+	public Relation getRelation() {
+		return relation;
+	}
+
+	public void setRelation(Relation relation) {
+		this.relation = relation;
+	}
+
+	public Users getTusers() {
+		return tusers;
+	}
+
+	public void setTusers(Users tusers) {
+		this.tusers = tusers;
+	}
+
+	public Users getByusers() {
+		return byusers;
+	}
+
+	public void setByusers(Users byusers) {
+		this.byusers = byusers;
+	}
+
+	public String getBedate() {
+		return bedate;
+	}
+
+	public void setBedate(String bedate) {
+		this.bedate = bedate;
+	}
+
+	public String getAfdate() {
+		return afdate;
+	}
+
+	public void setAfdate(String afdate) {
+		this.afdate = afdate;
+	}
+
+	public void setRelationService(RelationService relationService) {
+		this.relationService = relationService;
+	}
+
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		System.out.println(sql + "-------------------------------");
+		pagination.setTotal(baseService.getCount(Relation.class, sql));
+		pagination.setRows(baseService.getObjects(Relation.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		/**
+		 * private Users tusers; private Users byusers; private String bedate;
+		 * private String afdate;
+		 */
+		String whereSql = " as tt where 1=1 ";
+		if (relation != null) {
+			// 序号
+			Integer id = relation.getId();
+			if (!"".equals(id) && (id != null)) {
+				whereSql += " and  tt.id = '" + id + "'";
+			}
+		}
+		if (tusers != null) {
+			Integer tid = tusers.getId();
+			if (!"".equals(tid) && (tid != null)) {
+				whereSql += " and  tt.tusers.id = '" + tid + "'";
+			}
+		}
+		if (byusers != null) {
+			Integer byid = byusers.getId();
+			if (!"".equals(byid) && (byid != null)) {
+				whereSql += " and  tt.byusers.id = '" + byid + "'";
+			}
+		}
+		// to_date('2010-10-14 14:00:00','yyyy-mm-dd hh24:mi:ss')
+		if (bedate != null && !"".equals(bedate) && afdate != null
+				&& !"".equals(afdate)) {
+			whereSql += " and  tt.time>=to_date('" + bedate
+					+ "','yyyy-mm-dd hh24:mi:ss') and tt.time<=to_date('"
+					+ afdate + "','yyyy-mm-dd hh24:mi:ss')";
+		} else {
+			if (bedate != null) {
+				String time = bedate;
+				if (!"".equals(time) && (time != null)) {
+					whereSql += " and  tt.time >= to_date('" + time
+							+ "','yyyy-mm-dd hh24:mi:ss')";
+				}
+			}
+			if (afdate != null) {
+				String time = afdate;
+				if (!"".equals(time) && (time != null)) {
+					whereSql += " and  tt.time <= to_date('" + time
+							+ "','yyyy-mm-dd hh24:mi:ss')";
+				}
+			}
+		}
+
+		return whereSql;
+	}
+
+	public String getAllUsers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail() + "", false));
+		}
+		return "queryall";
+	}
+
+	public String getAllByusers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail() + "", false));
+		}
+		return "queryall";
+	}
+
+	public String getAllTusers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail() + "", false));
+		}
+		return "queryall";
+	}
+
+	public String saveOrUpdateObject() {
+		System.out.println(relation.getId() + "....." + relation.getGroupName()
+				+ ".." + relation.getNote() + ".."
+				+ relation.getByusers().getId() + ".." + relation.getTime()
+				+ ".." + relation.getTusers().getId());
+		this.flag = baseService.saveOrUpdateObject(relation);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Relation.class, ids);
+		return "delete";
+	}
+}

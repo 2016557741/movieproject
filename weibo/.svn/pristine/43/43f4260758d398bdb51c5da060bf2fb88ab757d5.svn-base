@@ -1,0 +1,10 @@
+package www.csdn.project.dao;
+
+/**
+ * MessagesDao 2013-5-7 下午7:53:30
+ * 
+ * @author 乔晓松
+ * 
+ */
+public interface MessagesDao {
+}

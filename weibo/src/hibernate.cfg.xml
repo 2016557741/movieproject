@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+<session-factory>
+	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	<property name="connection.url">
+	      jdbc:mysql://localhost:3306/graduation?useUnicode=true&amp;characterEncoding=UTF-8&amp;noAccessToProcedureBodies=true
+	</property>
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">123</property>
+	
+	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+	<property name="hibernate.c3p0.acquireIncrement">1</property>
+	<property name="hibernate.c3p0.idleConnectionTestPeriod">300</property>
+	<property name="hibernate.c3p0.maxPoolSize">300</property>
+	<property name="hibernate.c3p0.minPoolSize">10</property>
+	<property name="hibernate.c3p0.initialPoolSize">10</property>
+	<property name="hibernate.c3p0.numHelperThreads">3</property>
+	<property name="hibernate.c3p0.acquireRetryAttempts">2</property>
+	<property name="hibernate.c3p0.preferredTestQuery">select 1 from dual</property>  
+	<property name="hibernate.c3p0.testConnectionOnCheckin">true</property>
+
+	<property name="myeclipse.connection.profile">conAlias</property>
+	<property name="show_sql">true</property>
+	<property name="hibernate.query.factory_class">
+		org.hibernate.hql.ast.ASTQueryTranslatorFactory
+	</property>
+	<property name="hibernate.jdbc.batch_size">30</property>
+	<property name="hibernate.default_batch_fetch_size">30</property>
+	<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+	<property name="hibernate.cache.use_second_level_cache">true</property>
+	<property name="hibernate.cache.use_query_cache">true</property>
+	<property name="hibernate.cache.configurationResourceName">/WEB-INF/classes/ehcache.xml</property>
+	
+	<mapping resource="www/csdn/project/domain/Admins.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Affair.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Album.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Anniversary.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Comments.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Family.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Messages.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Pictures.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Review.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Userinfo.hbm.xml" />
+	<mapping resource="www/csdn/project/domain/Users.hbm.xml" />
+ 
+</session-factory>
+
+</hibernate-configuration>

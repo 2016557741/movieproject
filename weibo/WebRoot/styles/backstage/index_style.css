@@ -1,0 +1,21 @@
+.west_content{
+	text-align: center;
+	font-size: 15px;
+	margin-top: 8px;
+	line-height: 28px;
+}
+
+.west_content a{
+	color:blue;
+	text-decoration: none;
+}
+
+.west_content a:HOVER{
+	color:orange;
+	text-decoration: underline;
+}
+
+.west_content a:AFTER{
+	color:blue;
+	text-decoration: none;
+}

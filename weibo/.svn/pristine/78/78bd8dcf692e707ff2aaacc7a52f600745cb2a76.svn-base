@@ -1,0 +1,300 @@
+body{
+	text-align: center;
+}
+#top_div {
+	position: fixed;
+	text-align:left;
+	background-image: url("../../images/bg_nav.png");
+	margin-top: -50px;
+	width: 100%;
+	height: 42px;
+	opacity: 0.9;
+}
+
+#logo_img,#bar_index,#bar_app,#bar_weiba,#bar_game,#bar_search,#search_btn,.ico,.right_bar,#new_msg  {
+	display: block;
+}
+
+#top_bar,#logo_div,#logo_img{
+	height: 38px;
+}
+#logo_img,#bar_index,#bar_app,#bar_weiba,#bar_game,#bottom_content,#bar_search,.ico,#logo_div,#new_msg {
+	float:left;
+}
+#user_login,#user_weibo,#user_message,#user_setting,#user_vip,#search_btn {
+	float:right;
+}
+#top_bar {
+	margin: 0 auto;
+	width: 980px;
+}
+
+#logo_div {
+	width: 150px;
+}
+
+#logo_img{
+	width:200px;
+	position: relative;
+	right:30px;
+}
+
+#logo_img {
+	border: 0;
+	background-image: url("../../images/logo_130501.png");
+	background-position: 0 0;
+}
+
+#top_bar a {
+	text-decoration: none;
+}
+
+#bar_index,#bar_app,#bar_weiba,#bar_game {	
+	text-align:center;
+	padding-top:11px;
+	width:69px;
+	height:27px;
+	opacity: 0.9;
+}
+
+#bar_index span,#bar_app span,#bar_weiba span,#bar_game span{
+	color:white;
+	font-size:15px;
+}
+
+#bar_app,#bar_weiba,#bar_game{
+	background-image:url("../../images/icon.png");
+	background-position:-86px -376px;
+}
+
+
+
+#bar_search {
+	background-image:url("../../images/bg_line.png");
+	background-position: 0 -5px;
+	margin-top:7px;
+	width:235px;
+	margin-left:26px;
+	height:27px;
+}
+
+#search_btn{	
+	width:22px;
+	height:23px;
+	position: relative;
+	right:5px;
+	top:1px;
+}
+
+#search_input{
+	outline:none;
+	margin-top:4px;
+	margin-left:10px;
+	background-color:rgb(235,240,240);
+	border:0;
+	width:195px;
+	height:17px;
+	font-size:12px;
+	color:#777;	
+	vertical-align: center;
+	
+}
+
+.ico{
+	width:18px;
+	height:17px;
+	
+	background-image:url("../../images/icon.png");
+}
+
+.right_bar {
+	width:31px;
+	height:26px;
+	padding-top:11px;
+	padding-left:12px;
+}
+
+#user_weibo,#user_message,#user_setting,#user_vip {	
+	
+	width:44px;
+	height:38px;
+}
+#user_login{
+	padding:8px;
+	height:22px;
+}
+
+#user_login a span{
+	font-size:13px;
+	font-family:"微软雅黑";
+	color:white;
+	height:27px;
+}
+
+#user_weibo span {
+	background-position: -48px 1px;
+}
+
+#user_message .ico{
+	background-position: -48px -49px;
+}
+#user_setting span{
+	background-position: -48px -100px;
+}
+#user_vip span{
+	background-position: -48px -174px;
+}
+
+
+
+
+#top_btm {
+	background-image: url("../../images/bg_line.png");
+	width: 100%;
+	height: 4px;
+}
+
+
+
+
+
+.topbar_nowpage{
+	background-color:rgb(50,110,130);
+	opacity: 0.9;
+}
+
+.topbar_mouseover{
+	background-color:rgb(65,130,150);
+	opacity: 0.9;
+}
+/* 
+	隐藏DIV
+ */
+#app_show,#weiba_show,#game_show,#vip_show,#setting_show,#message_show,#weibo_show {
+	display:none;
+	background-color: white;
+	border:solid black 1px;
+	border-top:none;
+	position:relative;
+}
+
+#app_show{
+	width:600px;
+	height:210px;
+	top:11px;
+	left:-65px;
+}
+
+#weiba_show {
+	width:600px;
+	height:210px;
+	top:11px;
+	left:-140px;
+}
+#game_show{
+	width:600px;
+	height:210px;
+	top:11px;
+	left:-210px;
+}
+
+#vip_show{
+	width:140px;
+	height:85px;
+	top:2px;
+	right:97px;
+	
+}
+
+#setting_show{
+	width:140px;
+	height:275px;
+	top:2px;
+	right:97px;
+}
+
+#message_show{
+	width:150px;
+	height:305px;
+	top:2px;
+	right:107px;
+}
+
+#weibo_show{
+	width:415px;
+	height:160px;
+	top:2px;
+	right:373px;
+	z-index:-1;
+}
+
+
+
+/* 
+
+	底部布局
+
+ */
+ 
+ #bottom_div,#bottom_content {
+ 	text-align:left;
+	margin: 0 auto;
+	height: 200px;
+	width: 980px;
+}
+#bottom_content {
+	background-color: white;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+#bottom_table_t,#bottom_table_b{
+	font-size: 13px;
+	color:#444;
+	margin-top:13px;
+ 	margin-left:15px;
+}
+
+#bottom_table_t {
+	margin-top:17px;
+ 	border-bottom: solid rgb(230,230,230) 1px;
+ }
+ 
+ #bottom_table_t a{
+ 	text-decoration: none;
+ 	color:rgb(55,165,185);
+ }
+ 
+  #bottom_table_t a:HOVER{
+ 	text-decoration: underline;
+ 	color:rgb(55,165,185);
+ }
+ 
+ #bottom_table_b td {
+ 	padding-top:2px;
+ }
+ 
+ #bottom_table_b td {
+ 	padding-top:2px;
+ }
+ 
+ #bottom_table_b a {
+ 	color:#444;
+ 	text-decoration: none;
+ }
+ #bottom_table_b a:HOVER {
+ 	color:rgb(55,165,185);
+ 	text-decoration: none;
+ }
+
+/* 新消息 */
+
+#new_msg {
+	display:none;
+	background-image:url("../../images/icon.png");
+	width:10px;
+	height:10px;
+	position: relative;
+	left:11px;
+	top:-3px;
+}

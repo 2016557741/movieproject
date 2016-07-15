@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Admins" table="ADMINS" schema="graduation">
+         <id name="id" type="java.lang.Integer">
+            <column name="ADMINS_ID" />
+            <generator class="native" />
+        </id>
+		<property name="name" type="string" column="ADMINS_NAME" />
+		<property name="pass" type="string" column="ADMINS_PASS" />
+	 
+
+	</class>
+
+</hibernate-mapping>

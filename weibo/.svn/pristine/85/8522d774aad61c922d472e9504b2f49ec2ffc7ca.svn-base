@@ -1,0 +1,48 @@
+package www.csdn.project.utils;
+
+public class ShowUsersInfo {
+
+	private Integer sUsersId;
+	private String sUsersNikeName;
+	private String sUsersNote;
+	private String sUsersGroupName;
+	private String sUsersHeadPicUrl;
+	private String sUsersIntro;
+	public Integer getsUsersId() {
+		return sUsersId;
+	}
+	public void setsUsersId(Integer sUsersId) {
+		this.sUsersId = sUsersId;
+	}
+	public String getsUsersNikeName() {
+		return sUsersNikeName;
+	}
+	public void setsUsersNikeName(String sUsersNikeName) {
+		this.sUsersNikeName = sUsersNikeName;
+	}
+	public String getsUsersNote() {
+		return sUsersNote;
+	}
+	public void setsUsersNote(String sUsersNote) {
+		this.sUsersNote = sUsersNote;
+	}
+	public String getsUsersGroupName() {
+		return sUsersGroupName;
+	}
+	public void setsUsersGroupName(String sUsersGroupName) {
+		this.sUsersGroupName = sUsersGroupName;
+	}
+	public String getsUsersHeadPicUrl() {
+		return sUsersHeadPicUrl;
+	}
+	public void setsUsersHeadPicUrl(String sUsersHeadPicUrl) {
+		this.sUsersHeadPicUrl = sUsersHeadPicUrl;
+	}
+	public String getsUsersIntro() {
+		return sUsersIntro;
+	}
+	public void setsUsersIntro(String sUsersIntro) {
+		this.sUsersIntro = sUsersIntro;
+	}
+	
+}

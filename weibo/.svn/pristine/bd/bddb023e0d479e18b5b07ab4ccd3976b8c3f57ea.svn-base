@@ -1,0 +1,153 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:29:34
+ *
+ */
+public class Userinfo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String trueName;
+	private String address;
+	private String sex;
+	private String sexUal;
+	private String feeling;
+	private String birthday;
+	private String bloodType;
+	private String blogUrl;
+	private String realName;
+	private String intro;
+	private String email;
+	private String qqNumber;
+	private String messenger;
+	private String profession;
+	private String label;
+	private Users users;
+	
+	
+	
+	public Userinfo() {
+		super();
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getTrueName() {
+		return trueName;
+	}
+	public void setTrueName(String trueName) {
+		this.trueName = trueName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getSexUal() {
+		return sexUal;
+	}
+	public void setSexUal(String sexUal) {
+		this.sexUal = sexUal;
+	}
+	public String getFeeling() {
+		return feeling;
+	}
+	public void setFeeling(String feeling) {
+		this.feeling = feeling;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public String getBloodType() {
+		return bloodType;
+	}
+	public void setBloodType(String bloodType) {
+		this.bloodType = bloodType;
+	}
+	public String getBlogUrl() {
+		return blogUrl;
+	}
+	public void setBlogUrl(String blogUrl) {
+		this.blogUrl = blogUrl;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public String getIntro() {
+		return intro;
+	}
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getQqNumber() {
+		return qqNumber;
+	}
+	public void setQqNumber(String qqNumber) {
+		this.qqNumber = qqNumber;
+	}
+	public String getMessenger() {
+		return messenger;
+	}
+	public void setMessenger(String messenger) {
+		this.messenger = messenger;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+	@Override
+	public String toString() {
+		return "Userinfo [id=" + id + ", trueName=" + trueName + ", address="
+				+ address + ", sex=" + sex + ", sexUal=" + sexUal
+				+ ", feeling=" + feeling + ", birthday=" + birthday
+				+ ", bloodType=" + bloodType + ", blogUrl=" + blogUrl
+				+ ", realName=" + realName + ", intro=" + intro + ", email="
+				+ email + ", qqNumber=" + qqNumber + ", messenger=" + messenger
+				+ ", profession=" + profession + ", label=" + label
+				+ ", users=" + users + "]";
+	}
+	
+	
+}

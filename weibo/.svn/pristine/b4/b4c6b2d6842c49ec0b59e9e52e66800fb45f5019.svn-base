@@ -1,0 +1,59 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Users" table="USERS" schema="weibo">
+		<id name="id" column="USERS_ID">
+			<generator class="sequence">
+				<param name="sequence">USERS_SEQ</param>
+			</generator>
+		</id>
+
+		<property name="email" type="string" column="USERS_EMAIL" />
+		<property name="passWord" type="string" column="USERS_PASSWORD" />
+		<property name="nikeName" type="string" column="USERS_NIKENAME" />
+		<property name="time" type="timestamp" column="USERS_TIME" />
+		<property name="status" type="integer" column="USERS_STATUS" />
+
+		<set name="atusers"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Atusers" />
+		</set>
+		<set name="messages"  inverse="true" cascade="delete" >
+			<key column="USERS_ID" />
+			<one-to-many class="Messages" />
+		</set>
+		<set name="collections"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Collections" />
+		</set>
+		<set name="comments"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Comments" />
+		</set>
+		<set name="pictures" inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Pictures" />
+		</set>
+		<set name="sPrivateletters"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Privateletter" />
+		</set>
+		<set name="rePrivateletters"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Privateletter" />
+		</set>
+		<set name="tRelations"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Relation" />
+		</set>
+		<set name="byRelations"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Relation" />
+		</set>
+		<set name="userinfos"  inverse="true" cascade="delete">
+			<key column="USERS_ID" />
+			<one-to-many class="Userinfo" />
+		</set>
+	</class>
+</hibernate-mapping>

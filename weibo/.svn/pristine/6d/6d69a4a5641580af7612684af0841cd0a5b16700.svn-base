@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Userinfo" table="USERINFO" schema="weibo">
+		<id name="id" column="USERINFO_ID">
+			<generator class="sequence">
+				<param name="sequence">USERINFO_SEQ</param>
+			</generator>
+		</id>
+		
+		<property name="trueName" type="string" column="USERINFO_TRUENAME"/>
+		<property name="address" type="string" column="USERINFO_ADDRESS"/>
+		<property name="sex" type="string" column="USERINFO_SEX"/>
+		<property name="sexUal" type="string" column="USERINFO_SEXUAL"/>
+		<property name="feeling" type="string" column="USERINFO_FEELING"/>
+		<property name="birthday" type="string" column="USERINFO_BIRTHDAY"/>
+		<property name="bloodType" type="string" column="USERINFO_BLOODTYPE"/>
+		<property name="blogUrl" type="string" column="USERINFO_BLOGURL"/>
+		<property name="realName" type="string" column="USERINFO_REALNAME"/>
+		<property name="intro" type="string" column="USERINFO_INTRO"/>
+		<property name="email" type="string" column="USERINFO_EMAIL"/>
+		<property name="qqNumber" type="string" column="USERINFO_QQNUMBER"/>
+		<property name="messenger" type="string" column="USERINFO_MESSENGER"/>
+		<property name="profession" type="string" column="USERINFO_PROFESSION"/>
+		<property name="label" type="string" column="USERINFO_LABEL"/>
+		
+		<many-to-one name="users" class="Users" column="USERS_ID"/>
+	</class>
+</hibernate-mapping>

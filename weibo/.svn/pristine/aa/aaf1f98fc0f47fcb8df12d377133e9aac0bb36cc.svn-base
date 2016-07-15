@@ -1,0 +1,29 @@
+package www.csdn.project.dao.impl;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import www.csdn.project.dao.AdminsDao;
+import www.csdn.project.domain.Admins;
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:15:46
+ *
+ */
+public class AdminsDaoImpl extends HibernateDaoSupport implements AdminsDao {
+
+	@Override
+	public boolean login(String name, String pass) {
+		boolean flag = false;
+		List<Admins> entitys = getHibernateTemplate().find(
+				"from Admins a where a.name=? and a.pass=?",
+				new String[] { name, pass });
+		if (entitys != null || entitys.size() != 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+}

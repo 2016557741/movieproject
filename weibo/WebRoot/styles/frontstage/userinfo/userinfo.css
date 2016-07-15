@@ -1,0 +1,12 @@
+ .container{
+ margin-top: 20px;
+ 
+ }
+ .col2 {
+    width: 220px;
+}
+.form-horizontal .control-label {
+    
+    text-align: left;
+  
+}

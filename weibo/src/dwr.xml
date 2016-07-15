@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" 
+"http://www.getahead.ltd.uk/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<!-- 创建-->
+		<!--纪念日 -->
+		<create javascript="AnniversaryService" creator="spring">
+			<param name="beanName" value="anniversaryServiceImpl"></param>
+			<include method="findAnniversaryById"/>
+			<include method="deleteAnniversaryById"/>
+ 		</create>
+ 		<!--图片 -->
+ 	    <create javascript="PicturesService" creator="spring">
+			<param name="beanName" value="picturesServiceImpl"></param>
+			<include method="getPicturesByAlbumId"/>
+  		</create>
+  		<!--相册 -->
+ 	    <create javascript="AlbumService" creator="spring">
+			<param name="beanName" value="albumServiceImpl"></param>
+			<include method="loadAlbumById"/>
+			<include method="updateAlbum"/>
+			<include method="saveAlbum"/>
+			<include method="deleteAlbumById"/>
+  		</create>
+  	    <!--事件-->
+ 	    <create javascript="AffairService" creator="spring">
+			<param name="beanName" value="affairServiceImpl"></param>
+			<include method="saveAffair"/>
+			<include method="deleteAffairById"/>
+  		</create>
+  		 <!--用户详情userinfo-->
+ 	    <create javascript="UserinfoService" creator="spring">
+			<param name="beanName" value="userinfoServiceImpl"></param>
+			<include method="updateUserinfo"/>
+			<include method="findAncestryTree"/>
+   		</create>
+   	    <!--用户users-->
+ 	    <create javascript="UsersService" creator="spring">
+			<param name="beanName" value="usersServiceImpl"></param>
+			<include method="updateUserPassword"/>
+   		</create>
+   	    <!--邀请review-->
+ 	    <create javascript="ReviewService" creator="spring">
+			<param name="beanName" value="reviewServiceImpl"></param>
+			<include method="saveReview"/>
+			<include method="getReviewByUsersId"/>
+			<include method="updateReview"/>
+   		</create>
+ 		
+		<!-- 转换器 -->
+		<!--异常-->
+		<convert match="java.lang.StackTraceElement" converter="bean"/>
+	    <convert match="java.lang.Exception" converter="exception">
+	    <param name="include" value="message" /> 
+	    </convert>
+		<!--纪念日 -->
+		<convert match="www.csdn.project.domain.Anniversary" converter="bean">
+		 <param name="include" value="id,name,comment,date,userinfoId,familyId" />
+	    </convert>	    
+	     <!--图片 -->
+		<convert match="www.csdn.project.domain.Pictures" converter="bean">
+		 <param name="include" value="id,url,type,comment,createDate,userinfoId,messagesId,albumId,userinfo" />
+	    </convert>
+ 	    <!--族人(包括用户) -->
+		<convert match="www.csdn.project.domain.Userinfo" converter="bean">
+		 <param name="include" value="id,trueName,sex,birthday,dieday,work,active,comment,usersId,familyId,parentId,spouseId,level,parentInfo,spouseInfo,childrens,headPic" />
+	    </convert>
+	    <!--家族 -->
+	    <convert match="www.csdn.project.domain.Family" converter="bean">
+		 <param name="include" value="id,name,comment,userinfoId,createDate" />
+	    </convert>
+	     <!--相册-->
+	    <convert match="www.csdn.project.domain.Album" converter="bean">
+		 <param name="include" value="id,name,comment,familyId,userinfoId,createDate,userinfo" />
+	    </convert>
+	    <!--事件-->
+	    <convert match="www.csdn.project.domain.Affair" converter="bean">
+		 <param name="include" value="id,comment,date,familyId,userinfoId,userinfo" />
+	    </convert>
+	     <!--用户-->
+	    <convert match="www.csdn.project.domain.Users" converter="bean">
+		 <param name="include" value="id,email,password,createDate,status" />
+	    </convert>
+	     <!--邀请-->
+	    <convert match="www.csdn.project.domain.Review" converter="bean">
+		 <param name="include" value="id,userinfoId,usersId,comeintoUserinfoId,status,createDate,flag,userinfo,comeintoUserinfo" />
+	    </convert>
+	</allow>
+
+</dwr>

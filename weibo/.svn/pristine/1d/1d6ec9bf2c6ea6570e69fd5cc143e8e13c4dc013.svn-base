@@ -1,0 +1,19 @@
+package www.csdn.project.service.impl;
+
+import www.csdn.project.dao.UsersDao;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.UsersService;
+
+public class UsersServiceImpl extends BaseServiceImpl implements UsersService{
+	private UsersDao usersDao;
+
+	public void setUsersDao(UsersDao usersDao) {
+		this.usersDao = usersDao;
+	}
+
+	@Override
+	public Users login(String email, String passWord) {
+		return usersDao.login(email, passWord);
+	}
+	
+}

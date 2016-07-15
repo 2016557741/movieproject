@@ -1,0 +1,69 @@
+var post_param = {};
+var dg_param = {};
+$(function() {
+	setObjName('Atusers');
+	setCombobox([ "users","messages"]);
+	post_param = {};
+
+	/* $("#s_id").numberbox(); */
+
+	/*
+	 * var messagestype = [{ type : "原创", typevalue : "原创" }, { type : "转发",
+	 * typevalue : "转发" }];
+	 * 
+	 * $("#s_type").combobox({ valueField : 'type', textField : 'typevalue',
+	 * data : messagestype });
+	 */
+	/*
+	 * $("#s_users_email").bind("blur",function(){ alert($(this).val()); });
+	 */
+
+	//openSearch([ "s_info", "s_type[iscombobox]", "s_label", "s_users.email" ]);
+
+	/* dg_param = {columns:""}; */
+	dg_param = {
+		columns : [ [ {
+			checkbox : true
+		}, {
+			field : 'id',
+			title : 'At用户ID',
+			width : 100,
+			align : 'center'
+		}
+		, {
+			field : 'time',
+			title : '时间',
+			width : 100,
+			align : 'center'
+		}
+		, {
+			field : "users",
+			title : '被At用户',
+			width : 100,
+			align : 'center',
+			editor : {
+				type : createCombobox("users"),
+				options : {
+					required : true,
+					editable : false
+				}
+			}
+		}
+		, {
+			field : "messages",
+			title : '微博',
+			width : 100,
+			align : 'center',
+			editor : {
+				type : createCombobox("messages"),
+				options : {
+					required : true,
+					editable : false
+				}
+			}
+		}
+		]]
+	};
+
+	initDg(post_param, dg_param);
+});

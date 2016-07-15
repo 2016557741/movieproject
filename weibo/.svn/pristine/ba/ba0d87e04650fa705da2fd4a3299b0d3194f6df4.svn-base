@@ -1,0 +1,304 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<title>我的首页 新浪微博-随时随地分享身边的新鲜事儿</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="我的首页 新浪微博-随时随地分享身边的新鲜事儿">
+<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/styles/frontstage/index/index_style.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/styles/frontstage/top_bottomdiv_style.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/styles/frontstage/myfollow/myfollow.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/scripts/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/scripts/frontstage/index/index_init.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/scripts/frontstage/top_bottomdiv_init.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }"></script>
+</head>
+
+<body>
+	<div id="top_div">
+		<div id="top_bar">
+			<div id="logo_div">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					id="logo_img"></span> </a>
+			</div>
+			<div>
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					class="topbar_nowpage" id="bar_index"><span>z首页</span> </span> </a>
+			</div>
+			<div id="bar_app">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span>应用</span>
+				</a>
+				<div id="app_show"></div>
+			</div>
+			<div id="bar_weiba">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span>微吧</span>
+				</a>
+				<div id="weiba_show"></div>
+			</div>
+			<div id="bar_game">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span>游戏</span>
+				</a>
+				<div id="game_show"></div>
+			</div>
+			<div id="bar_search">
+				<input id="search_input" type="text" value="搜索微博、找人"> <a
+					href="#" title="搜索按钮"> <span id="search_btn"></span> </a>
+			</div>
+
+			<div id="user_vip">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					class="right_bar"><span class="ico"></span> </span> </a>
+				<div id="vip_show"></div>
+			</div>
+			<div id="user_setting">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					class="right_bar"><span class="ico"></span> </span> </a>
+				<div id="setting_show"></div>
+			</div>
+			<div id="user_message">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					class="right_bar"><span class="ico"><span
+							id="new_msg"></span> </span> </span> </a>
+				<div id="message_show"></div>
+			</div>
+			<div id="user_weibo">
+				<a href="javascript:void(0);"><span class="right_bar"><span
+						class="ico"></span> </span> </a>
+				<div id="weibo_show"></div>
+			</div>
+			<div id="user_login">
+				<a href="${pageContext.request.contextPath }/index.jsp"><span
+					id="user_name"></span> </a>
+			</div>
+		</div>
+		<div id="top_btm"></div>
+	</div>
+
+	<div id="content_main">
+		<div id="content_div" style="height: 1000px">
+			<div id="content_div_left">
+				<h3>关注中心</h3>
+				<dl id="ld1">
+					<dt>
+						<div class="gz"></div>关注
+						
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全部关注</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同事</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名人明星</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同学</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未分组</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展开</a>
+					</dt>
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="zkbtn" value="展开分组"/></a>
+					</dt>
+				</dl>
+				<dl id="ld2">
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">密友圈</a>
+					</dt>
+				</dl>
+				<dl id="ld3">
+					<dt>
+						<a href="javascript:void(0)" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">悄悄关注
+						</a>
+					</dt>
+				</dl>
+				<dl id="ld4">
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">粉丝</a>
+					</dt>
+				</dl>
+				<dl id="ld5">
+					<dt>
+						<a href="javascript:void(0)" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">邀请站外好友
+						</a>
+					</dt>
+				</dl>
+				<dl id="ld6">
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">找人</a>
+					</dt>
+				</dl>
+				<dl id="ld7">
+					<dt>
+						<a
+							href="${ 
+pageContext.request.contextPath }"
+							target="iframe" class="left_dl_dd"><img
+							src="${pageContext.request.contextPath }">猜你喜欢</a>
+					</dt>
+				</dl>
+
+			</div>
+			<div id="content_div_center">
+				<iframe id="iframe"
+					src="${ 
+pageContext.request.contextPath }/frontstage/myfollow/myfollowinfo.jsp"
+					name="iframe" frameborder="0" scrolling="auto" height="1000px"
+					width="800px"></iframe>
+			</div>
+		</div>
+	</div>
+	<div id="bottom_div">
+		<div id="bottom_content">
+			<table id="bottom_table_t">
+				<tr>
+					<td style="width:185px;padding-bottom:7px;">找找感兴趣的人</td>
+					<td style="width:185px;">精彩内容</td>
+					<td style="width:185px;">热门应用</td>
+					<td style="width:185px;">手机玩微博</td>
+					<td style="width:185px;">认证&amp;合作</td>
+				</tr>
+				<tr>
+					<td><a href="javascript:void(0)">名人堂</a>&nbsp;<a
+						href="javascript:void(0)">微博会员</a>
+					</td>
+					<td><a href="javascript:void(0)">微话题</a>&nbsp;<a
+						href="javascript:void(0)">风云榜</a>
+					</td>
+					<td><a href="javascript:void(0)">微吧</a>&nbsp;<a
+						href="javascript:void(0)">微公益</a>
+					</td>
+					<td><a href="javascript:void(0)">WAP版</a>&nbsp;<a
+						href="javascript:void(0)">短彩发微博</a>
+					</td>
+					<td><a href="javascript:void(0)">申请认证</a>&nbsp;<a
+						href="javascript:void(0)">开放平台</a>
+					</td>
+				</tr>
+				<tr>
+					<td><a href="javascript:void(0)">微博达人</a>
+					</td>
+					<td><a href="javascript:void(0)">微访谈</a>
+					</td>
+					<td><a href="javascript:void(0)">相册</a><a
+						href="javascript:void(0)"> 微音乐</a>
+					</td>
+					<td><a href="javascript:void(0)">iPhone客户端</a>&nbsp;<a
+						href="javascript:void(0)">iPad客户端</a>
+					</td>
+					<td><a href="javascript:void(0)">企业微博</a>&nbsp;<a
+						href="javascript:void(0)">连接网站</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-bottom:15px"><a href="javascript:void(0)">媒体</a>&nbsp;<a
+						href="javascript:void(0)">企业</a>&nbsp;<a href="javascript:void(0)">政府</a>
+					</td>
+					<td style="padding-bottom:15px"><a href="javascript:void(0)">热门微博</a>
+					</td>
+					<td style="padding-bottom:15px"><a href="javascript:void(0)">投票</a>&nbsp;<a
+						href="javascript:void(0)">微游戏</a>
+					</td>
+					<td style="padding-bottom:15px"><a href="javascript:void(0)">Android客户端</a>
+					</td>
+					<td style="padding-bottom:15px"><a href="javascript:void(0)">微博标识</a>&nbsp;<a
+						href="javascript:void(0)">广告服务</a>
+					</td>
+				</tr>
+			</table>
+
+			<table id="bottom_table_b">
+				<tr>
+					<td><a href="javascript:void(0)"><span class="ico"
+							style="backgrodnd-position: -350px -127px"></span>微博帮助</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">意见反馈</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">开放平台</a> &nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">微博招聘</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">新浪网导航</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">社区管理中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="javascript:void(0)">微博社区公约</a>
+					</td>
+				</tr>
+				<tr>
+					<td>客服电话：4000&nbsp;960&nbsp;960（个人）&nbsp;4000&nbsp;980&nbsp;980（企业）&nbsp;（按当地市话标准计算）<span
+						style="float:right;margin-top:-8px;"><select><option>中文(简体)</option>
+						</select> </span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:925px;"><span style="color:#888">北京微梦创科网络技术有限公司</span>&nbsp;<a
+						href="javascript:void(0)">京网文[2011]0398-130号</a>&nbsp;<a
+						href="javascript:void(0)">京ICP证100780号</a><span
+						style="font-size:11px;float:right;color:#888;font-family: '微软雅黑'">Copyright&nbsp;&copy;&nbsp;1996-2013&nbsp;SINA</span>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+$(document).ready(function() {
+    
+    $('#info_show_button_div').mouseover(function() {
+        $(this).css({
+            "background-position" : "0px -23px",
+            "cursor" : "pointer"
+        });
+    }).mouseout(function() {
+        $(this).css("background-position", "0px 0px");
+    });
+
+    //返回顶部的实现
+    var navH = $("#page_anchor").offset().top;
+    $(window).scroll(function() {
+        var scroH = $(this).scrollTop();
+        if (scroH > navH) {
+            $("#page_anchor").show();
+        } else {
+            $("#page_anchor").hide();
+        }
+    });
+
+    $('#page_anchor').mouseover(function() {
+        $(this).css({
+            "background-position" : "-81px 0px",
+            "cursor" : "pointer"
+        });
+    }).mouseout(function() {
+        $(this).css("background-position", "-56px 0px");
+    });
+    //头像部分
+    $('#headphoto_top').mouseover(function() {
+        $("#headphoto_change").show().mouseover(function() {
+            $(this).show().css({
+                "background-position" : "0px -116px",
+                "cursor" : "pointer"
+            });
+        }).mouseout(function() {
+            $(this).show().css({
+                "background-position" : "0px -93px"
+            });
+        });
+    }).mouseout(function() {
+        $("#headphoto_change").hide();
+    });
+
+    $('#pagediv_prev').mouseover(function() {
+        $(this).css({
+            "background-position" : "0px -23px",
+            "cursor" : "pointer"
+        });
+    }).mouseout(function() {
+        $(this).css("background-position", "0px 0px");
+    });
+
+    $('#pagediv_next').mouseover(function() {
+        $(this).css({
+            "background-position" : "0px -69px",
+            "cursor" : "pointer"
+        });
+    }).mouseout(function() {
+        $(this).css("background-position", "0px -46px");
+    });
+
+    blogtitleclick();
+
+    $("#blogtitle_bottom div").click(function() {
+        $("#blogtitle_bottom div").each(function(i) {
+            $(this).css("background-color", "#fafafa").children("a").css("color", "#0a8cd2");
+        });
+        $(this).css({
+            "background-color" : "#e6e6e6",
+        }).children("a").css("color", "#000");
+
+    });
+
+    $(".rightdiv_agreelabel").click(function() {
+        $(this).css("background-position", "-100px 0px");
+    });
+
+    $(".rightdiv_hidediv").hide();
+    $(".content_div_bloginfo").mouseover(function() {
+        $(this).find(".rightdiv_hidediv").show();
+    }).mouseout(function() {
+        $(this).find(".rightdiv_hidediv").hide();
+    });
+    $(".content_div_blogat").mouseover(function() {
+        $(this).find(".rightdiv_hidediv").show();
+    }).mouseout(function() {
+        $(this).find(".rightdiv_hidediv").hide();
+    });
+
+    navigation();
+    $("#pageflag").hide();
+});
+
+function blogtitleclick() {
+    $("#top_all_ico").css({
+        "width" : "42px",
+        "height" : "16px",
+        "border" : "0px",
+        "background-color" : "#fafafa",
+        "background-image" : "url(./images/icon.png)",
+        "background-position" : "-501px -141.5px"
+    });
+    $("#blogtitle_top_weibo").mouseover(function() {
+        $("#top_weibo_text").css({
+            "color" : "#0a8cd2",
+            "cursor" : "pointer"
+        });
+    }).mouseout(function() {
+        $("#top_weibo_text").css({
+            "color" : "#000000"
+        });
+    }).click(function() {
+        $("#top_weibo_text").css({
+            "width" : "42px",
+            "height" : "15px",
+            "font-size" : "13px",
+            "font-weight" : "bold",
+            "text-align" : "center",
+            "background-color" : "#fafafa",
+        });
+
+        $("#top_weibo_ico").css({
+            "width" : "44px",
+            "height" : "16px",
+            "border" : "0px",
+            "background-image" : "url(./images/icon.png)",
+            "background-position" : "-501px -141.5px"
+        });
+
+        $("#top_weibo_ico").show();
+        $("#top_all_ico").hide();
+
+        $("#blogtitle_top_all").css({
+            "width" : "42px",
+            "height" : "15px",
+            "background-color" : "#fafafa",
+        });
+
+        $("#top_all_text").css({
+            "width" : "42px",
+            "height" : "15px",
+            "font-size" : "13px",
+            "font-weight" : "normal",
+            "text-align" : "center",
+            "background-color" : "#fafafa"
+        }).mouseover(function() {
+            $("#top_all_text").css({
+                "color" : "#0a8cd2",
+                "cursor" : "pointer"
+            });
+        }).mouseout(function() {
+            $("#top_all_text").css({
+                "color" : "#000000"
+            });
+        });
+    });
+    //blogtitle_top_all
+    $("#blogtitle_top_all").click(function() {
+        $("#top_all_text").css({
+            "width" : "42px",
+            "height" : "15px",
+            "font-size" : "13px",
+            "font-weight" : "bold",
+            "text-align" : "center",
+            "background-color" : "#fafafa",
+        });
+
+        $("#top_weibo_ico").hide();
+        $("#top_all_ico").show();
+
+        $("#blogtitle_top_weibo").css({
+            "width" : "42px",
+            "height" : "15px",
+            "background-color" : "#fafafa",
+        });
+
+        $("#top_weibo_text").css({
+            "width" : "42px",
+            "height" : "15px",
+            "font-size" : "13px",
+            "font-weight" : "normal",
+            "text-align" : "center",
+            "background-color" : "#fafafa"
+        }).mouseover(function() {
+            $("#top_weibo_text").css({
+                "color" : "#0a8cd2",
+                "cursor" : "pointer"
+            });
+        }).mouseout(function() {
+            $("#top_weibo_text").css({
+                "color" : "#000000"
+            });
+        });
+    });
+}
+
+function navigation() {
+    var pageFlagValue = $("#pageflag").attr("value");
+
+    if (pageFlagValue == "userinfo") {
+        $("#navigation_userinfo").css({
+                "height" : "54px",
+                "background-color" : "#fafafa",
+                "border-bottom" : "0px"
+            });
+        userinfoClick();
+    }
+    $("#navigation_index").mouseover(function() {
+        $(this).css("cursor", "pointer").click(function() {
+            $(this).css({
+                "height" : "54px",
+                "background-color" : "#fafafa",
+                "border-bottom" : "0px"
+            });
+            indexClick();
+
+        });
+    });
+    $("#navigation_userinfo").mouseover(function() {
+        $(this).css("cursor", "pointer").click(function() {
+            $(this).css({
+                "height" : "54px",
+                "background-color" : "#fafafa",
+                "border-bottom" : "0px"
+            });
+            userinfoClick();
+        });
+    });
+    $("#navigation_fance").mouseover(function() {
+        $(this).css("cursor", "pointer").click(function() {
+            $(this).css({
+                "height" : "54px",
+                "background-color" : "#fafafa",
+                "border-bottom" : "0px"
+            });
+            fanceClick();
+
+        });
+    });
+    $("#navigation_photos").mouseover(function() {
+        $(this).css("cursor", "pointer").click(function() {
+            $(this).css({
+                "height" : "54px",
+                "background-color" : "#fafafa",
+                "border-bottom" : "0px"
+            });
+            photosClick();
+
+        });
+    });
+}
+
+function indexClick() {
+    $("#navigation_index_showdiv").show();
+    $("#userinfo_showdiv_maindiv").hide();
+    $("#fance_showdiv_maindiv").hide();
+    $("#photos_showdiv_maindiv").hide();
+    $("#navigation_userinfo").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_fance").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_photos").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#index_bg").css("background-position", "-48px 0px");
+    $("#index_ico").css("background-position", "0px 0px");
+    $("#userinfo_bg").css("background-position", "0px 0px");
+    $("#userinfo_ico").css("background-position", "0px -25px");
+    $("#fance_bg").css("background-position", "0px 0px");
+    $("#fance_ico").css("background-position", "0px -50px");
+    $("#photos_bg").css("background-position", "0px 0px");
+    $("#photos_ico").css("background-position", "0px -75px");
+}
+
+function userinfoClick() {
+    $("#navigation_index_showdiv").hide();
+    $("#userinfo_showdiv_maindiv").show();
+
+    $(".tool_btn").mouseover(function() {
+        $(this).css({
+            "cursor" : "pointer",
+            "background-position" : "0px 31px"
+        });
+    }).mouseout(function() {
+        $(this).css({
+            "background-position" : "0px 1px"
+        });
+    });
+
+    $("#fance_showdiv_maindiv").hide();
+    $("#photos_showdiv_maindiv").hide();
+
+    $("#navigation_index").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_fance").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_photos").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+
+    $("#index_bg").css("background-position", "0px 0px");
+    $("#index_ico").css("background-position", "-2px 0px");
+    $("#userinfo_bg").css("background-position", "-48px 0px");
+    $("#userinfo_ico").css("background-position", "2px -25px");
+    $("#fance_bg").css("background-position", "0px 0px");
+    $("#fance_ico").css("background-position", "0px -50px");
+    $("#photos_bg").css("background-position", "0px 0px");
+    $("#photos_ico").css("background-position", "0px -75px");
+}
+
+function fanceClick() {
+    $("#navigation_index_showdiv").hide();
+    $("#userinfo_showdiv_maindiv").hide();
+    $("#fance_showdiv_maindiv").show();
+    $("#photos_showdiv_maindiv").hide();
+    $("#navigation_index").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_userinfo").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_photos").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#index_bg").css("background-position", "0px 0px");
+    $("#index_ico").css("background-position", "-2px 0px");
+    $("#userinfo_bg").css("background-position", "0px 0px");
+    $("#userinfo_ico").css("background-position", "0px -25px");
+    $("#fance_bg").css("background-position", "-48px 0px");
+    $("#fance_ico").css("background-position", "2px -50px");
+    $("#photos_bg").css("background-position", "0px 0px");
+    $("#photos_ico").css("background-position", "0px -75px");
+}
+
+function photosClick() {
+    $("#navigation_index_showdiv").hide();
+    $("#userinfo_showdiv_maindiv").hide();
+    $("#fance_showdiv_maindiv").hide();
+    $("#photos_showdiv_maindiv").show();
+    $("#navigation_index").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_userinfo").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+    $("#navigation_fance").css({
+        "height" : "53px",
+        "background-color" : "#f2f2f2",
+        "border-bottom" : "1px"
+    });
+
+    $("#index_bg").css("background-position", "0px 0px");
+    $("#index_ico").css("background-position", "-2px 0px");
+    $("#userinfo_bg").css("background-position", "0px 0px");
+    $("#userinfo_ico").css("background-position", "0px -25px");
+    $("#fance_bg").css("background-position", "0px 0px");
+    $("#fance_ico").css("background-position", "0px -50px");
+    $("#photos_bg").css("background-position", "-48px 0px");
+    $("#photos_ico").css("background-position", "2px -75px");
+}

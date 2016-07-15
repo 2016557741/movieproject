@@ -1,0 +1,340 @@
+* {
+	outline: none;
+}
+
+body {
+	text-align: center;
+}
+
+#top_bg {
+	background-image: url("../../images/bg_nav.png");
+	background-repeat: repeat-x;
+	width: 100%;
+	height: 41px;
+	margin-bottom: -42px;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+}
+
+#top_div {
+	background-image: url("../../images/bg_line.png");
+	background-repeat: no-repeat;
+	background-position: 0 38px;
+	width: 100%;
+	height: 40px;
+}
+
+#top_content {
+	margin: 0 auto;
+	width: 1010px;
+	height: 40px;
+	position: relative;
+	left: -15px;
+	z-index: 3;
+}
+
+#top_logo {
+	margin-left: 4px;
+	width: 175x;
+	height: 40px;
+	width: 175x;
+}
+
+#top_left {
+	width: 285px;
+	height: 40px;
+	z-index: 3;
+}
+
+#top_search {
+	background-image: url("../../images/bg_line.png");
+	background-position: 0 -5px;
+	margin-top: 7px;
+	width: 235px;
+	margin-left: 18px;
+	height: 27px;
+}
+
+#top_right {
+	
+}
+
+#logo_img,#search_btn,#bar_index span,#bar_app span,#bar_weiba span,#bar_game span,.ico,.right_bar,#new_msg,#user_login span
+	{
+	display: block;
+}
+
+#logo_img {
+	border: 0;
+	width: 175px;
+	height: 38px;
+	background-image: url("../../images/WB_logo.png");
+	background-position: 0 0;
+}
+
+#bar_index,#bar_app,#bar_weiba,#bar_game {
+	text-align: center;
+	width: 69px;
+	height: 37px;
+	opacity: 0.9;
+}
+
+#bar_index {
+	
+}
+
+#bar_app {
+	
+}
+
+#bar_weiba {
+	
+}
+
+#bar_game {
+	
+}
+
+#bar_app,#bar_weiba,#bar_game {
+	background-image: url("../../images/icon.png");
+	background-position: -86px -376px;
+	position: static;
+	z-index: 3;
+}
+
+#bar_index a,#bar_app a,#bar_weiba a,#bar_game a {
+	text-decoration: none;
+}
+
+#bar_index span,#bar_app span,#bar_weiba span,#bar_game span {
+	color: white;
+	width: 69px;
+	height: 30px;
+	font-size: 15px;
+	padding-top: 10px;
+}
+
+#app_show,#weiba_show,#game_show,#vip_show,#setting_show,#message_show,#weibo_show
+	{
+	display: none;
+	float: left;
+	background-color: white;
+	border: solid black 1px;
+	border-top: none;
+	position: absolute;
+	z-index: 3;
+}
+
+#app_show {
+	width: 600px;
+	height: 210px;
+	top: 39px;
+	left: 170px;
+}
+
+#weiba_show {
+	width: 600px;
+	height: 210px;
+	top: 39px;
+	left: 170px;
+}
+
+#game_show {
+	width: 600px;
+	height: 210px;
+	top: 39px;
+	left: 170px;
+}
+
+#search_input {
+	outline: none;
+	background-color: rgb(235, 240, 240);
+	border: 0;
+	width: 195px;
+	height: 17px;
+	font-size: 12px;
+	color: #777;
+	vertical-align: center;
+	position: absolute;
+	right: 322px;
+	top: 11px;
+}
+
+#search_btn {
+	float: left;
+	width: 22px;
+	height: 23px;
+	position: absolute;
+	right: 298px;
+	top: 9px;
+}
+
+/* right */
+.ico {
+	width: 18px;
+	height: 17px;
+	background-image: url("../../images/icon.png");
+}
+
+.right_bar {
+	width: 31px;
+	height: 26px;
+	padding-top: 11px;
+	padding-left: 12px;
+	margin-right: 13px;
+}
+
+#user_weibo,#user_message,#user_setting,#user_vip {
+	width: 44px;
+	height: 38px;
+}
+
+#user_login{
+	height: 38px;
+}
+
+#user_login a {
+	text-decoration: none;
+}
+
+#user_login span {
+	font-size: 13px;
+	font-family: "微软雅黑";
+	text-decoration: none;
+	color: white;
+	height: 30px;
+	padding-top: 8px;
+}
+
+#user_weibo a {
+	outline: none;
+}
+
+#user_weibo span {
+	background-position: -48px 1px;
+}
+
+#user_message span {
+	background-position: -48px -49px;
+}
+
+#user_setting span {
+	background-position: -48px -100px;
+}
+
+#user_vip span {
+	background-position: -48px -174px;
+}
+
+#vip_show {
+	width: 140px;
+	height: 85px;
+	top: 39px;
+	right: 0;
+}
+
+#setting_show {
+	width: 140px;
+	height: 275px;
+	top: 39px;
+	right: 44px;
+}
+
+#message_show {
+	width: 150px;
+	height: 305px;
+	top: 39px;
+	right: 88px;
+}
+
+#weibo_show {
+	width: 415px;
+	height: 160px;
+	top: 39px;
+	right: 132px;
+	z-index: 2;
+}
+
+/* ◆
+ */
+#bottom_content,#new_msg {
+	float: left;
+}
+
+#bottom_div,#bottom_content {
+	text-align: left;
+	margin: 0 auto;
+	height: 215px;
+	width: 980px;
+}
+
+#bottom_content {
+	background-color: white;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+#bottom_table_t,#bottom_table_b {
+	font-size: 13px;
+	color: #444;
+	margin-top: 13px;
+	margin-left: 15px;
+}
+
+#bottom_table_t {
+	margin-top: 17px;
+	border-bottom: solid rgb(230, 230, 230) 1px;
+}
+
+#bottom_table_t a {
+	text-decoration: none;
+	color: rgb(55, 165, 185);
+}
+
+#bottom_table_t a:HOVER {
+	text-decoration: underline;
+	color: rgb(55, 165, 185);
+}
+
+#bottom_table_b td {
+	padding-top: 2px;
+}
+
+#bottom_table_b td {
+	padding-top: 2px;
+}
+
+#bottom_table_b a {
+	color: #444;
+	text-decoration: none;
+}
+
+#bottom_table_b a:HOVER {
+	color: rgb(55, 165, 185);
+	text-decoration: none;
+}
+
+#bottom_table_b .ico {
+	float:left;
+}
+
+#new_msg {
+	display: none;
+	background-image: url("../../images/icon.png");
+	width: 10px;
+	height: 10px;
+	position: relative;
+	left: 11px;
+	top: -3px;
+}
+
+.topbar_nowpage {
+	background-color: rgb(50, 110, 130);
+	opacity: 0.9;
+}
+
+.topbar_mouseover {
+	background-color: rgb(65, 130, 150);
+	opacity: 0.9;
+}

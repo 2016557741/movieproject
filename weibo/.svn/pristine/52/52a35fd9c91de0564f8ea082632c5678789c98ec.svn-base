@@ -1,0 +1,9 @@
+package www.csdn.project.service;
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:16:03
+ *
+ */
+public interface AdminsService {
+	public boolean login(String name,String pass);
+}

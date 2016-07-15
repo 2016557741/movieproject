@@ -1,0 +1,8 @@
+package www.csdn.project.dao;
+
+import www.csdn.project.domain.Users;
+
+public interface UsersDao {
+
+	public Users login(final String email, final String passWord);
+}

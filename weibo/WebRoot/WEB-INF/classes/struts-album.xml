@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="album" namespace="/csdn" extends="json-default" >
+		<action name="AlbumAction_*" class="albumAction" method="{1}">
+			<result name="showAlbum"  >/frontstage/gallery.jsp</result>
+			<result name="success" type="chain">
+			      <param name="namespace">/csdn</param>
+                   <param name="actionName">AnniversaryAction_showTimeline</param>
+            </result>
+ 	    	<result name="faile" type="chain">
+ 	    	 <param name="namespace">/csdn</param>
+ 	    	    <param name="actionName">AnniversaryAction_showTimeline</param> 
+ 	    	</result>
+ 	    	<result name="reflash" type="chain">
+ 	    	    <param name="namespace">/csdn</param>
+ 	    	    <param name="actionName">AnniversaryAction_showTimeline</param> 
+ 	    	</result>
+			
+ 		</action>
+	</package>
+</struts>

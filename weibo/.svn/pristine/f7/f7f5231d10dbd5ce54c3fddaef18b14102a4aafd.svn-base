@@ -1,0 +1,28 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>index</title>
+
+</head>
+
+<body>
+	<h3>个性域名</h3>
+	<div>
+		<p>记得自己的微博地址是什么吗？设置个性域名，让朋友更容易记住！</p>
+		<strong>设置个性化域名</strong>
+		<div class="lf">
+			<em>http://weibo.com/</em> <input id="url" type="text" class="text" />
+		</div>
+		<div>
+			<a id="submit" class="newabtn_ok" href="javascript:void(0)"><em>确定</em>
+			</a> <span>保存后就不能修改了</span>
+		</div>
+		<div>拥有微号即可拥有数字微博地址</div>
+		<a class="newabtn_ok" href="http://hao.weibo.com/" target="_blank"><em>快来申请吧</em>
+		</a>
+		<p>拥有微号即可拥有炫酷微博地址、发微博、私信可@微号、搜索微号快速找人、微号专属标识、微号闪亮勋章！还在等什么，快来获取一个微号吧！</p>
+	</div>
+</body>
+</html>

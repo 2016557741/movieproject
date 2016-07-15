@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="pictures" namespace="/csdn" extends="json-default">
+		<action name="PicturesAction_*" class="picturesAction" method="{1}">
+			<result name="query" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pagination\.from,pagination\.size,pagination\.total,pagination\.nowpage
+					,pagination\.rows\[\d+\]\.id,pagination\.rows\[\d+\]\.messages\.id,pagination\.rows\[\d+\]\.users\.id,
+					pagination\.rows\[\d+\]\.url,pagination\.rows\[\d+\]\.type,pagination\.rows\[\d+\]\.time
+				</param>
+			</result>
+			<result name="cutsucceed" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="deletePicturesSucceed" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="uploadsucceed" type="json">
+				<param name="root">finalPath</param>
+			</result>
+			<result name="uploadfail" type="json">
+				<param name="root">finalPath</param>
+			</result>
+			
+			<result name="queryall" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="saveorupdate" type="json">
+				<param name="root">flag</param>
+			</result>
+		</action>
+	</package>
+</struts>

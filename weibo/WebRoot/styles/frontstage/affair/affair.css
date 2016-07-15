@@ -1,0 +1,45 @@
+ .container1{
+	 height: 450px;
+    margin: 120px auto 0;
+    position: relative;
+    width: 975px;
+}
+.Clickable {
+    background-image: url("../../../images/affair/Clickables.png");
+ }
+ .CommonIcons {
+    background-image: url("../../../images/affair/CommonIcons.png");
+ }
+ 
+.MonthAndYear {
+    padding-bottom: 7px;
+    padding-top: 13px;
+}
+.DayOfWeek{
+text-align: center;
+line-height: 1;
+ margin: 0;
+    padding: 0;
+}
+.DayOfMonth{
+	   color: #2385C4;
+    cursor: pointer;
+    outline: 0 none;
+    text-decoration: none;
+  font-size: 20px;
+    line-height: 28px;
+padding-left:14px;
+    width: 100%;
+  font-weight: bold;
+    text-align: center;
+ 
+}
+.MonthAbbr{
+	text-align: center;
+line-height: 1;
+ margin: 0;
+    padding: 0;
+}
+.activeCalendarSmall{background-position:0px -189px;width:27px;height:46px}
+.noActiveCalendarSmall{background-position:-28px -189px;width:27px;height:46px}
+ 

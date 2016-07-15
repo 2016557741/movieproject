@@ -1,0 +1,227 @@
+package www.csdn.project.action;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import www.csdn.project.domain.Userinfo;
+import www.csdn.project.domain.Users;
+import www.csdn.project.service.UserinfoService;
+import www.csdn.project.utils.ComboBoxBean;
+import www.csdn.project.utils.Pagination;
+
+public class UserinfoAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private UserinfoService userinfoService;
+	private Userinfo userinfo;
+
+	public Userinfo getUserinfo() {
+		return userinfo;
+	}
+
+	private Users users;
+	private String birthday;
+	private String pageflag;
+	private String updateflag;
+
+	public void setUpdateflag(String updateflag) {
+		this.updateflag = updateflag;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public String getPageflag() {
+		return pageflag;
+	}
+
+	public void setPageflag(String pageflag) {
+		this.pageflag = pageflag;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public void setUserinfo(Userinfo userinfo) {
+		this.userinfo = userinfo;
+	}
+
+	public void setUserinfoService(UserinfoService userinfoService) {
+		this.userinfoService = userinfoService;
+	}
+
+	/*
+	 * public String getObjectByEmail(){ userinfo = (Userinfo)
+	 * baseService.getObjectByProperty(Userinfo.class,"email",""); return
+	 * "getObjectByEmail"; }
+	 */
+
+	public String query() {
+
+		pagination = new Pagination(this.page, this.rows);
+		String sql = spliceSql();
+		pagination.setTotal(baseService.getCount(Userinfo.class, sql));
+		pagination.setRows(baseService.getObjects(Userinfo.class, sql,
+				pagination.getFrom(), pagination.getSize(), this.order,
+				this.sort));
+
+		return "query";
+	}
+
+	private String spliceSql() {
+
+		String whereSql = " where 1=1 ";
+		if (userinfo != null) {
+			// 序号
+			String trueName = userinfo.getTrueName();
+			if (!"".equals(trueName) && (trueName != null)) {
+				whereSql += " and  trueName like '%" + trueName + "%'";
+			}
+			String sexUal = userinfo.getSexUal();
+			if (!"".equals(sexUal) && (sexUal != null)) {
+				whereSql += " and  sexUal = '" + sexUal + "'";
+			}
+			String sex = userinfo.getSex();
+			if (!"".equals(sex) && (sex != null)) {
+				whereSql += " and  sex = '" + sex + "'";
+			}
+			String bloodType = userinfo.getBloodType();
+			if (!"".equals(bloodType) && (bloodType != null)) {
+				whereSql += " and  bloodType = '" + bloodType + "'";
+			}
+		}
+		return whereSql;
+	}
+
+	public String update() {
+		/*
+		 * Date date = null; try { date = new
+		 * SimpleDateFormat("yyyyMMdd").parse(birthday); } catch (ParseException
+		 * e) { e.printStackTrace(); }
+		 */
+		baseService.saveOrUpdateObject(users);
+		userinfo.setUsers(users);
+		userinfo.setBirthday(birthday);
+		this.flag = baseService.saveOrUpdateObject(userinfo);
+		return "saveorupdate";
+	}
+
+	public String saveOrUpdateObject() {
+		this.flag = baseService.saveOrUpdateObject(userinfo);
+		return "saveorupdate";
+	}
+
+	public String deleteObject() {
+		this.flag = baseService.deleteObjects(Userinfo.class, ids);
+		return "delete";
+	}
+
+	public String getAllUsers() {
+		List<Users> users = baseService.getAllObjects(Users.class);
+		for (Users user : users) {
+			list.add(new ComboBoxBean(user.getId(), user.getEmail(), false));
+		}
+		return "queryall";
+	}
+
+	public String getUsersInfo() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Users user = (Users) request.getSession().getAttribute("user");
+		if (user != null) {
+			Userinfo userinfo = (Userinfo) baseService.getObjects(
+					Userinfo.class, "where users.id=" + user.getId()).get(0);
+			request.getSession().setAttribute("userinfos", userinfo);
+			pageflag = "userinfo";
+			request.setAttribute("pageflag", pageflag);
+			return "userinfo";
+		} else {
+			return "userinfonull";
+		}
+	}
+
+	public String updateUserInfo() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession httpSession = request.getSession();
+		Users sessionusers = (Users) httpSession.getAttribute("user");
+		if (userinfo != null && sessionusers != null) {
+
+			Integer usersId = sessionusers.getId();
+			Users findUsers = (Users) baseService.getObjectById(Users.class,
+					usersId);
+			Userinfo oldUserinfo = (Userinfo) baseService.getObjects(
+					Userinfo.class, "where users.id=" + usersId).get(0);
+			Integer oldUserinfoId = oldUserinfo.getId();
+			if ("jbinfo".equals(updateflag)) {
+				if (users != null) {
+					findUsers.setNikeName(users.getNikeName());
+				}
+				baseService.saveOrUpdateObject(findUsers);
+				if(userinfo.getTrueName()!=null&&userinfo.getTrueName()!="")
+				oldUserinfo.setTrueName(userinfo.getTrueName());
+				oldUserinfo.setAddress(userinfo.getAddress());
+				oldUserinfo.setSex(userinfo.getSex());
+				oldUserinfo.setSexUal(userinfo.getSexUal());
+				oldUserinfo.setFeeling(userinfo.getFeeling());
+				oldUserinfo.setBirthday(userinfo.getBirthday());
+				oldUserinfo.setBloodType(userinfo.getBloodType());
+				oldUserinfo.setBlogUrl(userinfo.getBlogUrl());
+				oldUserinfo.setRealName(userinfo.getRealName());
+				oldUserinfo.setIntro(userinfo.getIntro());
+
+				httpSession.removeAttribute("user");
+				Users newusers = (Users) baseService.getObjectById(Users.class,
+						usersId);
+				httpSession.setAttribute("user", newusers);
+
+			}
+			if ("lxinfo".equals(updateflag)) {
+				oldUserinfo.setEmail(userinfo.getEmail());
+				oldUserinfo.setQqNumber(userinfo.getQqNumber());
+				oldUserinfo.setMessenger(userinfo.getMessenger());
+
+			}
+			if ("zyinfo".equals(updateflag)) {
+				oldUserinfo.setProfession(userinfo.getProfession());
+
+			}
+			if ("bqinfo".equals(updateflag)) {
+				oldUserinfo.setLabel(userinfo.getLabel());
+
+			}
+			baseService.saveOrUpdateObject(oldUserinfo);
+			System.out.println(oldUserinfo.toString()
+					+ "*****************************");
+			System.out.println("更新**************************" + updateflag);
+			httpSession.removeAttribute("userinfos");
+			Userinfo newuserinfo = (Userinfo) baseService.getObjectById(
+					Userinfo.class, oldUserinfoId);
+			System.out.println("*************************"
+					+ newuserinfo.toString());
+			httpSession.setAttribute("userinfos", newuserinfo);
+			/*
+			 * try { Thread.sleep(1000); } catch (InterruptedException e) {
+			 * e.printStackTrace(); }
+			 */
+		}
+		pageflag = "userinfo";
+		request.setAttribute("pageflag", pageflag);
+		return "updateUserInfo";
+	}
+
+}

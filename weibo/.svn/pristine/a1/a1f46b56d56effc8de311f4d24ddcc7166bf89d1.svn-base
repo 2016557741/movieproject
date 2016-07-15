@@ -1,0 +1,58 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author 曹建波	2013-5-2 上午11:05:01
+ *
+ */
+public class Admins implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String name;
+	private String pass;
+	private String type;
+	public Admins() {
+		super();
+	}
+	
+	public Admins(Integer id, String name, String pass, String type) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.pass = pass;
+		this.type = type;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
+}

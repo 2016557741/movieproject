@@ -1,0 +1,51 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * 
+ * @author 曹建波	2013-5-2 下午3:17:17
+ *
+ */
+public class Atusers implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private Date time;
+	private Messages messages;
+	private Users users;
+	
+	public Atusers() {
+		super();
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public Messages getMessages() {
+		return messages;
+	}
+	public void setMessages(Messages messages) {
+		this.messages = messages;
+	}
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+	
+
+}

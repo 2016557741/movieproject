@@ -1,0 +1,140 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>index</title>
+	
+  </head>
+  
+  <body>
+    <!--个人信息-->
+      <div class="W_person_info">
+        <dl class="clearfix">
+			<dt><a href="/settings/photo" title=""><img src="http://tp4.sinaimg.cn/2659241503/50/22843106158" title="never_fighter" alt=""  width="50" height="50" /></a></dt>
+			<dd><a href="http://weibo.com/2659241503/profile">never_fighter
+						</a>
+			<div class="status">
+				<img height="12" width="11" class="male" alt="" src="http://img.t.sinajs.cn/t4/style/images/common/transparent.gif">
+								<span class="W_texta">河北-保定</span>
+			</div>
+          </dd>
+        </dl>
+      </div>
+      <!--/个人信息-->
+      <!--帐号安全度-->
+      <div class="form_security_center">
+        <dl class="safety_factor clearfix">
+          <dt class="space">帐号安全系数：</dt>
+          <dd class="conbox1">
+            <div class="factor">3</div>
+            <div class="pawBoxframe">
+              <!--  <div class="paw_BoxTxt W_textb"><span class="paw_txt">低</span><span class="paw_txt">中</span><span class="paw_txt">高</span></div>-->
+              <div class="paw_Box"><span class="paw_1 "></span><span class="paw_2 "></span><span class="paw_3 "></span><span class="paw_4 paw_none"></span><span class="paw_5 paw_none"></span><span class="paw_6 paw_none"></span></div>
+            </div>
+            <div class="txt"><a href="http://help.weibo.com/faq/q/225/12505#12505" target='_blank'>怎样提高帐号安全?</a></div>
+          </dd>
+        </dl>
+		        <dl class="lastlogin clearfix">
+          <dt>上次登录：</dt>
+          <dd class="conbox1">
+		  <span class='W_f14'>2013年05月13日&nbsp;&nbsp;14:28:25&nbsp;&nbsp;</span>
+		  <span class="CH">（</span>保定<span class="CH">）</span>		  </dd>
+        </dl>
+		                <div class="W_tips clearfix">
+			<ul class="tipscon tips_warn">
+				<li class="icon"><img src="http://timg.sjs.sinajs.cn/t4/style/images/common/transparent.gif" alt="警告" class="icon_error"></li>
+				<li class="txt"><span class="W_spetxt">存在登录异常，现在</span><a href="abnormal" class="W_linka">去查看</a></li>
+			</ul>
+		</div>
+              </div>
+      <!--/帐号安全度-->
+      <div class="safetyline clearfix"></div>
+      <!--未设置状态-->
+      <div class="form_security_center" id="security_index_form">
+        <dl class="clearfix">
+          <dt><span class="icon_succM"></span>密<span class="CH">&nbsp;&nbsp;&nbsp;&nbsp;</span>码：</dt>
+          <dd class="conbox">
+            <div class="current_safety"><span class="W_f14 W_texta">当前密码安全度</span><div class="paw_Inline"><span class="paw_1 "></span><span class="paw_2 "></span><span class="paw_3 "></span><span class="paw_4 "></span><span class="paw_5 paw_none"></span><span class="paw_6 paw_none"></span></div></div>
+            <div class="tips W_textb">建议密码由8位以上数字、字母和特殊字符组成。</div>
+          </dd>
+          <dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/password">修改</a></dd>
+        </dl>
+        <div class="W_hline clearfix"> </div>
+        <dl class="clearfix">
+					<dt><span class="icon_succM"></span>安全邮箱：</dt>
+			<dd class="conbox">
+				<p class="W_texta W_f14">2****0@q****q.com</p>
+				<div class="tips W_textb">忘记密码时，您的绑定邮箱可以帮您找回密码。</div>
+			</dd>
+			<dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/security/email?act=modify">修改</a></dd>
+		        </dl>
+        <div class="W_hline clearfix"> </div>
+        <dl class="clearfix">
+					<dt><span class="icon_succM"></span>绑定手机：</dt>
+			<dd class="conbox">
+				<p class="W_texta W_f14">绑定的手机号 15*******22</p>
+				<div class="tips W_textb">手机发微博。</div>
+			</dd>
+			<dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/mobile">修改</a></dd>
+		        </dl>
+        <div class="W_hline clearfix"> </div>
+        <dl class="clearfix">
+					<dt><span class="icon_delM"></span>证件信息：</dt>
+			<dd class="conbox">
+				<p class="W_texta W_f14">尚未设置证件信息</p>
+				<div class="tips W_textb">为了您的帐号安全，证件信息设置后不能修改。</div>
+			</dd>
+			<dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/security/identity">设置</a></dd>
+				
+        </dl>
+        <div class="W_hline clearfix"> </div>
+				
+        <dl class="clearfix">
+					<dt><span class="icon_delM"></span>安全提醒：</dt>
+			<dd class="conbox">
+				<p class="W_texta W_f14">尚未设置安全提醒</p>
+				<div class="tips W_textb">使用电子邮件、手机短信及微博通知等方式来接收来自微博的重要消息。</div>
+			</dd>
+			<dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/security/remind">设置</a></dd>
+			
+		</dl>
+		<div class="W_hline clearfix"></div>
+		<dl class="clearfix">
+					<dt><span class="icon_delM"></span>登录保护：</dt>
+			<dd class="conbox">
+				<p class="W_texta W_f14">尚未设置登录保护</p>
+				<div class="tips W_textb">设置登录保护后，在其他的地点登录时，需要填写验证码。</div>
+			</dd>
+			<dd class="tipbox"><a class="optlink" node-type="link" action-type="link" href="/settings/security/protect">设置</a></dd>
+			
+		</dl>
+		<div class="W_hline clearfix"> </div>
+        <dl class="clearfix">
+
+				</dl>
+				    </div>
+
+<div class="W_main_r">
+	<div id="" class="W_rightModule">
+		<div class="title">常见安全问题</div>
+		<ul class="topic_list clearfix">
+			<li><span class="W_textb">1、</span><a href="http://help.weibo.com/faq/q/544/12168#12168" target='_blank'>微博被盗，绑定手机被修改了怎么办？</a></li>
+			<li><span class="W_textb">2、</span><a href="http://help.weibo.com/faq/q/544/12221#12221" target='_blank'>微博帐号被盗用微博转发功能异常怎么办？</a></li>
+			<li><span class="W_textb">3、</span><a href="http://help.weibo.com/faq/q/225/12506#12506" target='_blank'>怎样的密码更安全？</a></li>
+			<li><span class="W_textb">4、</span><a href="http://help.weibo.com/faq/q/225/45#45" target='_blank'>忘记密码怎么办？</a></li>
+			<li><span class="W_textb">5、</span><a href="http://help.weibo.com/faq/q/227/12499#12499" target='_blank'>如何更改绑定手机？</a></li>
+		</ul>
+	</div>
+	  <div id="" class="W_rightModule W_no_border">
+        <ul class="topic_list clearfix">
+          <!-- <li>客服邮箱：tkefu@vip.sina.com</li> -->
+          <li>客服电话：4000 960 960（个人） 4000 980 980（企业）按当地市话标准计费</li>
+		  <!--<li><a href='http://s.weibo.com/weibo/weijianyi'></a>
+          </li>-->
+        </ul>
+      </div>
+</div>
+
+  </body>
+</html>

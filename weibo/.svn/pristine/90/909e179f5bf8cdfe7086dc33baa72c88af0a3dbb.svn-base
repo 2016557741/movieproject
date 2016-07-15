@@ -1,0 +1,174 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.B_login {
+	background-image: url('../../../images/bg_repeat_reg.png');
+	background-repeat: repeat-x;
+	background-color: rgb(200,225,240);
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 680px;
+}
+
+.bodydiv {
+	margin: 0 auto;
+	height: 610px;
+	width: 1200px;
+	z-index: 0;
+	/* background:url("../../../images/bg_reg.png") no-repeat fixed top center; */
+}
+.maindiv {
+	margin: 20px auto;
+	height: 610px;
+	width: 900px;
+}
+.logodiv {
+	float: left;
+	height: 40px;
+	width: 900px;
+	background: url("../../../images/logo.png") no-repeat top left;
+}
+
+.topdiv {
+	margin-top: 10px;
+	float: left;
+	height: 10px;
+	width: 900px;
+	background: url("../../../images/bg_topline.png") no-repeat bottom;
+}
+.infodiv {
+	float: left;
+	height: 478px;
+	width: 900px;
+	background-position: 0px -110px;
+	background-color: #FAFAFA;
+}
+.infotop {
+	height: 65px;
+	width: 900px;
+}
+.infotoptop {
+	height: 20px;
+	width: 900px;
+}
+.infotopbot {
+	height: 45px;
+	width: 900px;
+}
+.mail {
+	float: left;
+	margin-top: 20px;
+}
+.infoleft {
+	float: left;
+	height: 313px;
+	width: 700px;
+	border: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+}
+.inforight {
+	float: right;
+	text-align: left;
+	height: 313px;
+	width: 200px;
+	border: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+	background: url("../../../images/login_bg_vline_s.png") no-repeat left;
+}
+.infobottom {
+	float: left;
+	height: 100px;
+	width: 900px;
+	margin-top: 20px;
+}
+#reg {
+	float: left;
+	margin-left: 100px;
+	margin-top: 10px;
+	width: 550px;
+}
+.myreg {
+	width: 133px;
+	height: 40px;
+	margin-top: 4px;
+	margin-left: 20px;
+	border: #d9d9d9 1px solid;
+	border-bottom: 0px;
+}
+.qyreg {
+	width: 133px;
+	height: 40px;
+	margin-top: -42px;
+	margin-left: 165px;
+	border: #d9d9d9 1px solid;
+	border-bottom: 0px;
+}
+.reflash {
+	float: left;
+	width: 12px;
+	height: 17px;
+	background-image: url('../../../images/verify_refresh.png');
+	background-position: 0px 34px;
+}
+.reflash:hover {
+	width: 12px;
+	height: 17px;
+	background-image: url('../../../images/verify_refresh.png');
+	background-position: 0px 17px;
+}
+.ziti {
+	font-size: 13px;
+	color: #808080;
+}
+.ziti1 {
+	font-size: 14px;
+	color: #808080;
+}
+a {
+	color: #0078B6;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.phone {
+	margin-top: 20px;
+}
+.regbtn input {
+	font-weight: bold;
+	color: white;
+	margin-top: 10px;
+	float: left;
+	border: 0;
+	width: 200px;
+	height: 40px;
+	background-image: url("../../../images/regbtn.png");
+	background-position: -2px 3px;
+}
+.regbtn input:HOVER {
+	margin-top: 10px;
+	float: left;
+	border: 0;
+	width: 200px;
+	height: 40px;
+	background-image: url("../../../images/regbtn.png");
+	background-position: 0px -33px;
+	cursor: pointer;
+}
+.line {
+	border-bottom-color: #CCCCCC;
+	border: 1px;
+	border-bottom-style: dashed;
+}
+.bsbsbs {
+	background: url("../../../images/main_bg.jpg") no-repeat;
+}

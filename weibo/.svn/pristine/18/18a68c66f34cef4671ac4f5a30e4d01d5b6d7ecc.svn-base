@@ -1,0 +1,73 @@
+h4{
+	font-size: 15px;
+}
+.setup_main{
+	margin-left: 50px;
+}
+.wleft1{
+	margin-left: 30px;
+}
+.font1{
+	font-size: 12px;
+	color: gray;
+}
+.font2{
+	font-size: 14px;
+}
+
+.font3{
+	font-size: 12px;
+	color: #333333;
+}
+.positionbg{
+	width: 324px;
+	height: 195px;
+	background-image: url('../../../images/bg_newtips.png');
+}
+.setupNewtips{
+	float: right;
+	margin-top: -580px;
+	margin-right: 60px;
+}
+.duihua{
+	clear: both;
+	float: right;
+	margin-top: 220px;
+	margin-right: 100px;
+}
+.picsty{
+	margin-left: 65px;
+	margin-top: -350px;
+}
+.subbot{
+	margin-top: -300px;
+}
+.yellow{
+	margin-left: 400px;
+	margin-top: -400px;
+}
+.subbot{
+	margin-top: 200px;
+}
+.btn_normal{
+	margin-left: 50px;
+}
+.divline{
+	border:0.5px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCCCCC;
+}
+.langbtsave{
+	width: 50px;
+	height: 30px;
+	background-color: #CCCCCC;
+	text-align: center;
+}
+.langbtsave:hover{
+	width: 50px;
+	height: 30px;
+	background-color: #808080;
+	text-align: center;
+	color: red;
+	cursor: pointer;
+}

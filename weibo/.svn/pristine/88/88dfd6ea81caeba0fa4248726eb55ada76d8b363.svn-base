@@ -1,0 +1,371 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.B_login {
+	background-image:url('../../../images/bg_repeat_reg.png');
+	background-repeat:repeat-x;
+	background-color:rgb(200,225,240);
+	text-align:center;
+	position: absolute;
+	width: 100%;
+	height: 855px;
+}
+.B_login #bgimg{
+	position:fixed;
+}
+.bodydiv {
+	margin:0 auto;
+	height:740px;
+	width:1200px;
+	z-index:0;
+	/* background:url("../../../images/bg_reg.png") no-repeat fixed top center; */
+}
+.maindiv{
+	margin:20px auto;
+	height:740px;
+	width:900px;
+}
+.logodiv{
+	float:left;
+	height: 40px;
+	width:900px;
+	background:url("../../../images/logo.png") no-repeat top left;
+}
+
+.topdiv{
+	margin-top:10px;
+	float:left;
+	height: 202px;
+	width:900px;
+	background: url("../../../images/bg_topline.png") no-repeat bottom;
+}
+.infodiv{
+	float:left;
+	height:378px;
+	width:900px;
+	background:url("../../../images/main_bg.jpg") no-repeat;
+	background-position: 0px -110px;
+}
+.leftdiv{
+	float:left;
+	height: 375px;
+	width:570px;
+	background: url("../../../images/login_vline.png") repeat-y right;
+}
+
+.lefttop{
+	text-align:left;
+	height: 55px;
+	width:570px;
+	border-bottom:1px solid #e6e6e6;
+}
+.lefttop span{
+	margin-left:20px;
+	line-height:55px;
+	font-family: "微软雅黑";
+	font-size: 25px;
+	font-style: italic;
+}
+
+.lefttop div{
+	float: right;
+	margin-top:10px;
+	margin-right:30px;
+	height: 37px;
+	width: 143px;
+	background-image: url("../../../images/form_login.png");
+	background-position:0px -150px;
+	font-family: "微软雅黑";
+	font-size: 22px;
+	color: white;
+	text-align: center;
+}
+/*
+.lefttop div:HOVER{
+	cursor: pointer;
+	background-image: url("../../../images/form_login.png");
+	background-position:0px -192px;
+}*/
+
+.leftbottom{
+	height: 320px;
+	width:570px;
+}
+.showdiv{
+	margin:15px auto;
+	height: 290px;
+	width:510px;
+	background-image: url("../../../images/showdiv.png");
+}
+
+
+.rightdiv{
+	float:left;
+	height: 375px;
+	width:330px;
+}
+
+.r1{
+	float:left;
+	margin-top:45px;
+	margin-left:55px;
+	height: 170px;
+	width:230px;
+}
+.loginfo{
+	float:left;
+	height: 100px;
+	width: 230px;
+}
+#utsdiv{
+	position: absolute;
+	float: left;
+	width: 216px;
+	height: 38px;
+	margin-top: -36px;
+	background-image: url("../../../images/cloinfo.png");
+	background-position: 0px 0px;
+	display:none;
+	z-index: 2;
+}
+#emaildiv{
+	float: left;
+	height: 35px;
+	width: 214px;
+	background-image: url("../../../images/logininput.png");
+	background-position: 0px 0px;
+}
+#emaildiv input{
+	border: 0;
+	margin-left: 20px;
+	margin-top: 8px;
+	color: #808080;
+}
+#passdiv{
+	float: left;
+	margin-top: 15px;
+	height: 35px;
+	width: 214px;
+	background-image: url("../../../images/logininput.png");
+	background-position: 0px -45px;
+}
+#passdiv input{
+	border: 0;
+	margin-left: 20px;
+	margin-top: 8px;
+}
+
+
+
+.loginauto{
+	float:left;
+	margin-top:2px;
+	height: 10px;
+	width: 230px;
+}
+.lsp1{
+	float:left;
+	font-size: 13px;
+	font-family:宋体;
+	letter-spacing: -1px;
+	line-height: 10px;
+}
+.lsp2{
+	float: right;
+	margin-top:5px;
+	margin-right: 10px;
+}
+.lsp2 a{
+	font-family:宋体;
+	font-size: 13px;
+	color: #0A8CD2;
+	text-decoration: none;
+}
+.lsp2 a:HOVER{
+	font-family: 宋体;
+	font-size: 13px;
+	color: 	#0A8CD2;
+	text-decoration: underline;
+}
+.loginbtn{
+	float:left;
+	margin-top:10px;
+	height: 50px;
+	width: 230px;
+}
+.loginbtn input{
+	font-size:15px;
+	font-weight:bold;
+	color:white;
+	margin-top:10px;
+	float:left;
+	border:0;
+	width:82px;
+	height:32px;
+	background-image: url("../../../images/logininput.png");
+	background-position: 0px -164px;
+}
+.loginbtn input:HOVER{
+	margin-top:10px;
+	float:left;
+	border:0;
+	width:82px;
+	height:32px;
+	background-image: url("../../../images/logininput.png");
+	background-position: -92px -164px;
+	cursor: pointer;
+}
+.noweibo{
+	float:left;
+	margin-top:25px;
+	margin-left:5px;
+	color: #808080;
+	font-size: 13px;
+}
+.regnow{
+	float: left;
+	margin-top:25px;
+}
+.regnow a{
+	font-family:宋体;
+	font-size: 13px;
+	color: #0A8CD2;
+	text-decoration: none;
+}
+.regnow a:HOVER{
+	font-family: 宋体;
+	font-size: 13px;
+	color: 	#0A8CD2;
+	text-decoration: underline;
+}
+.r2{
+	text-align:left;
+	float:left;
+	margin-top:50px;
+	margin-left:55px;
+	height: 45px;
+	width:215px;
+}
+
+.r2 span{
+	font-size: 12px;
+	font-family: 宋体;
+	color: #808080;
+}
+.r2div{
+	float:left;
+	margin-right: 10px;
+	margin-top: 10px;
+	width:50px;
+}
+.r2 a{
+	font-family: 宋体;
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+.r2 a:HOVER{
+	font-family: 宋体;
+	font-size: 13px;
+	color: 	#0A8CD2;
+	text-decoration: underline;
+}
+.ty{
+	float:left;
+	width: 20px;
+	height: 20px;
+	background-image: url('../../../images/form_login.png');
+	background-position: -20px -100px;
+}
+.lt{
+	float:left;
+	width: 20px;
+	height: 20px;
+	background-image: url('../../../images/form_login.png');
+	background-position: -40px -100px;
+}
+.qh{
+	float:left;
+	width: 20px;
+	height: 20px;
+	background-image: url('../../../images/form_login.png');
+	background-position: -60px -100px;
+}
+.bottomdiv{
+	float:left;
+	height: 110px;
+	width:900px;
+	background: url("../../../images/footer_top_bg.jpg") repeat-x top;
+	text-align: center;
+	background-color: white;
+}
+.zddiv{
+	height: 20px;
+}
+.zddiv table{
+	margin: 0 auto;
+}
+.zd a{
+	font-family:微软雅黑;
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+.zd a:HOVER{
+	font-family: 微软雅黑;
+	font-size: 13px;
+	color: 	#0A8CD2;
+	text-decoration: underline;
+}
+.zd{
+	margin-top:30px;
+	
+}
+#zdip{
+	float:left;
+	height: 20px;
+	width: 20px;
+	background-image: url("../../../images/form_login.png");
+	background-position: 0px -120px;
+}
+#zdad{
+	float:left;
+	height: 20px;
+	width: 20px;
+	background-image: url("../../../images/form_login.png");
+	background-position: -20px -120px;
+}
+#zdwp{
+	float:left;
+	height: 20px;
+	width: 20px;
+	background-image: url("../../../images/form_login.png");
+	background-position: -40px -120px;
+}
+#zdqt{
+	float:left;
+	height: 20px;
+	width: 20px;
+	background-image: url("../../../images/form_login.png");
+	background-position: -60px -120px;
+}
+.info{
+	font-family:微软雅黑;
+	font-size: 12.5px;
+	color: #808080;
+}
+
+.info a{
+	font-family: 微软雅黑;
+	font-size: 12.5px;
+	color: #808080;
+	text-decoration: none;
+}
+.info a:HOVER{
+	font-family: 微软雅黑;
+	font-size: 12.5px;
+	color: 	#0A8CD2;
+	text-decoration: underline;
+}

@@ -1,0 +1,360 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>index</title>
+
+</head>
+
+<body>
+
+	<!--我的账号-->
+	<div class="MIB_column">
+		<div class="MIB_main_cont">
+			<div class="MIB_setup">
+				<div class="setup_main" id="setup_main">
+					<div class="index_title">
+						<!--this page title-->
+						<h3>隐私设置</h3>
+						<!--/this page title-->
+					</div>
+					<div class="setup_pop" id="tip" style="display:none">
+						<div class="PY_clew">
+							<div class="PY_clewcon">
+								<div class="icon">
+									<img align="absmiddle" title="" alt=""
+										src="http://img.t.sinajs.cn/t36/style/images/common/PY_ib.gif"
+										class="PY_ib PY_ib_3" />
+								</div>
+								<div class="txt fb" id="txt">操作成功</div>
+								<div class="clearit"></div>
+							</div>
+						</div>
+					</div>
+					<div class="setup_pop" id="tip_fail" style="display:none">
+						<div class="PY_clew_error">
+							<div class="PY_clewcon">
+								<div class="icon">
+									<img align="absmiddle" title="" alt=""
+										src="http://img.t.sinajs.cn/t36/style/images/common/PY_ib.gif"
+										class="PY_ib PY_ib_2" />
+								</div>
+								<div class="txt fb">失败了！</div>
+								<div class="clearit"></div>
+							</div>
+						</div>
+					</div>
+					<div class="ysSetup font_12">
+						<div class="rb_t">
+							<strong>评论</strong> <span class="font_12 gray9">设置谁可以评论</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone" type="radio" name="comment" value="0"
+									checked="checked" /> <label for="allone">所有人<span
+									class="font_12 gray9">(不包括你的黑名单用户)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone5" type="radio" name="comment" value="2" /> <label
+									for="allone5">可信用户<span class="font_12 gray9">(包括我关注的人、新浪认证用户、微博达人、手机绑定用户以及身份验证用户)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone2" type="radio" name="comment" value="1" /> <label
+									for="allone2">我关注的人</label>
+							</p>
+						</div>
+
+						<div class="rb_t">
+							<strong>私信</strong> <span class="font_12 gray9">设置谁可以给我发私信/引荐关注</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone3" type="radio" name="message" value="0" /> <label
+									for="allone3">所有人<span class="font_12 gray9">(不包括你的黑名单用户；部分用户会受到反垃圾系統限制，依然不能给您发送私信)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone6" type="radio" name="message" value="2"
+									checked="checked" /> <label for="allone6">可信用户<span
+									class="font_12 gray9">(包括我关注的人、新浪认证用户、微博达人、手机绑定用户以及身份验证用户)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone4" type="radio" name="message" value="1" /> <label
+									for="allone4">我关注的人</label>
+							</p>
+						</div>
+
+						<div class="rb_t">
+							<strong>@提到我</strong> <span class="font_12 gray9">设置接收哪些人@提到我的微博/评论</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="mention1" type="radio" name="mention" value="0"
+									checked="checked" /> <label for="mention1">所有人<span
+									class="font_12 gray9">(不包括你的黑名单用户)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="mention2" type="radio" name="mention" value="2" /> <label
+									for="mention2">可信用户<span class="font_12 gray9">(包括我关注的人、新浪认证用户、微博达人、手机绑定用户以及身份验证用户)</span>
+								</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="mention3" type="radio" name="mention" value="1" /> <label
+									for="mention3">我关注的人</label>
+							</p>
+						</div>
+
+						<div class="rb_t">
+							<strong>推荐</strong> <span class="font_12 gray9">设置允许把我推荐给以下哪些人</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input type="checkbox" id="recom3" checked="checked"
+									name="recom3" /> <label for="recom3">在我附近上网的人</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="checkbox" id="recom4" checked="checked"
+									name="recom4" /> <label for="recom4">我的msn/邮箱联系人</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="checkbox" id="recom5" checked="checked"
+									name="recom5" /> <label for="recom5">与我有间接关注的人</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="checkbox" id="recom6" checked="checked"
+									name="recom6" /> <label for="recom6">与我有共同好友的人</label>
+							</p>
+						</div>
+						<div class="rb_t" id="invitesite">
+							<strong>邀请</strong> <span class="font_12 gray9">设置谁可以向我发送邀请</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<div class="rb_t" id="invitesite2">
+								关注邀请 <span class="font_12 gray9">设置谁可以向我求关注</span>
+							</div>
+							<p class="pstyle gray6">
+								<input type="radio" value="0" checked="checked"
+									name="invite_setting_att" id="allone_250"> <label
+									for="allone_250">所有我的粉丝</label>
+							</p>
+							<div class="pstyle gray6 clearFix">
+								<div class="lf">
+									<input type="radio" value="1" name="invite_setting_att"
+										id="allone_251"> <label for="allone_251">指定部分我的粉丝(至少选择一项)</label>
+									<a href="javascript:void(0);" class="arrow_d"
+										id="allone_251_ico"></a>
+									<!--收起<a href="" class="arrow_d"></a>-->
+								</div>
+								<div class="lf iv_space4" id="allone_251_msg"></div>
+							</div>
+							<div style="display: none;" node-type="allone_251">
+								<div class="clearFix">
+									<div class="iv_space2 lf ">
+										<p class="pstyle gray6">
+											<input type="checkbox" value="1" name="invite_att_vip"
+												id="ttt1"> <label for="ttt1">微博V认证用户</label>
+										</p>
+										<p class="pstyle gray6">
+											<input type="checkbox" value="2" name="invite_att_answ"
+												id="ttt2"> <label for="ttt2">正确回答提问的人<span
+												class="gray9">(问题或答案最多可输入20个字符，至少设置1个提问)</span>
+											</label>
+										</p>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="iv_space2 iv_inp tt_erSet">
+									<table class="gray9">
+										<tbody>
+											<tr>
+												<th style="width:50px; height:55px; *height:50px;">问题1：</th>
+												<td><input type="text" name="invite_att_ques1"
+													id="q_row_1" class="iv_input1">
+												</td>
+												<th style="width:50px;">答案1：</th>
+												<td><input type="text" name="invite_att_answ1"
+													id="a_row_1" class="iv_input1">
+												</td>
+												<td id="row_1"></td>
+											</tr>
+											<tr>
+												<th style="width:50px; height:55px; *height:50px;">问题2：</th>
+												<td><input type="text" name="invite_att_ques2"
+													id="q_row_2" class="iv_input1">
+												</td>
+												<th style="width:50px;">答案2：</th>
+												<td><input type="text" name="invite_att_answ2"
+													id="a_row_2" class="iv_input1">
+												</td>
+												<td id="row_2"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="rb_t" id="invitesite3">
+								游戏邀请 <span class="font_12 gray9">设置谁可以向我发送游戏邀请</span>
+							</div>
+
+							<p class="pstyle gray6">
+								<input type="radio" value="6" name="invite_setting_game"
+									id="allone_2520" /> <label for="allone_2520">密友</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="radio" value="4" checked="checked"
+									name="invite_setting_game" id="allone_252" /> <label
+									for="allone_252">与我互相关注的人</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="radio" value="5" name="invite_setting_game"
+									id="allone_253" /> <label for="allone_253">不接受游戏邀请</label>
+							</p>
+
+							<div class="rb_t" id="invitesite1">
+								密友邀请 <span class="font_12 gray9">设置谁可以向我发送密友邀请</span>
+							</div>
+							<p class="pstyle gray6">
+								<input type="radio" value="0" checked="checked"
+									name="invite_setting_miyou" id="allone_miyou_250"> <label
+									for="allone_miyou_250">所有人</label>
+							</p>
+							<p class="pstyle gray6">
+								<input type="radio" value="2" name="invite_setting_miyou"
+									id="allone_miyou_252"> <label for="allone_miyou_252">我关注的人</label>
+							</p>
+							<div class="pstyle gray6 clearFix" style="display:none;">
+								<div class="lf">
+									<input type="radio" value="1" name="invite_setting_miyou"
+										id="allone_miyou_251"> <label for="allone_miyou_251">指定部分我的粉丝(至少选择一项)</label>
+									<a href="javascript:void(0);" class="arrow_d"
+										id="allone_miyou_251_ico"></a>
+									<!--收起<a href="" class="arrow_d"></a>-->
+								</div>
+								<div class="lf iv_space4" id="allone_miyou_251_msg"></div>
+							</div>
+							<div style="display:none;" node-type="allone_miyou_251">
+								<div class="clearFix">
+									<div class="iv_space2 lf ">
+										<p class="pstyle gray6">
+											<input type="checkbox" value="1" name="invite_miyou_vip"
+												id="miyou_ttt1"> <label for="miyou_ttt1">微博V认证用户</label>
+										</p>
+										<p class="pstyle gray6">
+											<input type="checkbox" value="3" name="invite_miyou_answ"
+												id="miyou_ttt2"> <label for="miyou_ttt2">正确回答提问的人<span
+												class="gray9">(问题或答案最多可输入20个字符，至少设置1个提问)</span>
+											</label>
+										</p>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="iv_space2 iv_inp tt_erSet">
+									<table class="gray9">
+										<tbody>
+											<tr>
+												<th style="width:50px; height:55px; *height:50px;">问题1：</th>
+												<td><input type="text" name="invite_miyou_ques1"
+													id="q_miyou_1" class="iv_input1">
+												</td>
+												<th style="width:50px;">答案1：</th>
+												<td><input type="text" name="invite_miyou_answ1"
+													id="a_miyou_1" class="iv_input1">
+												</td>
+												<td id="miyou_1"></td>
+											</tr>
+											<tr>
+												<th style="width:50px; height:55px; *height:50px;">问题2：</th>
+												<td><input type="text" name="invite_miyou_ques2"
+													id="q_miyou_2" class="iv_input1">
+												</td>
+												<th style="width:50px;">答案2：</th>
+												<td><input type="text" name="invite_miyou_answ2"
+													id="a_miyou_2" class="iv_input1">
+												</td>
+												<td id="miyou_2"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="rb_t">
+							<strong>邮箱</strong> <span class="font_12 gray9">设置是否允许别人通过注册邮箱找到我</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone10" type="radio" name="email" value="1"
+									checked="checked" /> <label for="allone10">允许</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone11" type="radio" name="email" value="0" /> <label
+									for="allone11">不允许</label>
+							</p>
+						</div>
+
+						<div class="rb_t">
+							<strong>手机</strong> <span class="font_12 gray9">设置是否允许别人通过手机找到我</span>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone12" type="radio" name="mobile" value="1"
+									checked="checked" /> <label for="allone12">允许</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone13" type="radio" name="mobile" value="0" /> <label
+									for="allone13">不允许</label>
+							</p>
+						</div>
+
+						<div class="rb_t">
+							<strong>地理位置信息</strong><span><a
+								href="http://help.weibo.com/faq/q/1543/14750" target="_blank">[这是什么？]</a>
+							</span>
+						</div>
+						<div class="font_12 gray9">发布微博时，是否允许微博保存并显示你所处的地理位置信息，包括所有的第三方工具、客户端。(此修改不影响过去已保存的历史微博)</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone7" type="radio" name="location" value="1"
+									checked="checked" /> <label for="allone7">允许</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone8" type="radio" name="location" value="0" /> <label
+									for="allone8">不允许</label>
+							</p>
+							<p class="gray9 font_12" style="display:none;">
+								你还可以<a href="javascript:void(0);" id="clear_msg">删除过去所有微博中保存的地理位置信息</a>，删除后不可恢复。
+							</p>
+						</div>
+						<div class="rb_t">
+							<strong>勋章</strong>
+						</div>
+						<div class="tag_tips MIB_linedot2 iv_space1">
+							<p class="pstyle gray6">
+								<input id="allone11" type="radio" name="medal" value="0" /> <label
+									for="allone11">私密状态（仅在我的勋章页面显示）</label>
+							</p>
+							<p class="pstyle gray6">
+								<input id="allone12" type="radio" name="medal" value="1"
+									checked="checked" /> <label for="allone12">公开状态（允许其他人查看我的勋章）</label>
+							</p>
+						</div>
+						<div class="btn">
+							<a class="btn_normal" id="submit" href="javascript:void(0);"><em>保存</em>
+							</a>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/我的账号-->
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="messages" namespace="/csdn" extends="json-default" >
+		<action name="MessagesAction_*" class="messagesAction" method="{1}">
+			<result name="query" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pagination\.total,pagination\.from,pagination\.size,pagination\.rows\[\d+\]\.id,pagination\.rows\[\d+\]\.type,pagination\.rows\[\d+\]\.label,pagination\.rows\[\d+\]\.info,pagination\.rows\[\d+\]\.time,pagination\.rows\[\d+\]\.readNum,pagination\.rows\[\d+\]\.agreeNum,pagination\.rows\[\d+\]\.collectNum,pagination\.rows\[\d+\]\.commentNum,pagination\.rows\[\d+\]\.transpondNum,pagination\.rows\[\d+\]\.users\.id</param>
+			</result>
+			<result name="queryall" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="delete" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="saveorupdate" type="json">
+				<param name="root">flag</param>
+			</result>
+			<result name="queryMessages" type="json">
+				<param name="root">showMessages</param>
+			</result>
+		</action>
+	</package>
+</struts>

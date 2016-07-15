@@ -1,0 +1,99 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*消息列表*/
+.user-face {
+	width: 60px;
+	float: left;
+}
+.user-massage {
+	width: 700px;
+	float: left;
+}
+.reply-list {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #CFCFCF;
+	border-radius: 5px;
+	margin: 15px 0 0;
+	overflow: hidden;
+	padding: 15px;
+}
+.replay-textarea {
+	width: 690px;
+}
+.message-title {
+	margin: 0 0 10px 10px;
+}
+.acts {
+	position: relative;
+	float: left;
+	margin: 10px 0 0 0;
+}
+.face {
+	width: 60px;
+	float: left;
+}
+.action {
+	float: left;
+	width: 700px;
+}
+.info {
+	float: left;
+	margin-top: 5px;
+	width: 625px;
+}
+.user-list {
+	margin: 0;
+}
+.user-list li {
+	width: 250px;
+}
+.messageTextarea {
+	width: 300px;
+}
+.searchUserName {
+	width: 300px;
+}
+.feed-nav {
+	overflow: hidden;
+}
+.info-tab li {
+	margin: 10px;
+	padding-left: 10px;
+	height: 40px;
+	line-height: 40px;
+}
+.info-tab li:hover {
+	background: #eee;
+	border-radius: 3px;
+}
+.info-tab li.active {
+	background: #66CC66;
+	border-radius: 3px;
+}
+.info-tab li.active a {
+	color: #FFF;
+}
+.info-tab li.active:hover {
+	background-color: #66CC66;
+}
+.lsit-line {
+	border-radius: 3px;
+	border: 1px solid #DDD;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.feed_list {
+	margin-bottom: 20px;
+}
+.feed_list .comment {
+	margin: 20px;
+}
+.feed_list .comment dd > dl > .info {
+	margin-top: 10px;
+	width: 490px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #666;
+}

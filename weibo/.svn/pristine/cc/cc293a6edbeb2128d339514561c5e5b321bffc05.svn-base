@@ -1,0 +1,105 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>index</title>
+	
+  </head>
+  
+  <body>
+   	<div class="W_main_c">
+  <div class="W_f14 W_fb acc_mail">设置证件信息，增强帐号安全度！</div>
+  <div class="W_tips clearfix">
+    <div class="tipProg tipProg2th"><span class="step1 current"><em class="num">1.</em>填写证件信息</span><em class="bgstep1 bgstepCur"></em><span class="step2"><em class="num">2.</em>密保证件设置成功</span></div>
+  </div>
+  <div class="W_cloud_bg">
+    <div class="form_cloud_frame">
+      <div class="cloud_top_bg"></div>
+      <div class="cloud_bottom_bg"></div>
+      <div class="form_cloud_con">
+	  <form name="write_identity" id="write_identity" action="/settings/security/aj_BindIdentity" method="post">
+        <dl>
+          <dd class="space_b">
+            <div class="form_table">
+              <dl class="W_spetxt clearfix">
+                <dt>提示：</dt>
+                <dd>证件信息设置成功后不能修改。请您务必填写真实信息。</dd>
+              </dl>
+              <dl class="clearfix">
+                <dt>真实姓名：</dt>
+                <dd class="conbox">
+                  <input type="text" class="W_inputStp W_input_default" name="firstname" node-type="firstname">
+                </dd>
+                <dd class="tipbox" node-type="firstnameTip"></dd>
+              </dl>
+              <dl class="clearfix">
+                <dt>证件类型：</dt>
+                <dd class="conbox">
+                  <select class="select" name="idtype" node-type="idtype">
+					<option value="1">身份证</option>
+					<option value="6">港澳台身份证</option>
+					<option value="2">学生证</option>
+					<option value="3">军官证</option>
+					<option value="4">护照</option>
+				  </select>
+                </dd>
+                <dd class="tipbox" node-type="idtypeTip"></dd>
+              </dl>
+              <dl class="clearfix">
+                <dt>证件号码：</dt>
+                <dd class="conbox">
+                  <input type="text" class="W_inputStp W_input_default" name="idnumber" node-type="idnumber">
+                </dd>
+                <dd class="tipbox" node-type="idnumberTip"></dd>
+              </dl>
+              <dl class="clearfix">
+                <dt>微博登录密码：</dt>
+                <dd class="conbox">
+                  <input type="password" class="W_inputStp W_input_default" name="password" node-type="password">
+                </dd>
+                <dd class="tipbox" node-type="passwordTip"></dd>
+              </dl>
+              <dl class="p_note clearfix">
+                <dt>&nbsp;</dt>
+                <dd>
+                  <input type="checkbox" class="W_checkbox" id="5" checked="checked" name="clause" node-type="clause">
+                  <label for="5">我已阅读并同意<a href="http://help.weibo.com/faq/q/699/12510#12510" target="_blank">《新浪安全中心服务条款》</a></label>
+                </dd>
+				<dd class="tipbox" node-type="clauseTip"></dd>
+              </dl>
+              <dl class="p_btn clearfix">
+                <dt>&nbsp;</dt>
+                <dd><a class="W_btn_b" href="javascript:;" onclick="return false;" node-type="submit" style='line-height:24px;font-family:宋体;' ><span>保存</span></a></dd>
+              </dl>
+            </div>
+          </dd>
+        </dl>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="W_main_r">
+  <div class="W_rightModule" id="">
+    <div class="title">常见安全问题</div>
+    <ul class="topic_list clearfix">
+      <li><span class="W_textb">1、</span><a href="http://help.weibo.com/faq/q/699/12629#12629" target='_blank'>为什么要设置证件信息？</a></li>
+      <li><span class="W_textb">2、</span><a href="http://help.weibo.com/faq/q/699/12630#12630" target='_blank'>证件信息会透露给别人吗？</a></li>
+    </ul>
+  </div>
+  	<div id="" class="W_rightModule W_no_border">
+        <ul class="topic_list clearfix">
+          <!-- <li>客服邮箱：tkefu@vip.sina.com</li> -->
+          <li>客服电话：4000 960 960（个人） 4000 980 980（企业）按当地市话标准计费</li>
+          <!--<li>如果你有好的建议和意见，请<a href='http://s.weibo.com/weibo/weijianyi'>点击这里</a>
+          反馈给我们。</li>-->
+        </ul>
+      </div>
+  
+</div>
+
+  </body>
+</html>

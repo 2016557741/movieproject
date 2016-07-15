@@ -1,0 +1,9 @@
+package www.csdn.project.dao.impl;
+
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import www.csdn.project.dao.AtusersDao;
+
+public class AtusersDaoImpl extends HibernateDaoSupport implements AtusersDao {
+
+}

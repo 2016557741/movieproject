@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- BaseService -->
+	<bean id="baseServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.BaseServiceImpl">
+				<property name="baseDao" ref="baseDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- AdminService -->
+	<bean id="adminsServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.AdminsServiceImpl">
+				<property name="adminsDao" ref="adminsDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- AtusersService -->
+	<bean id="atusersServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.AtusersServiceImpl">
+				<property name="atusersDao" ref="atusersDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- CollectionsService -->
+	<bean id="collectionsServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.CollectionsServiceImpl">
+				<property name="collectionsDao" ref="collectionsDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- CommentsService -->
+	<bean id="commentsServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.CommentsServiceImpl">
+				<property name="commentsDao" ref="commentsDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- MessageService -->
+	<bean id="messagesServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.MessagesServiceImpl">
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- PicturesService -->
+	<bean id="picturesServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.PicturesServiceImpl">
+				<property name="picturesDao" ref="picturesDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- PrivateletterService -->
+	<bean id="privateletterServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.PrivateletterServiceImpl">
+				<property name="privateletterDao" ref="privateletterDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- RelationService -->
+	<bean id="relationServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.RelationServiceImpl">
+				<property name="relationDao" ref="relationDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- UserinfoService -->
+	<bean id="userinfoServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.UserinfoServiceImpl">
+				<property name="userinfoDao" ref="userinfoDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- UsersService -->
+	<bean id="usersServiceImpl" parent="transactionProxyFactoryBean">
+		<property name="target">
+			<bean class="www.csdn.project.service.impl.UsersServiceImpl">
+				<property name="usersDao" ref="usersDaoImpl" />
+			</bean>
+		</property>
+	</bean>
+</beans>

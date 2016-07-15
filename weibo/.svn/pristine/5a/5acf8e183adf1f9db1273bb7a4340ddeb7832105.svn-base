@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="www.csdn.project.domain">
+	<class name="Relation" table="RELATION" schema="weibo">
+		<id name="id" column="RELATION_ID">
+			<generator class="sequence">
+				<param name="sequence">RELATION_SEQ</param>
+			</generator>
+		</id>
+		
+		<property name="time" type="timestamp" column="RELATION_TIME"/>
+		<property name="note" type="string" column="RELATION_NOTE"/>
+		<property name="groupName" type="string" column="RELATION_GROUPNAME"/>
+		
+		<many-to-one name="tusers" class="Users" column="USERS_ID"/>
+		<many-to-one name="byusers" class="Users" column="USERS_BYID"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-image: url("../../../images/body_bg.png");
+	background-position: -175px 0px;
+	background-repeat: no-repeat;
+	background-color: #bde1f5;
+}
+
+#content_main{
+	width: 980px;
+	margin:0 auto;
+	margin-top: 50px;
+	text-align: left;
+}
+
+#content_div {
+	background-image: url("../../../images/repeat_bg_y.png");
+	float:left;
+}
+
+#content_div_left {
+	float:left;
+	width: 150px;
+	
+}
+
+#content_div_center {
+	float:left;
+	width: 600px;
+	
+}
+
+#content_div_right {
+	float:left;
+	width: 230px;
+	
+}

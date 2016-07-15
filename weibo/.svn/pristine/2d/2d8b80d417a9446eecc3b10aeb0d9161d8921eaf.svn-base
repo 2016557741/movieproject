@@ -1,0 +1,34 @@
+package www.csdn.project.test;
+
+import java.util.Date;
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import www.csdn.project.domain.Collections;
+import www.csdn.project.service.BaseService;
+
+public class CollectionsTest {
+	
+	BaseService service;
+	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	
+	@Test
+	public void save(){
+		service = context.getBean("baseServiceImpl",BaseService.class);
+		for(int i=0;i<20;i++){
+			Collections entity = new Collections(null,new Date(),null,null,null);
+			service.saveObject(entity);
+		}
+	}
+	
+	@Test
+	public void getAll(){
+		List<Collections> list = context.getBean("baseServiceImpl",BaseService.class).getObjects(Collections.class,0,5,"asc","id");
+		for(Collections collections : list){
+			System.out.println(collections.getTime());
+		}
+	}
+}

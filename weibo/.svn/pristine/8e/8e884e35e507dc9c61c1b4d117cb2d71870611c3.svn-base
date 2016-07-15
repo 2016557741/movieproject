@@ -1,0 +1,183 @@
+package www.csdn.project.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * 
+ * @author 曹建波 2013-5-2 下午3:50:39
+ * 
+ */
+public class Messages implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String type;
+	private String info;
+	private Date time;
+	private Integer collectNum;
+	private Integer commentNum;
+	private Integer transpondNum;
+	private Integer agreeNum;
+	private Integer readNum;
+	private String label;
+	private Users users;
+
+	private Set<Pictures> pictures = new HashSet<Pictures>();
+	private Set<Atusers> atusers = new HashSet<Atusers>();
+	private Set<Collections> collections = new HashSet<Collections>();
+	private Set<Comments> comments = new HashSet<Comments>();
+
+	public Messages() {
+		super();
+	}
+
+	public Messages(Integer id, String type, String info, Date time,
+			Integer collectNum, Integer commentNum, Integer transpondNum,
+			Integer agreeNum, Integer readNum, String label, Users users,
+			Set<Pictures> pictures, Set<Atusers> atusers,
+			Set<Collections> collections, Set<Comments> comments) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.info = info;
+		this.time = time;
+		this.collectNum = collectNum;
+		this.commentNum = commentNum;
+		this.transpondNum = transpondNum;
+		this.agreeNum = agreeNum;
+		this.readNum = readNum;
+		this.label = label;
+		this.users = users;
+		this.pictures = pictures;
+		this.atusers = atusers;
+		this.collections = collections;
+		this.comments = comments;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public Integer getCollectNum() {
+		return collectNum;
+	}
+
+	public void setCollectNum(Integer collectNum) {
+		this.collectNum = collectNum;
+	}
+
+	public Integer getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(Integer commentNum) {
+		this.commentNum = commentNum;
+	}
+
+	public Integer getTranspondNum() {
+		return transpondNum;
+	}
+
+	public void setTranspondNum(Integer transpondNum) {
+		this.transpondNum = transpondNum;
+	}
+
+	public Integer getAgreeNum() {
+		return agreeNum;
+	}
+
+	public void setAgreeNum(Integer agreeNum) {
+		this.agreeNum = agreeNum;
+	}
+
+	public Integer getReadNum() {
+		return readNum;
+	}
+
+	public void setReadNum(Integer readNum) {
+		this.readNum = readNum;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Set<Atusers> getAtusers() {
+		return atusers;
+	}
+
+	public void setAtusers(Set<Atusers> atusers) {
+		this.atusers = atusers;
+	}
+
+	public Set<Collections> getCollections() {
+		return collections;
+	}
+
+	public void setCollections(Set<Collections> collections) {
+		this.collections = collections;
+	}
+
+	public Set<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comments> comments) {
+		this.comments = comments;
+	}
+
+	public Set<Pictures> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(Set<Pictures> pictures) {
+		this.pictures = pictures;
+	}
+
+}

@@ -1,0 +1,14 @@
+package www.csdn.project.dao;
+
+import java.util.List;
+
+import www.csdn.project.domain.Users;
+
+/**
+ * MessagesDao 2013-5-7 下午7:53:30
+ * 
+ * @author 乔晓松
+ * 
+ */
+public interface MessagesDao {
+}

@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/backstage/privateletter/privateletter_list.jsp,WebRoot/WEB-INF/pages/index.jsp,WebRoot/backstage/collections/collections_list.jsp,src/struts.xml,WebRoot/backstage/relation/relation_list.jsp,WebRoot/backstage/atusers/atusers_list.jsp,WebRoot/backstage/userinfo/userinfo_list.jsp,WebRoot/backstage/admins/admins_list.jsp,WebRoot/backstage/users/users_list.jsp,WebRoot/backstage/pictures/pictures_list.jsp
+validator.Unchecked=

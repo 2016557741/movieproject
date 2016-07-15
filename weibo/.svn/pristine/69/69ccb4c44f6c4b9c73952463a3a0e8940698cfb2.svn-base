@@ -1,0 +1,87 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>index</title>
+	
+  </head>
+  
+  <body>
+     <!--个人资料-->
+  <div class="setup_main"> 
+ <div class="index_title">
+    <!--this page title-->
+    <h3>个人标签</h3>
+    <h4>添加描述自己职业、兴趣爱好等方面的词语，让更多人找到你，让你找到更多同类</h4>
+    <!--/this page title-->
+   </div>
+    <div class="setupTag">
+    <div class="setupTag_box">
+    	<div class="setupTag_boxL">
+    	<div class="setupTag_input">
+  	<input type="text" class="setupTag_txt" id="tag_input" value="多个标签词之间请用空格分开" /><a id="add_tag" href="javascript:;" class="btn_normal"><em>添加标签</em></a>
+  </div>
+  <div class="error_color" id="tip_or_error" style="display:none">含有非法字符，请修改</div>
+    </div>
+    <div class="setupTag_boxR">
+    	<p class="setupTag_tip2"><span class="rt lightblue"><a href="#">换一换</a></span>你可能感兴趣的标签：</p>
+  	<div class="setupTag_list01" ><a title="添加标签" href="#" tagid="20914"><em>+</em>爱自由</a><a title="添加标签" href="#" tagid="1919"><em>+</em>思考</a><a title="添加标签" href="#" tagid="1971"><em>+</em>吃喝玩乐</a><a title="添加标签" href="#" tagid="3063"><em>+</em>留学</a><a title="添加标签" href="#" tagid="8075"><em>+</em>演员</a><a title="添加标签" href="#" tagid="3808"><em>+</em>耽美</a><a title="添加标签" href="#" tagid="16659"><em>+</em>星座控</a><a title="添加标签" href="#" tagid="1313"><em>+</em>日语</a><a title="添加标签" href="#" tagid="1975"><em>+</em>双鱼</a><a title="添加标签" href="#" tagid="1433"><em>+</em>韩庚</a></div></div>
+    </div>
+    	
+    
+    <div class="setupTag_tit MIB_linedot" id="mytagshow1" ><a class="rt" href="javascript:void(0);" id="recommendtag">将我的标签推荐给朋友</a><em class="font_14">我已经添加的标签：</em></div>
+    
+    <div id="mytagshow2" class="setupTag_list02" >
+    <ul id="tag_list" class="tagList">
+	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E5%A8%B1%E4%B9%90" class="a1">娱乐</a>
+    		<a href="javascript:;" tagid="1347" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E5%81%A5%E5%BA%B7" class="a1">健康</a>
+    		<a href="javascript:;" tagid="623" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E6%96%87%E8%89%BA" class="a1">文艺</a>
+    		<a href="javascript:;" tagid="1799" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E6%97%85%E6%B8%B8" class="a1">旅游</a>
+    		<a href="javascript:;" tagid="10" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E6%96%B0%E9%97%BB%E8%B5%84%E8%AE%AF" class="a1">新闻资讯</a>
+    		<a href="javascript:;" tagid="35649" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E7%BE%8E%E5%A5%B3" class="a1">美女</a>
+    		<a href="javascript:;" tagid="13" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=%E5%86%9B%E4%BA%8B" class="a1">军事</a>
+    		<a href="javascript:;" tagid="762" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    	    	<li onmouseover="this.className='bg';" onmouseout="this.className='';">
+    		<a href="http://s.weibo.com/user/&tags=IT%E6%95%B0%E7%A0%81" class="a1">IT数码</a>
+    		<a href="javascript:;" tagid="28158" onclick="scope.deleteTag(this)" class="a2"><img title="删除标签" src="http://img.t.sinajs.cn/t36/style/images/common/transparent.gif" /></a>
+    	</li>
+    	    	    </ul>
+    <div class="clear"></div>
+    </div>
+    <div class="setupTag_titnew">
+    <div class="setupTag_tit gray6 MIB_linedot">关于标签：</div>
+    <div class="setupTag_txtList gray9">
+    <p>&middot;标签是自定义描述自己职业、兴趣爱好的关键词，让更多人找到你，让你找到更多同类。</p>
+    <p>&middot;已经添加的标签将显示在“我的微博”页面右侧栏中，方便大家了解你。</p>
+    <p>&middot;在此查看你自己添加的所有标签，还可以方便地管理，最多可添加10个标签。 </p>
+    <p>&middot;点击你已添加的标签，可以搜索到有同样兴趣的人。</p>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+   
+  <!--/个人资料--> 
+  </body>
+</html>

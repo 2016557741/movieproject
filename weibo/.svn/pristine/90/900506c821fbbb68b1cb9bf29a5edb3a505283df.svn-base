@@ -1,0 +1,123 @@
+$(document).ready(function() {
+
+	//保存，验证
+	addUser();
+
+	$(".tgray1").focus(function() {
+		$(this).fadeIn(4000).css({
+			border : "1px solid #666666",
+			height : "27px",
+			width : "240px",
+			background : "#FFFFCC"
+		});
+	});
+	$(".tgray1").blur(function() {
+		$(this).fadeIn(4000).css({
+			border : "0",
+			height : "27px",
+			width : "240px",
+			background : "#FFFFFF"
+		});
+	});
+
+	$(".tgray2").hide();
+	$(".s").mouseover(function() {
+		$(".tgray2").show();
+		$(this).hide();
+	});
+
+	$(".tgray2").focus(function() {
+		$(this).show();
+		$(this).fadeIn(4000).css({
+			border : "1px solid #666666",
+			background : "#CCCCFF"
+		});
+	});
+	$(".tgray2").blur(function() {
+		$(this).fadeIn(4000).css({
+			border : "0",
+			background : "#FFFFFF"
+		});
+	});
+
+})
+function addUser() {
+
+	$('label').remove();
+
+	$("#addUser").validate({
+		rules : {
+			nikename : {
+				required : true,
+				rangelength : [4, 30]
+			},
+			sex:{
+				required : true,
+			},
+			blogUrl : {
+				url : true
+			},
+			qqNumber : {
+				number : true,
+				digits : true,
+				rangelength : [6, 11]
+			},
+			messenger : {
+				email : true
+			},
+			intro : {
+				rangelength : [0, 70]
+			}
+		},
+		messages : {
+			nikename : {
+				required : "请输入昵称",
+				rangelength : "昵称只能4-30个字符"
+			},
+			sex : {
+				required:"请选择性别"
+			},
+			blogUrl : {
+				url : "请输入正确的博客格式"
+			},
+			qqNumber : {
+				number : "qq号只能是数字",
+				digits : "qq号不能是负数",
+				rangelength : "qq号只能是6到11位"
+			},
+			messenger : {
+				email : "请输入正确的msn账号"
+			},
+			intro : {
+				rangelength : "自我评价字数限制在0到70之间"
+			}
+		},
+		submitHandler : function(form) {
+			$.post("./csdn/UserinfoAction_update.action?time=" + new Date().getTime(), {           
+             'users.id':$("#usersId").val(),
+             'users.email':$("#uemail").val(),
+             'users.passWord':$("#passWord").val(),
+             'users.nikeName':$("#nikeName").val(),
+             
+             'userinfo.id':$("#userinfoId").val(),
+             'userinfo.trueName':$("#trueName").val(),
+             'userinfo.sex':$("#sex input:checked").val(),
+             'userinfo.sexUal':$("#sexUal input:checked").val(),
+             'userinfo.feeling':$("#feeling").val(),
+             'userinfo.bloodType':$("#bloodType").val(),
+             'userinfo.bloodType':$("#bloodType").val(),
+             'userinfo.blogUrl':$("#blogUrl").val(),
+             'userinfo.email':$("#email").val(),
+             'userinfo.qqNumber':$("#qqNumber").val(),
+             'userinfo.messenger':$("#messenger").val(),
+             'userinfo.intro':$("#intro").val()          
+			}, function(data) {
+				if (data) {
+					alert("保存成功！");
+				} else {
+					alert("保存失败！");
+				}
+			}, "json");
+		}
+	});
+}
