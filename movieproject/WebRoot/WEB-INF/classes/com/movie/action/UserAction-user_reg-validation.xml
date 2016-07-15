@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//E"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2dtd">
+        <validators>
+        <filed name="user.name">
+        <!--  验证字符串不能为空 -->
+        <filed-validator type="requiredstring">
+        <!-- 去空格 -->
+        <param name="trim">true</param>
+        <!-- 错误提示信息 -->
+        <message>用户名不能为空</message>
+        </filed-validator>
+        
+        <!-- 验证字符串长度 -->
+        <filed-validator type="stringlength">
+        <param name="minLength">3</param>
+         <param name="minLength">16</param>
+         <message>用户名长度应在6到16个字符间</message>
+        </filed-validator>
+      </filed>
+      </validators>

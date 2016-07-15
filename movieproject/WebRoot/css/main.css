@@ -1,0 +1,113 @@
+
+body{
+	font-family:"Microsoft Yahei",微软雅黑,"Helvetica Neue",Arial,sans-serif;
+	font-size:16px;
+}
+a{
+	color: #777;
+	text-decoration:none;
+}
+a:focus,
+a:hover {
+	color: #b00;
+}
+header{
+	background:#fcfcfc;
+	height:120px;
+}
+header .account{
+	padding-right:200px;
+	text-align:right;
+	line-height: 40px;
+	color:white;
+	height:40px;
+	background:#31a8e6;
+	
+}
+header .account>a{
+	float:right;
+	padding-right:50px;
+	line-height: 40px;
+	color:white;
+	
+}
+header .logo{
+	float:left;
+	line-height: 40px;
+	font-size:40px;
+	color:red;
+}
+
+main{
+	margin-top:10px;
+}
+
+main .search-box{
+	height:30px;
+}
+
+main .input-group{
+	margin:20px 30px;
+}
+main ul{
+	width:1200px;
+	margin:0 auto;
+	padding-left: 0;
+	list-style: none;	
+}
+main ul li{
+
+	display:inline-block;
+}
+main ul li .add{
+	
+    float:left;
+	margin:30px 20px 0px 20px;
+	padding:5px;
+	width:300px;
+	height:250px;
+	border:4px solid silver;
+	border-radius:8px;
+	text-align:center;	
+}
+
+main ul li .add >a{
+
+	font-size:36px;
+	color:#31a8e6;
+	line-height:230px;
+}
+main ul li .add:hover{
+	border:4px solid gray;
+}
+main ul li img{
+	margin:30px 20px 0px 20px;
+	padding:5px;
+	width:300px;
+	height:250px;
+	border:4px solid silver;
+	border-radius:1000px;
+}
+main ul li img:hover{
+	border:10px solid yellow;
+}
+main ul li p{
+	text-align:center;
+	line-height:10px;
+	
+}
+main ul li p span.price{
+	margin:0 20px;
+	color:purple ;
+}
+main ul li p a.add-order{
+	padding:6px 24px;
+	border:2px solid #31a8e6;
+	border-radius:10px;
+	color:#10f5c3;
+	
+}
+main ul li p a.add-order:hover{
+	border:2px solid #3190e6;
+	color:#3190e6;
+}

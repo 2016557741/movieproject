@@ -1,0 +1,24 @@
+#MyEclipse Hibernate Properties
+#Fri Mar 04 08:48:00 CST 2016
+sessionFactoryName=
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.3
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=<no jars/zips in selected libraries>
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/movieproject/hibernate.reveng.xml
+configFile=/movieproject/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true
